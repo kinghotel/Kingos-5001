@@ -1,4 +1,8 @@
-KING OS V5000 Alpha-1
-Build: 2026-07-05
-Base: KING-OS-V4206-V4096-HEADER-CLEAN-CARDS
-Focus: PMS dashboard, fast entry safety, local snapshot protection.
+KING OS V5003 FRONT + V4206 ADMIN MERGE
+Front source: KING-OS-1000-FULL-FRONTEND-ADMIN-AIQA.zip
+Admin source: KING-OS-V4206-V4096-HEADER-CLEAN-CARDS(3).zip
+GitHub Pages root deploy ready.
+URLs:
+  /index.html or /
+  /admin.html
+  /booking.html

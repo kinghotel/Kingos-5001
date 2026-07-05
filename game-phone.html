@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
 <title>KING HOTEL Game Phone Mode</title>
 <link rel="stylesheet" href="assets/king-game-phone.css">
 <style>
@@ -79,7 +80,9 @@ body{background:radial-gradient(circle at 75% 10%,rgba(242,196,90,.18),transpare
 <script src="assets/king-game-phone.js"></script>
 <script>
 localStorage.setItem("KING_OS_GAME_PHONE_MODE","1");
-
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+}
 </script>
 </body>
 </html>

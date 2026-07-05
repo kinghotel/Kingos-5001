@@ -126,8 +126,14 @@ html,body{
 <meta name="theme-color" content="#000000">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="assets/king-hotfix-v247.css">
 <link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+
+<style id="V5003_MERGE_SAFE_FALLBACK">
+.v5003-fallback{display:none;position:fixed;inset:0;background:#050505;color:#f7ca5a;z-index:5;align-items:center;justify-content:center;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",Arial,sans-serif}
+.v5003-fallback.on{display:flex}.v5003-fallback h1{font-size:min(8vw,68px);letter-spacing:.1em;margin:0 0 26px}.v5003-fallback .grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:12px;max-width:520px;margin:auto}.v5003-fallback a{display:block;color:#111;text-decoration:none;background:linear-gradient(180deg,#ffe58a,#d4a936);border-radius:14px;padding:14px 18px;font-weight:900}.v5003-admin-link{position:fixed;right:14px;bottom:14px;z-index:6;color:#f7ca5a;text-decoration:none;border:1px solid rgba(247,202,90,.35);background:rgba(0,0,0,.45);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+</style>
 </head>
 <body data-page="home-v267-live-time-weather-inline15-card-hotzones">
 <main class="stage">
@@ -154,6 +160,17 @@ html,body{
     <a class="hot home-account" href="wifi.html" data-card="home-user-password"><span class="sr">User ID and Password</span></a>
   </nav>
 </main>
+<div id="v5003Fallback" class="v5003-fallback" aria-label="KING HOTEL fallback menu">
+  <div>
+    <h1>KING HOTEL</h1>
+    <div class="grid">
+      <a href="zh.html">繁體中文</a><a href="ja.html">日本語</a>
+      <a href="en.html">English</a><a href="ko.html">한국어</a>
+      <a href="cn.html">简体中文</a><a href="admin.html">後台</a>
+    </div>
+  </div>
+</div>
+<a class="v5003-admin-link" href="admin.html">ADMIN</a>
 <script>
 (function(){
   const secondPage = {zh:"zh.html", cn:"cn.html", ja:"ja.html", en:"en.html", ko:"ko.html"};
@@ -245,5 +262,21 @@ html,body{
 })();
 </script>
 <script src="assets/king-hot-activate-v247.js"></script>
+
+<script id="V5003_MERGE_SAFE_SCRIPT">
+(function(){
+  const fallback=document.getElementById('v5003Fallback');
+  const bg=document.querySelector('.bg');
+  function showFallback(){ if(fallback) fallback.classList.add('on'); }
+  if(bg){
+    if(bg.complete && bg.naturalWidth===0) showFallback();
+    bg.addEventListener('error', showFallback, {once:true});
+  }
+  window.addEventListener('error', function(e){
+    const msg=String((e && e.message)||'');
+    if(/assets\/|home-landscape|Cannot read|undefined/.test(msg)) showFallback();
+  });
+})();
+</script>
 </body>
 </html>
