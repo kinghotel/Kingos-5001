@@ -1,0 +1,28 @@
+KING OS V310 TOKYO GUIDE HOTSPOT LINK FIX REPORT
+
+tokyo-attractions.html:
+  background: assets/tokyo-attractions-v303.jpeg?v=308 -> OK
+  card hotspot count: 25
+  link target: YouTube search
+  fixed: z-index 9999 + pointer-events + grid fallback click mapper
+
+tokyo-food.html:
+  background: assets/tokyo-food-v303.jpeg?v=308 -> OK
+  card hotspot count: 25
+  link target: Google search
+  fixed: z-index 9999 + pointer-events + grid fallback click mapper
+
+tokyo-transport.html:
+  background: assets/tokyo-transport-v303.jpeg?v=308 -> OK
+  card hotspot count: 25
+  link target: Google search
+  fixed: z-index 9999 + pointer-events + grid fallback click mapper
+
+tokyo-shopping.html:
+  background: assets/tokyo-shopping-v303.jpeg?v=308 -> OK
+  card hotspot count: 25
+  link target: Google search
+  fixed: z-index 9999 + pointer-events + grid fallback click mapper
+
+LOCAL FILE LINK CHECK:
+  missing local hrefs: 0

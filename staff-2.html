@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KING HOTEL Front Desk</title>
+<style>
+:root{
+  --gold:#e6c46b;
+  --gold2:#fff0b4;
+  --bg:#050505;
+  --panel:rgba(11,13,17,.90);
+  --line:rgba(230,196,107,.74);
+  --white:#fff8e8;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0!important;
+  padding:0!important;
+  width:100%!important;
+  height:100%!important;
+  background:#050505!important;
+  color:var(--white);
+  overflow:hidden!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans SC","Noto Sans JP","Noto Sans KR","Segoe UI",Arial,sans-serif;
+}
+.stage{
+  position:fixed;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:100vw;
+  height:min(100vh,56.25vw);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 12%,rgba(235,190,75,.14),transparent 28%),
+    radial-gradient(circle at 12% 92%,rgba(235,190,75,.10),transparent 30%),
+    linear-gradient(135deg,#050505 0%,#101216 56%,#050505 100%);
+  padding:2.1vh 3.5vw;
+}
+.frame{
+  width:100%;
+  height:100%;
+  border:1.6px solid var(--line);
+  border-radius:1.45vw;
+  padding:2.0vh 2.15vw;
+  box-shadow:inset 0 0 28px rgba(230,185,65,.11),0 0 24px rgba(0,0,0,.55);
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:1.35vh;
+}
+.top{
+  display:grid;
+  grid-template-columns:15vw 1fr 15vw;
+  align-items:center;
+  gap:1.1vw;
+  border-bottom:1.4px solid rgba(230,196,107,.65);
+  padding-bottom:1.05vh;
+  min-height:6.0vh;
+}
+.back,.home-top{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:4.75vh;
+  border:1.4px solid var(--gold);
+  border-radius:.72vw;
+  color:#fff6cf;
+  text-decoration:none;
+  font-size:1.05vw;
+  font-weight:950;
+  background:rgba(0,0,0,.28);
+  white-space:nowrap;
+}
+.brand{
+  text-align:center;
+  color:#ffe29a;
+  font-size:2.35vw;
+  font-weight:1000;
+  letter-spacing:.12em;
+  text-shadow:0 0 14px rgba(226,169,45,.55);
+}
+.content{
+  min-height:0;
+  display:grid;
+  grid-template-columns:1fr;
+}
+.panel{
+  width:100%;
+  min-height:0;
+  border:1.45px solid var(--line);
+  border-radius:1.1vw;
+  background:linear-gradient(180deg,rgba(255,215,100,.07),rgba(0,0,0,.50));
+  padding:1.55vh 1.65vw;
+  box-shadow:inset 0 0 24px rgba(224,170,50,.09);
+  display:grid;
+  grid-template-rows:auto auto auto auto auto auto auto auto;
+  gap:.78vh;
+}
+h1{
+  margin:0;
+  font-size:2.35vw;
+  line-height:1.02;
+  color:#ffe29a;
+  letter-spacing:.03em;
+}
+.desc{
+  font-size:1.04vw;
+  line-height:1.42;
+  color:#ffffff;
+  margin:0;
+}
+.quick{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.62vw;
+}
+.q{
+  border:1.35px solid rgba(230,196,107,.78);
+  border-radius:.72vw;
+  padding:.86vh .70vw;
+  background:rgba(0,0,0,.34);
+  color:#fff;
+  min-height:5.05vh;
+  text-align:center;
+  font-size:1.02vw;
+  line-height:1.15;
+  font-weight:950;
+  overflow:hidden;
+  white-space:normal;
+}
+.q:active,.q.active{
+  background:linear-gradient(180deg,#fff0b4,#c88d25);
+  color:#211400;
+}
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.85vw;
+}
+label{
+  display:block;
+  font-size:.94vw;
+  color:#ffe29a;
+  margin:0 0 .30vh;
+  font-weight:950;
+}
+input,textarea{
+  width:100%;
+  border:1.4px solid #d8b45f;
+  border-radius:.70vw;
+  background:#0c0f14;
+  color:#fff;
+  font-size:1.04vw;
+  padding:.74vh .84vw;
+  outline:none;
+  scroll-margin-bottom:52vh;
+}
+input{height:4.8vh;}
+textarea{
+  height:10.8vh;
+  resize:none;
+  line-height:1.35;
+}
+input:focus,textarea:focus{
+  border-color:#fff0b4;
+  box-shadow:0 0 0 .14vw rgba(255,230,150,.16),0 0 1vw rgba(230,196,107,.28);
+}
+.langbar{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.55vw;
+}
+.langbar a{
+  border:1.2px solid rgba(230,196,107,.70);
+  border-radius:.70vw;
+  height:4.35vh;
+  min-height:2.8vw;
+  padding:0 .45vw;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#ffe29a;
+  font-size:.92vw;
+  font-weight:950;
+  text-align:center;
+  white-space:nowrap;
+  background:rgba(0,0,0,.32);
+}
+.langbar a.active{
+  background:linear-gradient(180deg,#fff0b4,#c88d25);
+  color:#201400;
+}
+.keyboard-help{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:.46vw;
+}
+.kb{
+  border:1.15px solid rgba(230,196,107,.70);
+  border-radius:.58vw;
+  background:rgba(0,0,0,.38);
+  padding:.54vh .38vw;
+  min-height:5.20vh;
+  color:#fff6d0;
+  font-size:.72vw;
+  line-height:1.14;
+  text-align:center;
+  font-weight:900;
+  overflow:hidden;
+}
+.kb b{
+  display:block;
+  color:#ffe29a;
+  font-size:.82vw;
+  margin-bottom:.12vh;
+}
+.submit{
+  width:100%;
+  height:5.35vh;
+  border:1.5px solid #e6c46b;
+  border-radius:.75vw;
+  background:linear-gradient(180deg,#fff0b4,#c88d25);
+  font-size:1.12vw;
+  font-weight:1000;
+  color:#251600;
+}
+.result{
+  min-height:4.1vh;
+  border:1.2px solid rgba(230,196,107,.48);
+  border-radius:.72vw;
+  padding:.68vh .85vw;
+  color:#fff;
+  background:rgba(0,0,0,.26);
+  font-size:.90vw;
+  line-height:1.32;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+.result b{color:#ffe29a}
+.footer{
+  display:grid;
+  grid-template-columns:1fr;
+  align-items:center;
+  min-height:3.8vh;
+  border-top:1.25px solid rgba(230,196,107,.58);
+  padding-top:.75vh;
+  color:#fff6cf;
+  font-size:.90vw;
+}
+.notice{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+}
+@media(max-aspect-ratio:16/9){
+  .stage{
+    width:100vw;
+    height:56.25vw;
+    top:50%;
+    transform:translateY(-50%);
+  }
+}
+@media(min-aspect-ratio:16/9){
+  .stage{
+    width:177.777vh;
+    height:100vh;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+  }
+}
+/* Android / Chrome WebView 鍵盤彈出時：鎖住 16:9 舞台，不讓頁面被壓縮變小 */
+body.keyboard-open .stage{
+  left:0!important;
+  top:0!important;
+  transform:none!important;
+  width:100vw!important;
+  height:56.25vw!important;
+  min-height:56.25vw!important;
+}
+body.keyboard-open .frame{
+  gap:.8vh!important;
+}
+body.keyboard-open .panel{
+  gap:.55vh!important;
+}
+@media(max-width:900px){
+  .stage{padding:1.3vh 2vw}
+  .top{grid-template-columns:25vw 1fr 20vw}
+  .brand{font-size:4.2vw}
+  .back,.home-top{font-size:2.3vw;height:5.2vh}
+  h1{font-size:4.2vw}
+  .desc,label,input,textarea,.q,.submit,.footer,.result{font-size:2.5vw}
+  .langbar a{font-size:2vw}
+  .kb{font-size:1.7vw}.kb b{font-size:1.85vw}
+}
+
+/* V382 Admin sidebar unified with 房況月曆規格 */
+:root{--sidebar:104px}
+.app{grid-template-columns:var(--sidebar) 1fr!important}
+.sidebar{width:104px!important;min-width:104px!important;padding:8px 7px!important;gap:5px!important}
+.sidebar .brand,.brand{border-radius:14px!important;padding:8px 5px!important;font-size:13px!important;letter-spacing:3px!important;min-height:64px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}
+.sidebar .brand small,.brand small{font-size:9px!important;margin-top:4px!important;letter-spacing:0!important}
+.sidebar .nav,.nav{gap:5px!important;margin-top:5px!important}
+.sidebar .nav button,.nav button{height:30px!important;min-height:30px!important;border-radius:12px!important;font-size:13px!important;font-weight:850!important;line-height:1!important;padding:0 7px!important;display:flex!important;align-items:center!important;white-space:nowrap!important}
+.sidebar .navSep,.navSep{height:1px!important;margin:3px 5px!important;background:linear-gradient(90deg,transparent,#31405c,transparent)!important}
+.sidebar .sideBottom,.sideBottom{gap:6px!important}
+.sidebar .sideBottom .sideBtn,.sideBottom .sideBtn{height:30px!important;border-radius:12px!important;font-size:13px!important;padding:0 7px!important}
+
+
+/* V388 universal responsive admin layout: phone / tablet / laptop / desktop */
+:root{
+  --admin-safe-top: calc(env(safe-area-inset-top, 0px));
+  --admin-safe-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+html,body{min-width:0!important;}
+.app{min-width:0!important;}
+.main{min-width:0!important;}
+.topbar,.sourcebar,.queue{min-width:0!important;}
+.search{min-width:0!important;}
+.calendarWrap{min-width:0!important;}
+.gridScroll{height:calc(var(--row) * 16)!important;max-height:calc(100dvh - 172px)!important;min-height:220px!important;overflow:auto!important;}
+.grid,.dates{will-change:auto!important;}
+.drawer{max-height:calc(100dvh - 62px)!important;}
+.quick3{min-height:0!important;}
+
+/* Desktop and large touch monitors */
+@media (min-width:1441px){
+  :root{--sidebar:112px;--room:76px;--day:clamp(64px, calc((100vw - var(--sidebar) - 46px - var(--room)) / 16), 96px);--row:clamp(28px, calc((100dvh - 178px) / 16), 36px);}
+  .main{padding:7px 10px 9px!important;gap:5px!important;}
+  .gridScroll{max-height:calc(100dvh - 170px)!important;}
+}
+
+/* Normal laptop: 13-15 inch, avoids calendar overflow */
+@media (min-width:1101px) and (max-width:1440px){
+  :root{--sidebar:102px;--room:66px;--day:clamp(50px, calc((100vw - var(--sidebar) - 34px - var(--room)) / 16), 74px);--row:clamp(23px, calc((100dvh - 166px) / 16), 31px);}
+  .sidebar{padding:8px 7px!important;gap:5px!important;}
+  .brand{font-size:13px!important;padding:8px 4px!important;letter-spacing:3px!important;}
+  .nav{gap:4px!important;}
+  .nav button,.sideBtn{height:30px!important;font-size:13px!important;border-radius:12px!important;padding:0 6px!important;}
+  .main{padding:5px 7px 7px!important;gap:4px!important;}
+  .topbar{grid-template-columns:auto auto minmax(210px,1fr) 48px 54px 44px auto!important;gap:5px!important;min-height:29px!important;}
+  .title{font-size:20px!important;}
+  .pill{height:28px!important;min-width:82px!important;padding:0 9px!important;font-size:12px!important;}
+  .search{height:28px!important;font-size:12px!important;padding:0 10px!important;}
+  .topbar .btn,.clock{height:28px!important;font-size:11px!important;min-width:44px!important;padding:0 8px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:70px 70px 70px 70px minmax(320px,1fr)!important;gap:5px!important;}
+  .source{height:27px!important;min-width:70px!important;width:70px!important;font-size:11px!important;}
+  .opsStats{gap:4px!important;}
+  .statBox{height:25px!important;font-size:10px!important;}
+  .statBox b{font-size:14px!important;}
+  .queue{grid-template-columns:48px 132px 140px 1fr auto!important;gap:5px!important;}
+  .pendingCard{height:31px!important;font-size:10px!important;padding:3px 7px!important;}
+  .waiting{font-size:12px!important;}.waiting b{font-size:18px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:29px!important;min-width:74px!important;font-size:12px!important;padding:0 8px!important;}
+  .roomHead,.dateCell{height:32px!important;}
+  .roomHead{font-size:20px!important;}.dateCell{font-size:12px!important;}.dateCell .dow{font-size:9px!important;}
+  .roomCell{font-size:18px!important;}.order{font-size:10px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{top:52px!important;right:8px!important;width:360px!important;max-width:calc(100vw - var(--sidebar) - 14px)!important;}
+  .drawerHead{height:32px!important;font-size:14px!important;}
+  .drawerBody{padding:6px!important;gap:4px!important;}
+  .qcol{padding:6px!important;gap:4px!important;}
+  .qcol h3{font-size:12px!important;margin:0 0 3px!important;}
+  .field label{font-size:8px!important;}.field input,.field select{height:23px!important;font-size:11px!important;padding:0 5px!important;}
+  .drawerFoot{height:38px!important;padding:5px 6px!important;}.drawerFoot button{height:28px!important;font-size:11px!important;}
+}
+
+/* Small laptop / tablet landscape */
+@media (min-width:901px) and (max-width:1100px){
+  :root{--sidebar:94px;--room:60px;--day:clamp(44px, calc((100vw - var(--sidebar) - 24px - var(--room)) / 16), 60px);--row:clamp(21px, calc((100dvh - 158px) / 16), 28px);}
+  .sidebar{padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:12px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{padding:4px 5px 5px!important;gap:3px!important;}
+  .topbar{grid-template-columns:auto auto minmax(160px,1fr) 44px 48px 42px auto!important;gap:4px!important;}
+  .title{font-size:18px!important;}.pill{height:26px!important;min-width:72px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;font-size:11px!important;padding:0 9px!important;}
+  .clock{display:none!important;}.topbar .btn{height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px minmax(260px,1fr)!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,minmax(42px,1fr))!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:42px 118px 120px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:62px!important;font-size:11px!important;padding:0 6px!important;}
+  .roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;}
+  .holidayLegend{transform:scale(.86);transform-origin:left bottom;}
+  .drawer{top:48px!important;right:5px!important;width:330px!important;max-width:calc(100vw - var(--sidebar) - 10px)!important;}
+  .drawerHead{height:30px!important;font-size:13px!important;}.drawerBody{padding:5px!important;gap:3px!important;}
+  .quick3{gap:4px!important}.qcol{padding:5px!important;gap:3px!important}.qcol h3{font-size:11px!important;margin-bottom:2px!important;}
+  .field label{font-size:7.5px!important}.field input,.field select{height:21px!important;font-size:10px!important;padding:0 4px!important;}
+  .checks{font-size:9px!important}.aiLine{height:20px!important;font-size:9px!important;}
+  .drawerFoot{height:34px!important;padding:4px 5px!important}.drawerFoot button{height:26px!important;font-size:10px!important;}
+}
+
+/* Phone / narrow tablet: use full desktop admin canvas with horizontal pan; no hidden backend items */
+@media (max-width:900px){
+  html,body{overflow:auto!important;height:auto!important;min-height:100dvh!important;-webkit-overflow-scrolling:touch!important;}
+  body{background:#080d18!important;}
+  :root{--sidebar:96px;--room:62px;--day:54px;--row:26px;}
+  .app{width:1180px!important;min-width:1180px!important;height:760px!important;min-height:760px!important;grid-template-columns:var(--sidebar) 1fr!important;overflow:hidden!important;}
+  .sidebar{display:flex!important;padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:11px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav{gap:4px!important}.nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{height:760px!important;padding:4px 5px 5px!important;gap:3px!important;grid-template-rows:auto auto 1fr!important;}
+  .topbar{grid-template-columns:auto auto 240px 46px 54px 46px 110px!important;gap:4px!important;min-height:28px!important;}
+  .title{font-size:18px!important}.hotelTabs{gap:3px!important}.pill{height:26px!important;min-width:74px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;width:240px!important;font-size:11px!important;padding:0 9px!important;}
+  .topbar .btn,.clock{display:flex!important;height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px 1fr!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,1fr)!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:44px 132px 150px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;display:block!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav{justify-content:flex-end!important;}.monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:68px!important;font-size:11px!important;padding:0 6px!important;}
+  .calendarWrap{min-height:0!important;}.roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .gridScroll{height:calc(var(--row) * 16)!important;max-height:none!important;min-height:0!important;overflow:auto!important;touch-action:pan-x pan-y!important;}
+  .grid{grid-template-columns:var(--room) repeat(var(--total-days),var(--day))!important;grid-auto-rows:var(--row)!important;width:calc(var(--room) + var(--total-days) * var(--day))!important;min-width:calc(var(--room) + var(--total-days) * var(--day))!important;}
+  .dates{grid-auto-columns:var(--day)!important;}.roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{position:fixed!important;top:42px!important;right:6px!important;left:auto!important;width:360px!important;max-width:calc(100vw - 12px)!important;max-height:calc(100dvh - 48px)!important;z-index:999!important;}
+  .drawer.show{grid-template-rows:30px minmax(0,1fr) 36px!important}.drawerHead{height:30px!important;font-size:13px!important}.drawerBody{padding:5px!important;gap:3px!important;overflow:auto!important}.quick3{grid-template-columns:1fr!important;gap:4px!important}.qcol{padding:5px!important}.field input,.field select{height:22px!important;font-size:10px!important}.field label{font-size:8px!important}.drawerFoot{height:36px!important;padding:4px 5px!important}.drawerFoot button{height:27px!important;font-size:10px!important;}
+}
+
+/* Very short laptop height: keep calendar aligned instead of pushing out of frame */
+@media (max-height:700px) and (min-width:901px){
+  :root{--row:clamp(20px, calc((100dvh - 150px) / 16), 27px);}
+  .main{gap:3px!important;padding-top:4px!important;padding-bottom:5px!important;}
+  .brand{padding-top:6px!important;padding-bottom:6px!important}.nav button,.sideBtn{height:27px!important;}
+  .topbar{min-height:27px!important}.pill,.search,.btn,.clock{height:26px!important;}
+  .source,.statBox{height:23px!important}.pendingCard{height:27px!important}.roomHead,.dateCell{height:29px!important;}
+  .drawer{top:36px!important;max-height:calc(100dvh - 42px)!important;}
+}
+
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head>
+<body>
+<div class="stage">
+  <div class="frame">
+    <header class="top">
+      <a id="backBtn" class="back" href="javascript:history.back()">← 返回上一頁</a>
+      <div class="brand">♛ KING HOTEL</div>
+      <a class="home-top" id="homeBtn" href="admin.html">回到後台首頁</a>
+    </header>
+
+    <main class="content">
+      <section class="panel">
+        <h1 id="title">聯絡前台</h1>
+        <p class="desc" id="desc">請選擇您需要的協助，送出後工作人員可在後台「客人問題」看到並處理。</p>
+
+        <div class="quick" id="quickBox"></div>
+
+        <div class="form-row">
+          <div>
+            <label id="roomLabel">房號</label>
+            <input id="room" value="305" inputmode="numeric" autocomplete="off">
+          </div>
+          <div>
+            <label id="typeLabel">需求類型</label>
+            <input id="typeText" readonly>
+          </div>
+        </div>
+
+        <div>
+          <label id="msgLabel">補充說明</label>
+          <textarea id="message" placeholder="請輸入需要協助的內容"></textarea>
+        </div>
+
+        <div class="langbar" id="langbar">
+          <a data-lang="zh" href="staff.html?lang=zh">繁體中文</a>
+          <a data-lang="cn" href="staff.html?lang=cn">简体中文</a>
+          <a data-lang="ja" href="staff.html?lang=ja">日本語</a>
+          <a data-lang="en" href="staff.html?lang=en">English</a>
+          <a data-lang="ko" href="staff.html?lang=ko">한국어</a>
+        </div>
+
+        <div class="keyboard-help" id="keyboardHelp" aria-label="keyboard language help"></div>
+
+        <button class="submit" id="submitBtn">送出給前台</button>
+        <div class="result" id="result">尚未送出。</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="notice" id="notice">輸入欄可用下方地球鍵盤方式切換語言。</div>
+    </footer>
+  </div>
+</div>
+
+<script>
+const I18N={
+ zh:{
+  back:"返回上一頁",home:"回到首頁",title:"聯絡前台",
+  desc:"請選擇您需要的協助，送出後工作人員可在後台「客人問題」看到並處理。",
+  room:"房號",type:"需求類型",msg:"補充說明",ph:"請輸入需要協助的內容",send:"送出給前台",
+  empty:"尚未送出。",ok:"已通知工作人員，請稍候。",notice:"輸入訊息時，可用下方方式切換 5 種語言鍵盤。",
+  items:["需要工作人員","客房清潔","毛巾備品","行李寄放","Wi‑Fi 問題","設備故障"],
+  kb:[["繁中","點輸入欄 → 🌐 / 長按空白鍵"],["简中","点输入栏 → 🌐 / 长按空格"],["日本語","入力欄 → 🌐 / スペース長押し"],["English","Input → 🌐 / hold Space"],["한국어","입력란 → 🌐 / 스페이스 길게"]]
+ },
+ cn:{
+  back:"返回上一页",home:"回到首页",title:"联系前台",
+  desc:"请选择您需要的协助，提交后工作人员可在后台「客人问题」查看并处理。",
+  room:"房号",type:"需求类型",msg:"补充说明",ph:"请输入需要协助的内容",send:"提交给前台",
+  empty:"尚未提交。",ok:"已通知工作人员，请稍候。",notice:"输入消息时，可用下方方式切换 5 种语言键盘。",
+  items:["需要工作人员","客房清洁","毛巾备品","行李寄存","Wi‑Fi 问题","设备故障"],
+  kb:[["繁中","點輸入欄 → 🌐 / 長按空白鍵"],["简中","点输入栏 → 🌐 / 长按空格"],["日本語","入力欄 → 🌐 / スペース長押し"],["English","Input → 🌐 / hold Space"],["한국어","입력란 → 🌐 / 스페이스 길게"]]
+ },
+ ja:{
+  back:"前のページへ",home:"ホームへ",title:"フロントへ連絡",
+  desc:"必要なサポートを選択してください。送信後、スタッフが管理画面で確認します。",
+  room:"部屋番号",type:"依頼内容",msg:"補足内容",ph:"ご用件を入力してください",send:"フロントへ送信",
+  empty:"未送信です。",ok:"スタッフへ通知しました。しばらくお待ちください。",notice:"入力時は下の案内で 5 言語キーボードを切り替えできます。",
+  items:["スタッフが必要","客室清掃","タオル・備品","荷物預かり","Wi‑Fi 問題","設備トラブル"],
+  kb:[["繁中","輸入欄 → 🌐 / 空白鍵長押し"],["简中","输入栏 → 🌐 / 长按空格"],["日本語","入力欄 → 🌐 / スペース長押し"],["English","Input → 🌐 / hold Space"],["한국어","입력란 → 🌐 / 스페이스 길게"]]
+ },
+ en:{
+  back:"Back",home:"Home",title:"Contact Front Desk",
+  desc:"Choose the support you need. Staff can see your request in the back office guest-issues panel.",
+  room:"Room No.",type:"Request Type",msg:"Message",ph:"Please enter your request",send:"Send to Front Desk",
+  empty:"Not sent yet.",ok:"Staff has been notified. Please wait.",notice:"Use the keyboard guide below to switch between 5 languages.",
+  items:["Need Staff","Room Cleaning","Towels / Amenities","Luggage Storage","Wi‑Fi Issue","Equipment Problem"],
+  kb:[["繁中","Tap input → 🌐 / hold Space"],["简中","Tap input → 🌐 / hold Space"],["日本語","Tap input → 🌐 / hold Space"],["English","Input → 🌐 / hold Space"],["한국어","Tap input → 🌐 / hold Space"]]
+ },
+ ko:{
+  back:"이전 페이지",home:"홈으로",title:"프런트 연락",
+  desc:"필요한 도움을 선택해 주세요. 전송 후 직원이 관리 화면에서 확인합니다.",
+  room:"객실 번호",type:"요청 유형",msg:"추가 내용",ph:"요청 내용을 입력해 주세요",send:"프런트로 전송",
+  empty:"아직 전송되지 않았습니다.",ok:"직원에게 알림을 보냈습니다. 잠시 기다려 주세요.",notice:"아래 안내로 5개 언어 키보드를 전환할 수 있습니다.",
+  items:["직원 호출","객실 청소","수건 / 비품","짐 보관","Wi‑Fi 문제","설비 문제"],
+  kb:[["繁中","입력란 → 🌐 / 스페이스 길게"],["简中","입력란 → 🌐 / 스페이스 길게"],["日本語","입력란 → 🌐 / 스페이스 길게"],["English","Input → 🌐 / hold Space"],["한국어","입력란 → 🌐 / 스페이스 길게"]]
+ }
+};
+
+const params=new URLSearchParams(location.search);
+const lang=params.get("lang")||localStorage.getItem("king_lang")||"zh";
+const back=params.get("back")|| (lang+".html");
+const t=I18N[lang]||I18N.zh;
+
+function setText(id,val){const el=document.getElementById(id); if(el) el.textContent=val;}
+document.documentElement.lang = {zh:"zh-Hant",cn:"zh-Hans",ja:"ja",en:"en",ko:"ko"}[lang] || "zh-Hant";
+try{localStorage.setItem("king_lang",lang);localStorage.setItem("currentLanguage",lang);}catch(e){}
+
+backBtn.textContent="← "+t.back;
+backBtn.href=back;
+homeBtn.textContent=t.home;
+homeBtn.href=lang+".html";
+setText("title",t.title);
+setText("desc",t.desc);
+setText("roomLabel",t.room);
+setText("typeLabel",t.type);
+setText("msgLabel",t.msg);
+message.placeholder=t.ph;
+submitBtn.textContent=t.send;
+result.textContent=t.empty;
+notice.textContent=t.notice;
+
+let selected=t.items[0];
+typeText.value=selected;
+quickBox.innerHTML=t.items.map((x,i)=>`<button class="q ${i===0?'active':''}" type="button" data-v="${x}">${x}</button>`).join("");
+keyboardHelp.innerHTML=t.kb.map(x=>`<div class="kb"><b>${x[0]}</b>${x[1]}</div>`).join("");
+
+document.querySelectorAll(".langbar a").forEach(a=>{
+  const l=a.dataset.lang;
+  a.href="staff.html?lang="+encodeURIComponent(l)+"&back="+encodeURIComponent(l+".html");
+  if(l===lang) a.classList.add("active");
+});
+
+quickBox.addEventListener("click",e=>{
+  const b=e.target.closest(".q"); if(!b)return;
+  document.querySelectorAll(".q").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  selected=b.dataset.v;
+  typeText.value=selected;
+});
+
+function saveTicket(ticket){
+  const KEY="king_backoffice_v209_data";
+  let data=null;
+  try{data=JSON.parse(localStorage.getItem(KEY)||"null");}catch(e){}
+  if(!data)data={orders:[],rooms:[],cleaning:[],tickets:[],faq:[],pms:{}};
+  if(!Array.isArray(data.tickets))data.tickets=[];
+  data.tickets.unshift(ticket);
+  localStorage.setItem(KEY,JSON.stringify(data));
+  localStorage.setItem("king_frontdesk_last_ticket",JSON.stringify(ticket));
+}
+
+submitBtn.addEventListener("click",()=>{
+  const ticket={
+    id:"G-"+Date.now(),
+    room:room.value||"305",
+    guest:"Room Guest",
+    title:selected,
+    status:"待處理",
+    body:(message.value||selected),
+    reply:"",
+    createdAt:new Date().toISOString(),
+    lang:lang,
+    source:"Guest Front Desk"
+  };
+  saveTicket(ticket);
+  result.innerHTML="<b>"+t.ok+"</b>　ID: "+ticket.id+"　"+t.room+": "+ticket.room+"　"+ticket.title;
+  message.value="";
+});
+
+/* Android WebView / Chrome 鍵盤開啟時，不讓 16:9 頁面被壓縮 */
+(function(){
+  try{
+    if(navigator.virtualKeyboard){
+      navigator.virtualKeyboard.overlaysContent = true;
+    }
+  }catch(e){}
+  const setKeyboardMode=()=>{
+    let open=false;
+    try{
+      if(window.visualViewport){
+        open = (window.innerHeight - window.visualViewport.height) > 120;
+      }
+    }catch(e){}
+    const active=document.activeElement;
+    if(active && (active.tagName==="INPUT" || active.tagName==="TEXTAREA")) open=true;
+    document.body.classList.toggle("keyboard-open", !!open);
+  };
+  window.addEventListener("focusin",()=>{document.body.classList.add("keyboard-open");setTimeout(setKeyboardMode,120);},true);
+  window.addEventListener("focusout",()=>{setTimeout(setKeyboardMode,260);},true);
+  if(window.visualViewport){
+    visualViewport.addEventListener("resize",setKeyboardMode);
+    visualViewport.addEventListener("scroll",setKeyboardMode);
+  }
+  window.addEventListener("resize",setKeyboardMode);
+  setKeyboardMode();
+})();
+</script>
+<script src="assets/king-game-phone.js"></script>
+</body>
+</html>

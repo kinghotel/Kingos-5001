@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KING HOTEL - Video Entertainment V276</title>
+<style>
+html,body{
+  margin:0!important;
+  padding:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  background:#000!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans SC","Noto Sans JP","Noto Sans KR","Segoe UI",Arial,sans-serif!important;
+  touch-action:manipulation;
+}
+*{box-sizing:border-box}
+.stage{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  background:#000;
+  overflow:hidden;
+}
+.bg,.stage-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  display:block;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.sr{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+}
+.hot{
+  display:block;
+  text-decoration:none;
+  color:transparent;
+  background:rgba(0,0,0,.001);
+  border:0;
+  -webkit-tap-highlight-color:rgba(255,218,90,.22);
+  touch-action:manipulation;
+}
+.hot:active,.hot:focus{
+  outline:.18vw solid rgba(255,226,130,.86);
+  outline-offset:-.18vw;
+  background:rgba(255,215,80,.14);
+}
+.debug-hot .hot,
+html.debug-hot .hot{
+  outline:2px solid rgba(255,215,0,.92)!important;
+  outline-offset:-2px!important;
+  background:rgba(255,215,0,.14)!important;
+}
+
+/*
+  V275 雲端影音卡片欄位式熱區
+  依新版母圖 1000x564 重新校正；使用 CSS Grid 分割卡片，不使用 image-map coords。
+*/
+.ent-hot{
+  position:absolute;
+  inset:0;
+  z-index:8;
+  display:grid;
+  grid-template-rows:
+    minmax(0,15fr)
+    minmax(0,63fr)
+    minmax(0,11fr)
+    minmax(0,79fr)
+    minmax(0,6fr)
+    minmax(0,72fr)
+    minmax(0,5fr)
+    minmax(0,109fr)
+    minmax(0,5fr)
+    minmax(0,109fr)
+    minmax(0,5fr)
+    minmax(0,77fr)
+    minmax(0,8fr);
+  grid-template-columns:1fr;
+  min-width:0;
+  min-height:0;
+}
+.ent-back-row{
+  grid-row:2;
+  display:grid;
+  grid-template-columns:minmax(0,12fr) minmax(0,118fr) minmax(0,870fr);
+}
+.ent-back-row .hot{grid-column:2;border-radius:14px}
+.ent-service-row{
+  grid-row:4;
+  display:grid;
+  grid-template-columns:minmax(0,12fr) minmax(0,496fr) minmax(0,5fr) minmax(0,230fr) minmax(0,5fr) minmax(0,240fr) minmax(0,12fr);
+  min-width:0;
+  min-height:0;
+}
+.ent-service-row .hot{border-radius:14px}
+.ent-service-row .chrome{grid-column:2}
+.ent-service-row .airplay{grid-column:4}
+.ent-service-row .android{grid-column:6}
+.ent-stream-row{
+  grid-row:6;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:0 .45vw;
+  padding:0 1.20vw;
+  min-width:0;
+  min-height:0;
+}
+.ent-stream-row .hot{border-radius:14px}
+.ent-news-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0 .60vw;
+  padding:0 1.20vw;
+  min-width:0;
+  min-height:0;
+}
+.ent-news-row.row1{grid-row:8}
+.ent-news-row.row2{grid-row:10}
+.ent-news-group{
+  display:grid;
+  grid-template-rows:minmax(0,45fr) minmax(0,50fr) minmax(0,14fr);
+  min-width:0;
+  min-height:0;
+  pointer-events:none;
+}
+.ent-news-items{
+  grid-row:2;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0 .42vw;
+  padding:0 .60vw;
+  min-width:0;
+  min-height:0;
+  pointer-events:none;
+}
+.ent-news-items .hot{
+  pointer-events:auto;
+  border-radius:9px;
+}
+.ent-bottom-row{
+  grid-row:12;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0 .60vw;
+  padding:0 1.20vw;
+  min-width:0;
+  min-height:0;
+}
+.ent-bottom-row .hot{border-radius:14px}
+.king-gamepad-focus{
+  outline:0!important;
+  outline-offset:0!important;
+  box-shadow:none!important;
+}
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head>
+<body data-page="entertainment-cardfield-v276" data-lang="zh-Hant" data-platform-locale="zh">
+<main class="stage">
+  <img class="bg" src="assets/entertainment-v276.jpeg?v=276" alt="KING HOTEL Video Entertainment">
+  <nav class="ent-hot" aria-label="Entertainment card-field hotspots V275">
+    <div class="ent-back-row">
+      <a class="hot" href="zh.html" data-card="back"><span class="sr">Back</span></a>
+    </div>
+
+    <div class="ent-service-row">
+      <a class="hot chrome" href="browser.html?lang=zh-Hant&back=zh.html" data-card="chrome-browser"><span class="sr">Chrome Browser</span></a>
+      <a class="hot airplay" href="cast.html?lang=zh-Hant&back=zh.html" data-card="airplay"><span class="sr">AirPlay</span></a>
+      <a class="hot android" href="cast.html?lang=zh-Hant&back=zh.html" data-card="android-cast"><span class="sr">Android Cast</span></a>
+    </div>
+
+    <div class="ent-stream-row">
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2F%3Fhl%3Dzh-TW%26gl%3DTW" data-card="youtube-official-entry"><span class="sr">YouTube official entry</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.netflix.com%2Ftw%2F" data-card="netflix-official-entry"><span class="sr">Netflix official entry</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.disneyplus.com%2Fzh-hant" data-card="disney-plus-official-entry"><span class="sr">Disney Plus official entry</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.primevideo.com%2F%3Flanguage%3Dzh_TW" data-card="prime-video-official-entry"><span class="sr">Prime Video official entry</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.max.com%2Ftw%2Fzh" data-card="hbo-max-official-entry"><span class="sr">HBO Max official entry</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Ftv.apple.com%2Ftw%3Fl%3Dzh" data-card="apple-tv-official-entry"><span class="sr">Apple TV official entry</span></a>
+    </div>
+
+    <div class="ent-news-row row1">
+      <div class="ent-news-group" data-group="japanese-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DANN%2520News%2520official" data-card="ann-news"><span class="sr">ANN News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DTBS%2520NEWS%2520DIG%2520official" data-card="tbs-news-dig"><span class="sr">TBS News DIG</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DFNN%2520News%2520official" data-card="fnn-news"><span class="sr">FNN News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3D%25E6%2597%25A5%25E3%2583%2586%25E3%2583%25ACNEWS%2520official" data-card="ntv-news"><span class="sr">日テレNEWS</span></a>
+      </div></div>
+      <div class="ent-news-group" data-group="korean-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DYTN%2520News%2520official" data-card="ytn-news"><span class="sr">YTN News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DJTBC%2520News%2520official" data-card="jtbc-news"><span class="sr">JTBC News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DKBS%2520News%2520official" data-card="kbs-news"><span class="sr">KBS News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DMBN%2520News%2520official" data-card="mbn-news"><span class="sr">MBN News</span></a>
+      </div></div>
+      <div class="ent-news-group" data-group="traditional-chinese-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3D%25E6%259D%25B1%25E6%25A3%25AE%25E6%2596%25B0%25E8%2581%259E%2520official" data-card="ebc-news"><span class="sr">東森新聞</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DTVBS%2520News%2520official" data-card="tvbs-news"><span class="sr">TVBS News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3D%25E4%25B8%25AD%25E5%25A4%25A9%25E6%2596%25B0%25E8%2581%259E%2520official" data-card="cti-news"><span class="sr">中天新聞</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DTVB%2520News%2520official" data-card="tvb-news"><span class="sr">TVB News</span></a>
+      </div></div>
+    </div>
+
+    <div class="ent-news-row row2">
+      <div class="ent-news-group" data-group="simplified-chinese-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DCCTV%2520News%2520official" data-card="cctv-news"><span class="sr">CCTV News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DCGTN%2520official" data-card="cgtn"><span class="sr">CGTN</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3D%25E9%25B3%25B3%25E5%2587%25B0%25E8%25A1%259B%25E8%25A6%2596%2520official" data-card="phoenix-tv"><span class="sr">鳳凰衛視</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DChina%2520Daily%2520official" data-card="china-daily"><span class="sr">China Daily</span></a>
+      </div></div>
+      <div class="ent-news-group" data-group="thai-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DThai%2520PBS%2520official" data-card="thai-pbs"><span class="sr">Thai PBS</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DThairath%2520TV%2520official" data-card="thairath-tv"><span class="sr">Thairath TV</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DPPTV%2520HD36%2520official" data-card="pptv-hd36"><span class="sr">PPTV HD36</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DTNN%2520Thailand%2520official" data-card="tnn-thailand"><span class="sr">TNN Thailand</span></a>
+      </div></div>
+      <div class="ent-news-group" data-group="international-news"><span></span><div class="ent-news-items">
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DCNN%2520official" data-card="cnn"><span class="sr">CNN</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DBBC%2520News%2520official" data-card="bbc-news"><span class="sr">BBC News</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DReuters%2520official" data-card="reuters"><span class="sr">Reuters</span></a>
+        <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3DBloomberg%2520official" data-card="bloomberg"><span class="sr">Bloomberg</span></a>
+      </div></div>
+    </div>
+
+    <div class="ent-bottom-row">
+      <a class="hot" href="news-zh.html" data-card="latest-news"><span class="sr">Latest News</span></a>
+      <a class="hot" href="guide-zh.html" data-card="tokyo-guide"><span class="sr">Tokyo Guide</span></a>
+      <a class="hot" href="ai.html" data-card="ai-concierge"><span class="sr">AI Concierge</span></a>
+      <a class="hot" href="index.html" data-card="return-home"><span class="sr">Return Home</span></a>
+    </div>
+  </nav>
+</main>
+<script src="assets/king-game-phone.js"></script>
+<script src="assets/king-hot-activate-v247.js"></script>
+</body>
+</html>

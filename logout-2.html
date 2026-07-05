@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KING HOTEL PRIVACY RESET</title>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root{--gold:#f4c95e;--gold2:#fff0a5;--green:#19e7a2;--line:rgba(255,221,110,.78);--bg:#050505}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050505;color:var(--gold2);font-family:Arial,'Noto Sans TC','Noto Sans SC','Noto Sans JP','Noto Sans KR',sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+body{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 28%,rgba(245,201,94,.11),transparent 36%),linear-gradient(180deg,#080808,#000)}
+.wrap{position:relative;width:min(100vw,177.7777vh);height:min(100vh,56.25vw);display:flex;align-items:center;justify-content:center;padding:0}
+.panel{width:70%;height:72%;border:1.6px solid var(--line);border-radius:34px;background:linear-gradient(180deg,rgba(255,219,100,.06),rgba(0,0,0,.66));box-shadow:0 0 34px rgba(240,201,93,.20),inset 0 0 24px rgba(240,201,93,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3.2% 4%;}
+.title{font-size:clamp(28px,4.2vw,58px);font-weight:950;letter-spacing:.04em;color:#fff6c8;text-shadow:0 0 14px rgba(244,201,94,.48);margin:0 0 2.6%}
+.sub{font-size:clamp(18px,2.0vw,30px);line-height:1.35;font-weight:850;color:#f7df9b;text-shadow:0 0 10px rgba(0,0,0,.8);margin:0 0 2.7%}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 18px;width:82%;max-width:860px;margin:0 auto 2.6%}
+.item{min-height:58px;border:1.3px solid rgba(25,231,162,.72);border-radius:15px;background:rgba(25,231,162,.065);display:flex;align-items:center;justify-content:flex-start;padding:0 18px;font-size:clamp(15px,1.52vw,22px);font-weight:900;color:#dffff3;text-align:left;box-shadow:inset 0 0 10px rgba(25,231,162,.04)}
+.item:before{content:'✓';font-size:1.28em;color:var(--green);font-weight:950;margin-right:8px;text-shadow:0 0 12px rgba(25,231,162,.72)}
+.item.pending{border-color:rgba(255,221,110,.36);background:rgba(255,221,110,.035);color:#f0dfaa}.item.pending:before{content:'•';color:#f5d979;text-shadow:none}.item.running:before{content:'…'}
+.actions{display:flex;gap:34px;justify-content:center;margin-top:2.2%}
+.btn{min-width:300px;height:72px;border:1.6px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(255,216,92,.22),rgba(0,0,0,.62));color:#fff2b0;text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:clamp(17px,1.8vw,26px);font-weight:950;letter-spacing:.03em;box-shadow:0 0 18px rgba(240,201,93,.16);-webkit-tap-highlight-color:transparent}
+.btn.primary{background:linear-gradient(180deg,#f4d36f,#b9841d);color:#161000;border-color:#fff0a5;text-shadow:0 1px 0 rgba(255,255,255,.28)}
+.btn:focus,.btn:hover{outline:0;box-shadow:0 0 0 2px rgba(255,221,110,.12),0 0 22px rgba(240,201,93,.24)}
+.successIcon{font-size:clamp(72px,7vw,120px);line-height:1;color:var(--green);text-shadow:0 0 28px rgba(25,231,162,.76);margin-bottom:1.2%}
+.count{font-size:clamp(18px,2vw,28px);font-weight:950;color:#fff1a8;margin-top:1.8%;text-shadow:0 0 12px rgba(240,201,93,.4)}
+.note{position:absolute;left:2.2%;bottom:2.1%;right:2.2%;text-align:center;font-size:clamp(12px,1.15vw,17px);color:rgba(255,241,168,.82);letter-spacing:.02em}
+.hidden{display:none!important}
+@media (max-width:900px){.panel{width:82%;height:76%;}.grid{width:92%;gap:9px}.actions{gap:16px}.btn{min-width:220px;height:60px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="panel" id="panel">
+    <div id="mainView">
+      <h1 class="title" id="privacyTitle">隱私保護</h1>
+      <p class="sub" id="privacySub">清除瀏覽器資料、Cookie、登入資訊與暫存資料。</p>
+      <div class="grid" id="previewGrid">
+        <div class="item">瀏覽器資料</div><div class="item">Cookies</div><div class="item">快取資料</div>
+        <div class="item">登入資訊</div><div class="item">暫存資料</div><div class="item">隱私重置</div>
+      </div>
+      <div class="actions">
+        <a id="resetBtn" class="btn primary" href="javascript:void(0)" onclick="kingPrivacyReset();return false;">開始清除</a>
+        <a id="returnBtn" class="btn" href="admin.html">返回首頁</a>
+      </div>
+    </div>
+    <div id="statusView" class="hidden">
+      <div id="successIcon" class="successIcon hidden">✓</div>
+      <h1 class="title" id="statusTitle">正在清除資料…</h1>
+      <p class="sub" id="statusSub">請稍候，正在清除客人登入資訊與瀏覽資料。</p>
+      <div class="grid" id="stepGrid">
+        <div class="item pending" data-step="0">瀏覽器資料</div><div class="item pending" data-step="1">Cookies</div><div class="item pending" data-step="2">快取資料</div>
+        <div class="item pending" data-step="3">登入資訊</div><div class="item pending" data-step="4">暫存資料</div><div class="item pending" data-step="5">隱私重置</div>
+      </div>
+      <div class="count" id="countText"></div>
+    </div>
+  </section>
+  <div class="note" id="privacyNote">KING HOTEL | Privacy Protection</div>
+</div>
+<script>
+(function(){
+  const TEXT={
+    zh:{html:'zh-Hant',title:'隱私保護',sub:'清除瀏覽器資料、Cookie、登入資訊與暫存資料。',start:'開始清除',home:'返回首頁',clearing:'正在清除資料…',clearingSub:'請稍候，正在清除客人登入資訊與瀏覽資料。',success:'資料已清除完成',successSub:'隱私已保護，瀏覽器資料已清除。',count:'即將返回上一頁，剩餘 {n} 秒…',items:['瀏覽器資料','Cookies','快取資料','登入資訊','暫存資料','隱私重置'],note:'KING HOTEL｜隱私保護'},
+    cn:{html:'zh-Hans',title:'隐私保护',sub:'清除浏览器资料、Cookie、登录信息与缓存资料。',start:'开始清除',home:'返回首页',clearing:'正在清除资料…',clearingSub:'请稍候，正在清除客人登录信息与浏览资料。',success:'资料已清除完成',successSub:'隐私已保护，浏览器资料已清除。',count:'即将返回上一页，剩余 {n} 秒…',items:['浏览器资料','Cookies','缓存资料','登录信息','临时资料','隐私重置'],note:'KING HOTEL｜隐私保护'},
+    ja:{html:'ja',title:'プライバシー保護',sub:'ブラウザデータ、Cookie、ログイン情報、キャッシュを削除します。',start:'削除開始',home:'ホームへ戻る',clearing:'データを削除中…',clearingSub:'ログイン情報とブラウザデータを削除しています。',success:'データ削除完了',successSub:'プライバシー保護が完了しました。ブラウザデータを削除しました。',count:'{n} 秒後に戻ります…',items:['ブラウザデータ','Cookies','キャッシュ','ログイン情報','一時データ','プライバシーリセット'],note:'KING HOTEL｜プライバシー保護'},
+    en:{html:'en',title:'Privacy Protection',sub:'Clear browser data, cookies, login information and temporary files.',start:'Start Clear',home:'Return Home',clearing:'Clearing Data…',clearingSub:'Please wait while guest login and browser data are cleared.',success:'Data Cleared',successSub:'Privacy is protected and browser data has been cleared.',count:'Returning in {n} seconds…',items:['Browser Data','Cookies','Cache','Login Data','Temporary Files','Privacy Reset'],note:'KING HOTEL | Privacy Protection'},
+    ko:{html:'ko',title:'개인정보 보호',sub:'브라우저 데이터, 쿠키, 로그인 정보 및 임시 데이터를 삭제합니다.',start:'삭제 시작',home:'홈으로 돌아가기',clearing:'데이터 삭제 중…',clearingSub:'고객 로그인 정보와 브라우저 데이터를 삭제하고 있습니다.',success:'데이터 삭제 완료',successSub:'개인정보 보호가 완료되었고 브라우저 데이터가 삭제되었습니다.',count:'{n}초 후 돌아갑니다…',items:['브라우저 데이터','Cookies','캐시','로그인 정보','임시 데이터','개인정보 초기화'],note:'KING HOTEL｜개인정보 보호'}
+  };
+  const HOME={zh:'zh.html',cn:'cn.html',ja:'ja.html',en:'en.html',ko:'ko.html'};
+  function norm(v){v=String(v||'').toLowerCase();if(['cn','zh-cn','zh_hans','zh-hans'].includes(v))return'cn';if(['zh','tw','zh-tw','zh_hant','zh-hant'].includes(v))return'zh';if(v.startsWith('ja'))return'ja';if(v.startsWith('en'))return'en';if(v.startsWith('ko'))return'ko';return'zh'}
+  const qs=new URLSearchParams(location.search); const lang=norm(qs.get('lang')||localStorage.getItem('king_lang')||localStorage.getItem('currentLanguage')||'zh'); const t=TEXT[lang]||TEXT.zh; const back=qs.get('back')||HOME[lang]||'index.html';
+  document.documentElement.lang=t.html; document.title='KING HOTEL '+t.title;
+  function setText(id,txt){const el=document.getElementById(id);if(el)el.textContent=txt}
+  function fillGrid(gridId, cls){const g=document.getElementById(gridId); if(!g)return; g.innerHTML=t.items.map((x,i)=>'<div class="item '+(cls||'')+'" data-step="'+i+'">'+x+'</div>').join('')}
+  setText('privacyTitle',t.title);setText('privacySub',t.sub);setText('resetBtn',t.start);setText('returnBtn',t.home);setText('privacyNote',t.note);document.getElementById('returnBtn').href=back;fillGrid('previewGrid','');fillGrid('stepGrid','pending');
+  let running=false;
+  function safe(fn){try{fn&&fn()}catch(e){}}
+  function fullyCall(name){safe(function(){if(window.fully&&typeof window.fully[name]==='function'){window.fully[name]()}})}
+  function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+  function mark(i){const el=document.querySelector('[data-step="'+i+'"]'); if(el){el.classList.remove('pending','running');}}
+  function runMark(i){const el=document.querySelector('[data-step="'+i+'"]'); if(el){el.classList.remove('pending');el.classList.add('running')}}
+  function preserveConfig(){const keys=['king_lang','currentLanguage','king_room','king_room_no','room','roomNo','KING_ROOM','kingRoom']; const saved={}; keys.forEach(k=>{try{const v=localStorage.getItem(k); if(v!==null)saved[k]=v}catch(e){}}); return saved;}
+  function restoreConfig(saved){Object.keys(saved||{}).forEach(k=>{try{localStorage.setItem(k,saved[k])}catch(e){}})}
+  async function clearData(){
+    const saved=preserveConfig();
+    runMark(0); safe(()=>{Object.keys(localStorage).forEach(k=>{if(!/^king_|^KING_|^currentLanguage$|^room/i.test(k)) localStorage.removeItem(k)});}); restoreConfig(saved); mark(0); await sleep(220);
+    runMark(1); safe(()=>{document.cookie.split(';').forEach(c=>{const n=c.split('=')[0].trim(); if(n) document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'});}); fullyCall('deleteCookies'); fullyCall('clearCookies'); mark(1); await sleep(220);
+    runMark(2); fullyCall('clearCache'); fullyCall('clearWebViewCache'); mark(2); await sleep(220);
+    runMark(3); safe(()=>sessionStorage.clear()); fullyCall('clearFormData'); fullyCall('clearHistory'); mark(3); await sleep(220);
+    runMark(4); safe(()=>{if(window.indexedDB&&indexedDB.databases){indexedDB.databases().then(dbs=>dbs.forEach(db=>{if(db.name&&!/^king/i.test(db.name))indexedDB.deleteDatabase(db.name)})).catch(()=>{})}}); mark(4); await sleep(220);
+    runMark(5); restoreConfig(saved); mark(5); await sleep(360);
+  }
+  window.kingPrivacyReset=async function(){
+    if(running)return; running=true;
+    document.getElementById('mainView').classList.add('hidden'); document.getElementById('statusView').classList.remove('hidden'); setText('statusTitle',t.clearing); setText('statusSub',t.clearingSub); fillGrid('stepGrid','pending');
+    await clearData();
+    document.getElementById('successIcon').classList.remove('hidden'); setText('statusTitle',t.success); setText('statusSub',t.successSub); document.querySelectorAll('#stepGrid .item').forEach(el=>el.classList.remove('pending','running'));
+    let n=3; const ct=document.getElementById('countText'); ct.textContent=t.count.replace('{n}',n);
+    const timer=setInterval(()=>{n--; ct.textContent=t.count.replace('{n}',n); if(n<=0){clearInterval(timer); location.href=back}},1000);
+  };
+})();
+</script>
+<script src="king-memory-safe-v124.js" defer></script>
+</body>
+</html>

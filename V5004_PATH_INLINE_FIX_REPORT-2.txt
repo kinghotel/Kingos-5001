@@ -1,0 +1,8 @@
+KING OS V5004 PATH INLINE FIX
+
+修正內容：
+1. 將首頁關鍵 CSS 與首頁背景圖內嵌，避免 GitHub Pages / Android Chrome 因 assets 漏傳或路徑錯誤造成黑畫面。
+2. 將繁體中文、簡體中文、日本語、English、한국어五個入口頁的 CSS 與背景圖內嵌。
+3. 加入 V5004 路徑保護與 fallback，避免點語言後變成白底藍字。
+4. 保留 admin.html / PMS 後台與所有原始 assets、api、config、data。
+5. 建議部署到 Kingos-5001 或新 Repo 時：解壓縮後全選全部檔案上傳，不要直接上傳 ZIP。

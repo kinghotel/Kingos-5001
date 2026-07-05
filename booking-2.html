@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <title>KING HOTEL｜Build 1503 Group Customer Booking</title>
+  <link rel="stylesheet" href="assets/booking-customer-v300.css?v=1503">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body class="kh-booking-page">
+  <div class="booking-bg"></div>
+  <main class="booking-shell" aria-label="KING HOTEL Customer Booking">
+    <header class="booking-topbar">
+      <a class="back-btn touch-btn" href="javascript:history.back()" aria-label="Back">
+        <span class="arrow">←</span>
+        <span><b data-i18n="back">返回</b><small>BACK</small></span>
+      </a>
+      <section class="brand-block">
+        <div class="brand-crown">♛</div>
+        <div>
+          <h1>KING HOTEL</h1>
+          <p data-i18n="subtitle">客戶訂房｜Customer Booking</p>
+        </div>
+      </section>
+      <a class="home-btn touch-btn" href="admin.html" aria-label="Home">
+        <span class="home-icon">⌂</span>
+        <span><b data-i18n="home">回首頁</b><small>HOME</small></span>
+      </a>
+    </header>
+
+    <nav class="lang-row" aria-label="Language">
+      <button class="lang-btn active" data-lang="zh">繁體中文<small>Traditional Chinese</small></button>
+      <button class="lang-btn" data-lang="cn">简体中文<small>Simplified Chinese</small></button>
+      <button class="lang-btn" data-lang="ja">日本語<small>Japanese</small></button>
+      <button class="lang-btn" data-lang="en">English<small>English</small></button>
+      <button class="lang-btn" data-lang="ko">한국어<small>Korean</small></button>
+    </nav>
+
+    <section class="booking-flowbar" aria-label="Booking Steps">
+      <div class="flow-step active"><span>1</span><b data-i18n="step1">選擇日期</b></div>
+      <div class="flow-step"><span>2</span><b data-i18n="step2">選擇房型</b></div>
+      <div class="flow-step"><span>3</span><b data-i18n="step3">填寫資料</b></div>
+      <div class="flow-step"><span>4</span><b data-i18n="step4">確認送出</b></div>
+    </section>
+
+    <section class="booking-grid">
+      <article class="panel search-panel">
+        <h2 data-i18n="searchTitle">查詢空房</h2>
+        <section id="hotelMap" class="hotel-map" aria-label="Hotel Location Selector"></section>
+        <div class="form-grid">
+          <label>
+            <span data-i18n="hotel">旅館</span>
+            <select id="hotelSelect"></select>
+          </label>
+          <label>
+            <span data-i18n="guests">人數</span>
+            <select id="guestSelect">
+              <option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="8">8</option><option value="10">10</option>
+            </select>
+          </label>
+          <label>
+            <span>訂房模式</span>
+            <select id="bookingGroupMode">
+              <option value="single" selected>一般訂房</option>
+              <option value="group">團體訂房 4–30人</option>
+              <option value="large">大型團體 31人以上</option>
+            </select>
+          </label>
+          <label id="groupSizeWrap" class="wide group-size-wrap" hidden>
+            <span>團體總人數 / Group Size</span>
+            <input id="groupGuestCount" type="number" min="4" max="120" value="12" inputmode="numeric">
+          </label>
+          <label id="groupTypeWrap" class="wide group-size-wrap" hidden>
+            <span>團體類型</span>
+            <select id="groupType">
+              <option value="family">家族／朋友</option>
+              <option value="company">公司／員工旅遊</option>
+              <option value="tour">旅行社／包團</option>
+              <option value="wedding">婚禮親友</option>
+              <option value="school">學校／球隊</option>
+            </select>
+          </label>
+          <div id="groupPlanner" class="group-planner wide" hidden></div>
+          <label>
+            <span data-i18n="checkin">入住日期</span>
+            <input id="checkIn" type="date">
+          </label>
+          <label>
+            <span data-i18n="checkout">退房日期</span>
+            <input id="checkOut" type="date">
+          </label>
+          <button id="searchBtn" class="gold-action wide touch-btn" data-i18n="searchBtn">查詢可訂房型</button>
+        </div>
+        <div class="mini-info">
+          <div><b>15:00</b><small data-i18n="checkinTime">入住時間</small></div>
+          <div><b>10:00</b><small data-i18n="checkoutTime">退房時間</small></div>
+          <div><b>10G</b><small data-i18n="internet">高速網路</small></div>
+        </div>
+      </article>
+
+      <article class="panel rooms-panel">
+        <div class="panel-head">
+          <h2 data-i18n="roomTitle">可訂房型</h2>
+          <span id="nightBadge" class="badge">1 Night</span>
+        </div>
+        <div id="roomCards" class="room-cards" aria-live="polite"></div>
+      </article>
+
+      <article class="panel guest-panel">
+        <h2 data-i18n="guestTitle">客人資料</h2>
+        <div class="guest-fields">
+          <label><span data-i18n="name">姓名</span><input id="guestName" autocomplete="name" placeholder="Guest Name"></label>
+          <label><span>Email</span><input id="guestEmail" type="email" autocomplete="email" placeholder="guest@example.com"></label>
+          <label><span data-i18n="phone">電話</span><input id="guestPhone" autocomplete="tel" placeholder="Phone / WhatsApp / LINE"></label>
+          <label><span id="bookingTypeLabel">預訂類型</span><select id="bookingType"><option value="new">新預訂</option><option value="extend">延長住宿申請</option></select></label>
+          <label><span data-i18n="payment">付款方式</span><select id="payMethod"><option value="stripe" data-i18n="payStripe">Credit Card / Stripe</option><option value="wallet" data-i18n="payWallet">Apple Pay / Google Pay</option><option value="paypay" data-i18n="payPayPay">PayPay</option><option value="onsite" data-i18n="payAtHotel">現場付款</option><option value="bank_transfer" data-i18n="payBank">銀行轉帳</option></select></label>
+          <label class="wide"><span data-i18n="note">備註</span><textarea id="guestNote" rows="2" placeholder="Arrival time / Special request"></textarea></label>
+        </div>
+        <section class="payment-status" id="pmsStatus"><b>PMS</b><span data-i18n="pmsReady">準備查詢即時房況</span></section>
+        <section class="summary-card" id="summaryCard">
+          <h3 data-i18n="summary">訂房摘要</h3>
+          <p data-i18n="chooseRoomHint">請先選擇房型。</p>
+        </section>
+        <button id="submitBtn" class="gold-action wide touch-btn" data-i18n="submit">確認訂房 / 前往付款</button>
+      </article>
+    </section>
+
+    <footer class="booking-footer">
+      <div><b data-i18n="frontNotice">正式營運訂房入口</b><small data-i18n="frontNotice2">即時房況、15分鐘鎖房、線上付款與 PMS 訂單同步。</small></div>
+      <a href="ai.html" class="support-btn touch-btn">AI CONCIERGE</a>
+    </footer>
+  </main>
+
+  <dialog id="successDialog" class="success-dialog">
+    <div class="dialog-card">
+      <h2 data-i18n="successTitle">訂房需求已送出</h2>
+      <p id="successText"></p>
+      <div class="dialog-actions">
+        <button id="newBookingBtn" class="ghost-action touch-btn" data-i18n="newBooking">新增訂房</button>
+        <a href="admin.html" class="gold-action touch-btn" data-i18n="backHome">返回首頁</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="assets/booking-customer-v300.js?v=1503" defer></script>
+</body>
+</html>

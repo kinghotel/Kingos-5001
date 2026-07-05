@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KING OS V383 | Admin Cleaning Center</title>
+<style>
+:root{--bg:#080d18;--panel:#111a2b;--panel2:#182136;--line:#31405c;--gold:#f7d85d;--cyan:#35f4ff;--text:#eef4ff;--muted:#95a4bd;--green:#18d7a3;--red:#ff3048;--blue:#0b8fff;--sidebar:104px}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif}button,input,select{font:inherit}.app{height:100dvh;width:100vw;display:grid;grid-template-columns:var(--sidebar) 1fr;background:linear-gradient(180deg,#111929,#07101d)}
+.sidebar{border-right:1px solid #26334d;background:#09111f;width:104px;min-width:104px;padding:8px 7px;display:flex;flex-direction:column;gap:5px}.brand{border:1px solid #57647e;border-radius:14px;padding:8px 5px;text-align:center;font-weight:900;line-height:1.1;letter-spacing:3px;font-size:13px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center}.brand small{display:block;letter-spacing:0;font-size:9px;color:#d9e4ff;margin-top:4px}.nav{display:flex;flex-direction:column;gap:5px;margin-top:5px}.nav button,.sideBtn{height:30px;min-height:30px;border:0;border-radius:12px;background:transparent;color:#e8f0ff;font-size:13px;font-weight:850;text-align:left;padding:0 7px;cursor:pointer;display:flex;align-items:center;white-space:nowrap}.nav button.active,.nav button:hover,.sideBtn:hover{background:#f4dfad;color:#1b2434}.navSep{height:1px;margin:3px 5px;background:linear-gradient(90deg,transparent,#31405c,transparent)}.sideBottom{margin-top:auto;display:flex;flex-direction:column;gap:6px}.sideBottom .sideBtn{text-align:center;justify-content:center;border:1px solid #5d7ac8;background:#0d2a60;color:white}
+.main{height:100dvh;overflow:hidden;padding:8px 10px;display:grid;grid-template-rows:auto auto 1fr;gap:8px}.top{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center}.title{font-size:24px;font-weight:950}.sub{font-size:12px;color:#9fb1d1;font-weight:800}.clock{height:32px;border:1px solid #5270ab;border-radius:13px;background:#0e2a56;padding:6px 11px;font-size:12px;font-weight:950}.btn{height:32px;border:1px solid #526481;border-radius:12px;background:#14213a;color:white;font-weight:900;padding:0 12px;cursor:pointer}.btn.gold{background:var(--gold);color:#1c2330}.btn.green{background:#0f8f68;border-color:#24e4af}.btn.cyan{background:#023a52;border-color:#12eaff}.btn.red{background:#9f1830;border-color:#ff5f76}.toolbar{display:grid;grid-template-columns:repeat(3,minmax(130px,1fr)) auto auto auto;gap:7px;align-items:center}.select,.search{height:32px;border:1px solid #526481;border-radius:12px;background:#111a2b;color:#f7e5a0;font-weight:900;padding:0 10px}.search{color:#fff}.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}.kpi{height:54px;border:1px solid #31496e;border-radius:14px;background:linear-gradient(180deg,#182136,#0b1324);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900}.kpi span{font-size:12px;color:#a9b9d8}.kpi b{font-size:22px;color:#f7d85d}.layout{min-height:0;display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:9px}.card{min-height:0;border:1px solid #334560;background:linear-gradient(180deg,rgba(24,33,54,.95),rgba(10,17,31,.95));border-radius:16px;padding:10px;overflow:hidden}.card h2{margin:0 0 8px;font-size:16px;color:#f6df7a;display:flex;align-items:center;justify-content:space-between}.table{width:100%;border-collapse:collapse;font-size:13px}.table th,.table td{border-bottom:1px solid #263854;padding:7px 6px;text-align:left}.table th{color:#9fb1d1;font-size:12px}.tag{display:inline-flex;align-items:center;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:900}.dirty{background:#402b07;color:#ffd86a}.cleaning{background:#07324a;color:#35f4ff}.ready{background:#073a2d;color:#35ffbd}.out{background:#4a1120;color:#ff91a2}.roomGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.room{height:54px;border:1px solid #334560;border-radius:13px;background:#0b1324;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:950}.room b{font-size:19px}.room small{font-size:10px;color:#9fb1d1}.room.cleaning{box-shadow:inset 0 0 0 1px #35f4ff}.room.ready{box-shadow:inset 0 0 0 1px #18d7a3}.room.dirty{box-shadow:inset 0 0 0 1px #f7d85d}.room.out{box-shadow:inset 0 0 0 1px #ff3048}.taskList{height:calc(100% - 30px);overflow:auto;display:grid;gap:7px}.task{border:1px solid #334560;border-radius:13px;background:#0b1324;padding:8px}.taskTop{display:flex;justify-content:space-between;font-weight:950}.task p{margin:5px 0 0;color:#b7c6e4;font-size:12px;line-height:1.45}.taskBtns{display:flex;gap:6px;margin-top:8px}.taskBtns button{height:27px;border-radius:9px;border:1px solid #526481;background:#14213a;color:white;font-size:11px;font-weight:900;padding:0 8px}.note{height:calc(100% - 30px);overflow:auto;border:1px solid #2f405d;border-radius:12px;background:#081120;padding:9px;font-size:12px;line-height:1.6;white-space:pre-wrap;color:#dfe9ff}.toast{position:fixed;right:24px;bottom:22px;background:#12331f;color:#b9ffc8;border:1px solid #51d76d;border-radius:12px;padding:9px 14px;font-weight:900;display:none;z-index:50}.toast.show{display:block}
+@media(max-width:980px){:root{--sidebar:0}.app{grid-template-columns:1fr}.sidebar{display:none}.toolbar{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(3,1fr)}.layout{grid-template-columns:1fr;overflow:auto}.main{overflow:auto}}
+
+/* V383 Enterprise unified Admin Console sidebar */
+:root{--sidebar:104px}
+.app{grid-template-columns:var(--sidebar) 1fr!important}
+.sidebar{width:104px!important;min-width:104px!important;border-right:1px solid #26334d!important;background:#09111f!important;padding:8px 7px!important;display:flex!important;flex-direction:column!important;gap:5px!important}
+.sidebar .brand,.brand{border:1px solid #57647e!important;border-radius:14px!important;padding:8px 5px!important;text-align:center!important;font-weight:900!important;line-height:1.1!important;letter-spacing:3px!important;font-size:13px!important;min-height:64px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;color:#eef4ff!important}
+.sidebar .brand small,.brand small{display:block!important;letter-spacing:0!important;font-size:9px!important;color:#d9e4ff!important;margin-top:4px!important}
+.sidebar .nav,.nav{display:flex!important;flex-direction:column!important;gap:5px!important;margin-top:5px!important}
+.sidebar .nav button,.nav button,.sidebar .sideBtn,.sideBtn{height:30px!important;min-height:30px!important;border:0!important;border-radius:12px!important;background:transparent!important;color:#e8f0ff!important;font-size:13px!important;font-weight:850!important;text-align:left!important;padding:0 7px!important;cursor:pointer!important;display:flex!important;align-items:center!important;white-space:nowrap!important}
+.sidebar .nav button.active,.sidebar .nav button:hover,.nav button.active,.nav button:hover,.sidebar .sideBtn:hover,.sideBtn:hover{background:#f4dfad!important;color:#1b2434!important;box-shadow:0 0 0 1px rgba(247,216,93,.35),0 0 16px rgba(247,216,93,.18)!important}
+.sidebar .navSep,.navSep{height:1px!important;margin:3px 5px!important;background:linear-gradient(90deg,transparent,#31405c,transparent)!important}
+.sidebar .sideBottom,.sideBottom{margin-top:auto!important;display:flex!important;flex-direction:column!important;gap:6px!important}
+.sidebar .sideBottom .sideBtn,.sideBottom .sideBtn{justify-content:center!important;text-align:center!important;border:1px solid #5d7ac8!important;background:#0d2a60!important;color:#fff!important;height:30px!important;border-radius:12px!important;font-size:13px!important;padding:0 7px!important}
+
+
+
+/* V384.1 Amin Hotel floor color system for admin cleaning */
+:root{--amin-f1:#ff3048;--amin-f2:#ff9d21;--amin-f3:#f7d85d;--amin-f4:#19d67d;--amin-f5:#1e88ff;--amin-f6:#4b5cff;--amin-f7:#a855ff}
+.room.aminF1{border-color:var(--amin-f1)!important;box-shadow:inset 0 0 0 1px rgba(255,48,72,.8),0 0 12px rgba(255,48,72,.14)!important}
+.room.aminF2{border-color:var(--amin-f2)!important;box-shadow:inset 0 0 0 1px rgba(255,157,33,.8),0 0 12px rgba(255,157,33,.14)!important}
+.room.aminF3{border-color:var(--amin-f3)!important;box-shadow:inset 0 0 0 1px rgba(247,216,93,.8),0 0 12px rgba(247,216,93,.14)!important}
+.room.aminF4{border-color:var(--amin-f4)!important;box-shadow:inset 0 0 0 1px rgba(25,214,125,.8),0 0 12px rgba(25,214,125,.14)!important}
+.room.aminF5{border-color:var(--amin-f5)!important;box-shadow:inset 0 0 0 1px rgba(30,136,255,.8),0 0 12px rgba(30,136,255,.14)!important}
+.room.aminF6{border-color:var(--amin-f6)!important;box-shadow:inset 0 0 0 1px rgba(75,92,255,.8),0 0 12px rgba(75,92,255,.14)!important}
+.room.aminF7{border-color:var(--amin-f7)!important;box-shadow:inset 0 0 0 1px rgba(168,85,255,.8),0 0 12px rgba(168,85,255,.14)!important}
+.floorLegendClean{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:10px;font-weight:950;color:#dfe9ff;margin-bottom:7px}.floorLegendClean span{display:flex;align-items:center;gap:3px}.floorLegendClean i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+
+/* V388 universal responsive admin layout: phone / tablet / laptop / desktop */
+:root{
+  --admin-safe-top: calc(env(safe-area-inset-top, 0px));
+  --admin-safe-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+html,body{min-width:0!important;}
+.app{min-width:0!important;}
+.main{min-width:0!important;}
+.topbar,.sourcebar,.queue{min-width:0!important;}
+.search{min-width:0!important;}
+.calendarWrap{min-width:0!important;}
+.gridScroll{height:calc(var(--row) * 16)!important;max-height:calc(100dvh - 172px)!important;min-height:220px!important;overflow:auto!important;}
+.grid,.dates{will-change:auto!important;}
+.drawer{max-height:calc(100dvh - 62px)!important;}
+.quick3{min-height:0!important;}
+
+/* Desktop and large touch monitors */
+@media (min-width:1441px){
+  :root{--sidebar:112px;--room:76px;--day:clamp(64px, calc((100vw - var(--sidebar) - 46px - var(--room)) / 16), 96px);--row:clamp(28px, calc((100dvh - 178px) / 16), 36px);}
+  .main{padding:7px 10px 9px!important;gap:5px!important;}
+  .gridScroll{max-height:calc(100dvh - 170px)!important;}
+}
+
+/* Normal laptop: 13-15 inch, avoids calendar overflow */
+@media (min-width:1101px) and (max-width:1440px){
+  :root{--sidebar:102px;--room:66px;--day:clamp(50px, calc((100vw - var(--sidebar) - 34px - var(--room)) / 16), 74px);--row:clamp(23px, calc((100dvh - 166px) / 16), 31px);}
+  .sidebar{padding:8px 7px!important;gap:5px!important;}
+  .brand{font-size:13px!important;padding:8px 4px!important;letter-spacing:3px!important;}
+  .nav{gap:4px!important;}
+  .nav button,.sideBtn{height:30px!important;font-size:13px!important;border-radius:12px!important;padding:0 6px!important;}
+  .main{padding:5px 7px 7px!important;gap:4px!important;}
+  .topbar{grid-template-columns:auto auto minmax(210px,1fr) 48px 54px 44px auto!important;gap:5px!important;min-height:29px!important;}
+  .title{font-size:20px!important;}
+  .pill{height:28px!important;min-width:82px!important;padding:0 9px!important;font-size:12px!important;}
+  .search{height:28px!important;font-size:12px!important;padding:0 10px!important;}
+  .topbar .btn,.clock{height:28px!important;font-size:11px!important;min-width:44px!important;padding:0 8px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:70px 70px 70px 70px minmax(320px,1fr)!important;gap:5px!important;}
+  .source{height:27px!important;min-width:70px!important;width:70px!important;font-size:11px!important;}
+  .opsStats{gap:4px!important;}
+  .statBox{height:25px!important;font-size:10px!important;}
+  .statBox b{font-size:14px!important;}
+  .queue{grid-template-columns:48px 132px 140px 1fr auto!important;gap:5px!important;}
+  .pendingCard{height:31px!important;font-size:10px!important;padding:3px 7px!important;}
+  .waiting{font-size:12px!important;}.waiting b{font-size:18px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:29px!important;min-width:74px!important;font-size:12px!important;padding:0 8px!important;}
+  .roomHead,.dateCell{height:32px!important;}
+  .roomHead{font-size:20px!important;}.dateCell{font-size:12px!important;}.dateCell .dow{font-size:9px!important;}
+  .roomCell{font-size:18px!important;}.order{font-size:10px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{top:52px!important;right:8px!important;width:360px!important;max-width:calc(100vw - var(--sidebar) - 14px)!important;}
+  .drawerHead{height:32px!important;font-size:14px!important;}
+  .drawerBody{padding:6px!important;gap:4px!important;}
+  .qcol{padding:6px!important;gap:4px!important;}
+  .qcol h3{font-size:12px!important;margin:0 0 3px!important;}
+  .field label{font-size:8px!important;}.field input,.field select{height:23px!important;font-size:11px!important;padding:0 5px!important;}
+  .drawerFoot{height:38px!important;padding:5px 6px!important;}.drawerFoot button{height:28px!important;font-size:11px!important;}
+}
+
+/* Small laptop / tablet landscape */
+@media (min-width:901px) and (max-width:1100px){
+  :root{--sidebar:94px;--room:60px;--day:clamp(44px, calc((100vw - var(--sidebar) - 24px - var(--room)) / 16), 60px);--row:clamp(21px, calc((100dvh - 158px) / 16), 28px);}
+  .sidebar{padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:12px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{padding:4px 5px 5px!important;gap:3px!important;}
+  .topbar{grid-template-columns:auto auto minmax(160px,1fr) 44px 48px 42px auto!important;gap:4px!important;}
+  .title{font-size:18px!important;}.pill{height:26px!important;min-width:72px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;font-size:11px!important;padding:0 9px!important;}
+  .clock{display:none!important;}.topbar .btn{height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px minmax(260px,1fr)!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,minmax(42px,1fr))!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:42px 118px 120px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:62px!important;font-size:11px!important;padding:0 6px!important;}
+  .roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;}
+  .holidayLegend{transform:scale(.86);transform-origin:left bottom;}
+  .drawer{top:48px!important;right:5px!important;width:330px!important;max-width:calc(100vw - var(--sidebar) - 10px)!important;}
+  .drawerHead{height:30px!important;font-size:13px!important;}.drawerBody{padding:5px!important;gap:3px!important;}
+  .quick3{gap:4px!important}.qcol{padding:5px!important;gap:3px!important}.qcol h3{font-size:11px!important;margin-bottom:2px!important;}
+  .field label{font-size:7.5px!important}.field input,.field select{height:21px!important;font-size:10px!important;padding:0 4px!important;}
+  .checks{font-size:9px!important}.aiLine{height:20px!important;font-size:9px!important;}
+  .drawerFoot{height:34px!important;padding:4px 5px!important}.drawerFoot button{height:26px!important;font-size:10px!important;}
+}
+
+/* Phone / narrow tablet: use full desktop admin canvas with horizontal pan; no hidden backend items */
+@media (max-width:900px){
+  html,body{overflow:auto!important;height:auto!important;min-height:100dvh!important;-webkit-overflow-scrolling:touch!important;}
+  body{background:#080d18!important;}
+  :root{--sidebar:96px;--room:62px;--day:54px;--row:26px;}
+  .app{width:1180px!important;min-width:1180px!important;height:760px!important;min-height:760px!important;grid-template-columns:var(--sidebar) 1fr!important;overflow:hidden!important;}
+  .sidebar{display:flex!important;padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:11px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav{gap:4px!important}.nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{height:760px!important;padding:4px 5px 5px!important;gap:3px!important;grid-template-rows:auto auto 1fr!important;}
+  .topbar{grid-template-columns:auto auto 240px 46px 54px 46px 110px!important;gap:4px!important;min-height:28px!important;}
+  .title{font-size:18px!important}.hotelTabs{gap:3px!important}.pill{height:26px!important;min-width:74px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;width:240px!important;font-size:11px!important;padding:0 9px!important;}
+  .topbar .btn,.clock{display:flex!important;height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px 1fr!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,1fr)!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:44px 132px 150px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;display:block!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav{justify-content:flex-end!important;}.monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:68px!important;font-size:11px!important;padding:0 6px!important;}
+  .calendarWrap{min-height:0!important;}.roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .gridScroll{height:calc(var(--row) * 16)!important;max-height:none!important;min-height:0!important;overflow:auto!important;touch-action:pan-x pan-y!important;}
+  .grid{grid-template-columns:var(--room) repeat(var(--total-days),var(--day))!important;grid-auto-rows:var(--row)!important;width:calc(var(--room) + var(--total-days) * var(--day))!important;min-width:calc(var(--room) + var(--total-days) * var(--day))!important;}
+  .dates{grid-auto-columns:var(--day)!important;}.roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{position:fixed!important;top:42px!important;right:6px!important;left:auto!important;width:360px!important;max-width:calc(100vw - 12px)!important;max-height:calc(100dvh - 48px)!important;z-index:999!important;}
+  .drawer.show{grid-template-rows:30px minmax(0,1fr) 36px!important}.drawerHead{height:30px!important;font-size:13px!important}.drawerBody{padding:5px!important;gap:3px!important;overflow:auto!important}.quick3{grid-template-columns:1fr!important;gap:4px!important}.qcol{padding:5px!important}.field input,.field select{height:22px!important;font-size:10px!important}.field label{font-size:8px!important}.drawerFoot{height:36px!important;padding:4px 5px!important}.drawerFoot button{height:27px!important;font-size:10px!important;}
+}
+
+/* Very short laptop height: keep calendar aligned instead of pushing out of frame */
+@media (max-height:700px) and (min-width:901px){
+  :root{--row:clamp(20px, calc((100dvh - 150px) / 16), 27px);}
+  .main{gap:3px!important;padding-top:4px!important;padding-bottom:5px!important;}
+  .brand{padding-top:6px!important;padding-bottom:6px!important}.nav button,.sideBtn{height:27px!important;}
+  .topbar{min-height:27px!important}.pill,.search,.btn,.clock{height:26px!important;}
+  .source,.statBox{height:23px!important}.pendingCard{height:27px!important}.roomHead,.dateCell{height:29px!important;}
+  .drawer{top:36px!important;max-height:calc(100dvh - 42px)!important;}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar adminSidebarV383">
+    <div class="brand">KING<br>HOTEL<small>OS V383</small></div>
+    <nav class="nav">
+      <button onclick="location.href='admin.html'">🏨 Dashboard</button>
+      <div class="navSep"></div>
+      <button onclick="location.href='booking-admin.html'">📅 今日訂單</button>
+      <button onclick="location.href='admin.html'">🛏 房況月曆</button>
+      <button class="active" onclick="location.href='admin-cleaning.html'">🧹 清掃</button>
+      <button onclick="location.href='staff.html'">👥 住宿</button>
+      <button onclick="location.href='rate-admin.html'">🔗 OTA</button>
+      <div class="navSep"></div>
+      <button onclick="location.href='admin-ai.html'">🤖 AI營運中心</button>
+      <button onclick="(window.showToast?showToast('收益中心準備中'):(window.toast?toast('收益中心準備中'):alert('收益中心準備中')))">💰 收益中心</button>
+      <button onclick="(window.showToast?showToast('價格中心準備中'):(window.toast?toast('價格中心準備中'):alert('價格中心準備中')))">💹 價格中心</button>
+      <button onclick="(window.showToast?showToast('報表中心準備中'):(window.toast?toast('報表中心準備中'):alert('報表中心準備中')))">📊 報表中心</button>
+      <div class="navSep"></div>
+      <button onclick="(window.showToast?showToast('設定功能準備中'):(window.toast?toast('設定功能準備中'):alert('設定功能準備中')))">⚙️ 設定</button>
+    </nav>
+    <div class="sideBottom">
+      <button class="sideBtn" onclick="location.href='admin.html'">房況</button>
+      <button class="sideBtn" onclick="location.href='ai.html'">前台AI</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><div class="title">KING HOTEL Admin Console｜清掃管理中心</div><div class="sub">後台房務專用清掃管理；前台客人清掃服務仍保留在 cleaning.html，兩邊完全分離。</div></div>
+      <div></div><div class="clock" id="clock">--</div>
+    </div>
+    <div class="toolbar">
+      <select class="select" id="cleaningHotel" onchange="render()"><option>King Hotel</option><option>Amin Hotel</option><option>I do Hotel</option><option>全部旅館</option></select>
+      <select class="select"><option>今日</option><option>明日</option><option>本週</option></select>
+      <input class="search" placeholder="搜尋房號 / 房務 / 狀態">
+      <button class="btn cyan" onclick="toast('已重新整理清掃狀態')">重新整理</button>
+      <button class="btn green" onclick="toast('已批次標記完成')">批次完成</button>
+      <button class="btn gold" onclick="toast('已產生清掃報表')">清掃報表</button>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span>待清掃</span><b>5</b></div><div class="kpi"><span>清掃中</span><b>2</b></div><div class="kpi"><span>已完成</span><b>18</b></div><div class="kpi"><span>今日退房</span><b>6</b></div><div class="kpi"><span>可入住</span><b>24</b></div><div class="kpi"><span>完成率</span><b>78%</b></div>
+    </div>
+    <section class="layout">
+      <div class="card"><h2>今日清掃任務 <span class="tag dirty">後台</span></h2><div class="taskList" id="tasks"></div></div>
+      <div class="card"><h2>房間狀態</h2><div class="roomGrid" id="rooms"></div></div>
+      <div class="card"><h2>房務提醒</h2><div class="note">・退房後請先檢查遺留物。\n・清掃完成後狀態會改為「可入住」。\n・維修或鎖房不可標記完成，需先解除維修。\n・此頁為管理者清掃頁，不會出現在前台房客 AI 或前台清掃服務中。\n\n建議流程：\n1. 查看今日退房。\n2. 指派房務。\n3. 清掃中。\n4. 拍照確認。\n5. 標記完成 / 可入住。</div></div>
+    </section>
+  </main>
+</div><div class="toast" id="toast"></div>
+<script>
+const HOTEL_TASKS={
+  'King Hotel':[['201','退房清掃','待清掃','dirty','Ashley 今日退房，需檢查垃圾與備品。'],['203','連住補備品','清掃中','cleaning','Fergus 續住，補毛巾與礦泉水。'],['205','入住前檢查','可入住','ready','官網訂單 15:00 前確認。'],['208','深度清掃','待清掃','dirty','氣味檢查，窗戶通風。'],['301','今日退房','今日退房','out','Booking 訂單 OUT。'],['302','一般清掃','可入住','ready','完成。']],
+  'Amin Hotel':[['1A','1F 退房清掃','待清掃','dirty','紅色框線｜1樓 1A。'],['1B','1F 入住前檢查','可入住','ready','紅色框線｜1樓 1B。'],['2A','2F 一般清掃','清掃中','cleaning','橙色框線｜2樓 2A。'],['2B','2F 退房清掃','待清掃','dirty','橙色框線｜2樓 2B。'],['2VIP','2F VIP檢查','可入住','ready','橙色框線｜2樓 2VIP。'],['3A','3F 補備品','可入住','ready','黃色框線｜3樓。'],['4B','4F 清掃','待清掃','dirty','綠色框線｜4樓。'],['5C','5F 清掃','可入住','ready','藍色框線｜5樓。'],['6B','6F 維修確認','今日退房','out','靛色框線｜6樓。'],['7F','7F 頂樓檢查','可入住','ready','紫色框線｜7樓。']],
+  'I do Hotel':[['101','退房清掃','待清掃','dirty','婚紗旅館房務。'],['201','入住前檢查','可入住','ready','婚紗旅館房務。']]
+};
+function aminFloorNo(room){const m=String(room||'').match(/^(\d)/);return m?m[1]:''}
+function floorClassForHotel(h,room){return h==='Amin Hotel'&&aminFloorNo(room)?' aminF'+aminFloorNo(room):''}
+function floorEmojiForHotel(h,room){if(h!=='Amin Hotel')return '';return ({'1':'🔴','2':'🟠','3':'🟡','4':'🟢','5':'🔵','6':'🟦','7':'🟣'})[aminFloorNo(room)]||''}
+function currentTasks(){const h=document.getElementById('cleaningHotel')?.value||'King Hotel'; if(h==='全部旅館') return Object.values(HOTEL_TASKS).flat(); return HOTEL_TASKS[h]||HOTEL_TASKS['King Hotel']}
+function render(){const h=document.getElementById('cleaningHotel')?.value||'King Hotel';const tasks=currentTasks();document.getElementById('tasks').innerHTML=tasks.map(t=>`<div class="task"><div class="taskTop"><span>${floorEmojiForHotel(h,t[0])} ${t[0]}　${t[1]}</span><span class="tag ${t[3]}">${t[2]}</span></div><p>${t[4]}</p><div class="taskBtns"><button onclick="toast('${t[0]} 已設為清掃中')">開始</button><button onclick="toast('${t[0]} 已完成，可入住')">完成</button><button onclick="toast('${t[0]} 已標記維修')">維修</button></div></div>`).join('');document.getElementById('rooms').innerHTML=(h==='Amin Hotel'?`<div class="floorLegendClean" style="grid-column:1/-1"><span><i style="background:#ff3048"></i>1F</span><span><i style="background:#ff9d21"></i>2F</span><span><i style="background:#f7d85d"></i>3F</span><span><i style="background:#19d67d"></i>4F</span><span><i style="background:#1e88ff"></i>5F</span><span><i style="background:#4b5cff"></i>6F</span><span><i style="background:#a855ff"></i>7F</span></div>`:'')+tasks.map(t=>`<div class="room ${t[3]}${floorClassForHotel(h,t[0])}"><b>${floorEmojiForHotel(h,t[0])} ${t[0]}</b><small>${t[2]}</small></div>`).join('')}
+
+function pad(n){return String(n).padStart(2,'0')}function tick(){const d=new Date();document.getElementById('clock').textContent=`${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`}setInterval(tick,1000);tick();render();
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+</script>
+</body></html>

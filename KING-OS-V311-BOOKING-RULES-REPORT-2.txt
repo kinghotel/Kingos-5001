@@ -1,0 +1,26 @@
+KING OS V311 Booking Rules / Price Fix Report
+
+Modified files:
+- booking.html
+- assets/booking-customer-v300.js
+- assets/booking-customer-v300.css
+- service-worker.js
+
+Fixes:
+1. Removed the background line behind the three hotel selector buttons.
+2. Added booking type selector: New booking / Extension request.
+3. New bookings now require at least 2 nights. Default checkout is check-in + 2 days.
+4. Extension requests are saved as admin-review requests; direct online payment is disabled.
+5. Extra guest fee rules added:
+   - 2–4 person rooms: base 2 guests, +¥3,000 per extra guest per night from 3rd guest.
+   - 4–6 person rooms: base 2 guests, +¥3,000 per extra guest per night from 3rd guest.
+   - I DO Hotel Kuramae 4–6 person room: base 4 guests, +¥3,000 per extra guest per night from 5th guest.
+   - AMIN HOTEL VIP room: base 4 guests, +¥3,000 per extra guest per night from 5th guest; 6th guest = +¥6,000 per night.
+   - Adults and children are counted the same.
+6. Booking summary now shows booking type, base guests, extra guest fee, nightly price, and total amount.
+7. Cache version updated to V311.
+
+Test notes:
+- Use a hard refresh / clear Fully Kiosk or Chrome cache before testing.
+- For new booking, checkout earlier than 2 nights will automatically be corrected.
+- For extension request, payment selector is disabled and the request status becomes extension_pending_approval.

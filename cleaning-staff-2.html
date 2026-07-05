@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <title>KING HOTEL 清潔人員入口</title>
+  <link rel="stylesheet" href="assets/backoffice-v185/backoffice.css?v=199">
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head>
+<body class="backoffice-page clean-staff-page">
+  <div class="login-screen" id="cleanLogin">
+    <form class="login-card" id="cleanLoginForm">
+      <div class="crown">♛</div>
+      <h1>KING HOTEL</h1>
+      <h2>清潔人員入口</h2>
+      <p>只顯示需要打掃、清掃中、待檢查的房間，不顯示訂單金額、客人個資與 AI 回答設定。</p>
+      <label>清潔密碼<input id="cleanPass" type="password" value="1234"></label>
+      <button class="gold-btn" type="submit">進入清潔清單</button>
+      <small>測試密碼：1234。正式上線建議 Cloudflare 設定 KING_CLEANING_TOKEN。</small>
+    </form>
+  </div>
+  <main class="backoffice-app hidden" id="cleanApp">
+    <section class="workspace">
+      <header class="topbar">
+        <div><h1>清潔打掃清單</h1><p>清潔人員專用，只看需要處理的房間。</p></div>
+        <div class="top-pills"><span id="cleanSync">Loading</span><span id="cleanClock">--:--</span><a class="small-link" href="mobile-admin.html#cleaning">主管後台</a></div>
+      </header>
+      <section class="panel">
+        <div class="panel-head"><h2>待處理房間</h2><div class="row-actions"><button id="cleanRefresh">重新整理</button><button id="cleanSave">儲存狀態</button><button id="cleanLogout">登出</button></div></div>
+        <div class="clean-staff-grid" id="cleanCards"></div>
+      </section>
+    </section>
+  </main>
+  <script src="assets/backoffice-v185/cleaning-staff.js?v=199"></script>
+<script src="assets/king-game-phone.js"></script>
+</body>
+</html>

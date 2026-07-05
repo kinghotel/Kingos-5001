@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=overlays-content" />
+  <title>KING HOTEL AI 管家</title>
+  <link rel="stylesheet" href="assets/ai-concierge/ai-concierge.css?v=312" />
+
+<style id="v188-home-back-style">
+.back-btn,.top-back,.ai-back,.btn-back,[data-home-back]{
+  min-width: 7.8em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  letter-spacing: .04em !important;
+}
+</style>
+
+
+<style id="v190-home-back-i18n-style">
+.back-btn,.top-back,.ai-back,.btn-back,[data-home-back]{
+  min-width: 8.9em !important;
+  padding-left: .7em !important;
+  padding-right: .7em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  letter-spacing: .03em !important;
+  font-weight: 800 !important;
+}
+html[lang="en"] [data-home-back],
+body.lang-en [data-home-back]{
+  min-width: 8.2em !important;
+  font-size: .92em !important;
+}
+html[lang="ja"] [data-home-back],
+body.lang-ja [data-home-back],
+html[lang="ko"] [data-home-back],
+body.lang-ko [data-home-back]{
+  min-width: 8.8em !important;
+  font-size: .88em !important;
+}
+</style>
+
+
+<style id="v198-ai-right-panel-restore-style">
+.clock-card{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;}
+.clock-time,#clockTime{display:block!important;visibility:visible!important;opacity:1!important;color:#ffe69c!important;font-weight:900!important;}
+.clock-date,#clockDate{display:block!important;visibility:visible!important;opacity:1!important;color:#fff!important;font-weight:700!important;}
+.robot-card,.robot-card-v180{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;}
+.robot-card .robot-panel-title{display:block!important;visibility:visible!important;opacity:1!important;}
+.robot-card .robot-svg{display:block!important;visibility:visible!important;opacity:1!important;width:auto!important;height:auto!important;max-width:78%!important;max-height:70%!important;object-fit:contain!important;margin:.4vw auto!important;filter:none!important;}
+.robot-card .robot-panel-badges{display:flex!important;visibility:visible!important;opacity:1!important;}
+.v195-main-robot,.v195-small-time{display:none!important;}
+</style>
+
+
+<style id="v202-ai-robot-transparent-style">
+.robot-card,
+.robot-card-v180{
+  background:radial-gradient(circle at 50% 42%, rgba(224,181,82,.12), rgba(0,0,0,.10) 54%, rgba(0,0,0,.04) 100%)!important;
+}
+.robot-card .robot-svg,
+.robot-card-v180 .robot-svg{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:82%!important;
+  max-height:74%!important;
+  object-fit:contain!important;
+  margin:.35vw auto!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 8px rgba(218,176,80,.23))!important;
+  mix-blend-mode:normal!important;
+}
+.robot-card img,
+.robot-card-v180 img{
+  background:transparent!important;
+}
+</style>
+
+
+<style id="v207-ai-back-language-router-style">
+#aiBackBtn,[data-ai-back]{
+  min-width:9.2em!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+  letter-spacing:.03em!important;
+  font-weight:900!important;
+}
+html[lang="en"] #aiBackBtn{min-width:7.2em!important}
+html[lang="ja"] #aiBackBtn,html[lang="ko"] #aiBackBtn{min-width:8.6em!important;font-size:.92em!important}
+</style>
+
+
+<style id="v208-ai-robot-enlarge-style">
+/* V208：AI 管家右側機器人欄位簡化與放大 */
+.robot-panel-title,
+.robot-title,
+.robot-card-title,
+.ai-concierge-title,
+.robot-badges,
+.robot-card-badges,
+.badge-row,
+.robot-tags,
+.robot-tag,
+.pill-row,
+.robot-pill,
+.robot-card .pill,
+.robot-card-v180 .pill,
+.robot-card [class*="badge"],
+.robot-card-v180 [class*="badge"],
+.robot-card [class*="tag"],
+.robot-card-v180 [class*="tag"]{
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  height:0!important;
+  min-height:0!important;
+  max-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+
+.robot-card,
+.robot-card-v180,
+.right-robot,
+.robot-panel{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:radial-gradient(circle at 50% 46%, rgba(224,181,82,.16), rgba(0,0,0,.08) 58%, rgba(0,0,0,.03) 100%)!important;
+}
+
+.robot-card .robot-svg,
+.robot-card-v180 .robot-svg,
+.robot-card img,
+.robot-card-v180 img,
+.right-robot img,
+.robot-panel img{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:auto!important;
+  height:96%!important;
+  max-width:96%!important;
+  max-height:96%!important;
+  object-fit:contain!important;
+  margin:auto!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 10px rgba(218,176,80,.28))!important;
+}
+
+/* 若圖片本身有黑框，仍以滿版方式覆蓋右欄，減少上下空白 */
+.robot-card picture,
+.robot-card-v180 picture{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  height:100%!important;
+}
+</style>
+
+
+<style id="v209-ai-robot-fit-style">
+.robot-panel-title,
+.robot-badges,
+.robot-card-badges,
+.badge-row,
+.robot-tags,
+.robot-tag,
+.pill-row,
+.robot-pill{
+  display:none!important;
+}
+.robot-card,
+.robot-card-v180,
+.robot-panel,
+.right-robot{
+  padding:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.robot-card img,
+.robot-card-v180 img,
+.robot-panel img,
+.right-robot img,
+.robot-card .robot-svg,
+.robot-card-v180 .robot-svg{
+  height:98%!important;
+  max-height:98%!important;
+  width:auto!important;
+  max-width:98%!important;
+  object-fit:contain!important;
+  margin:auto!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+</style>
+
+<style id="v211-ai-critical-inline">
+
+/* KING HOTEL AI Concierge V211 critical black-gold CSS */
+:root{
+  --bg:#050505;
+  --panel:#0b0d11;
+  --gold:#d8b45f;
+  --gold2:#ffe6a0;
+  --line:rgba(226,190,96,.92);
+  --white:#fff7df;
+  --muted:#d7d7d7;
+}
+html,body{
+  margin:0!important;
+  padding:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  background:#050505!important;
+  color:var(--white)!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans JP","Noto Sans KR","Segoe UI",Arial,sans-serif!important;
+}
+*{box-sizing:border-box!important}
+button,input{font-family:inherit!important}
+.screen{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  background:radial-gradient(circle at 68% 38%,rgba(230,180,75,.10),transparent 34%),linear-gradient(180deg,#090b10,#040404)!important;
+  border:.24vw solid rgba(230,195,102,.78)!important;
+  padding:1.0vw!important;
+  overflow:hidden!important;
+}
+.screen:before{
+  content:""!important;
+  position:absolute!important;
+  inset:.7vw!important;
+  border:.12vw solid rgba(230,195,102,.76)!important;
+  border-radius:1vw!important;
+  pointer-events:none!important;
+}
+.topbar{
+  position:relative!important;
+  z-index:2!important;
+  height:7.2vh!important;
+  min-height:54px!important;
+  display:grid!important;
+  grid-template-columns:18% 1fr 18%!important;
+  align-items:center!important;
+  border-bottom:.12vw solid rgba(230,195,102,.85)!important;
+  gap:1vw!important;
+}
+.back-btn{
+  justify-self:start!important;
+  background:rgba(16,17,22,.78)!important;
+  color:#fff!important;
+  border:.12vw solid var(--line)!important;
+  border-radius:.55vw!important;
+  height:4.8vh!important;
+  min-height:38px!important;
+  padding:0 1.4vw!important;
+  font-weight:900!important;
+  font-size:1.0vw!important;
+  box-shadow:inset 0 0 1vw rgba(255,205,90,.06)!important;
+}
+.brand{
+  justify-self:center!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:.55vw!important;
+  color:var(--gold2)!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  text-shadow:0 0 .45vw rgba(255,195,55,.52)!important;
+}
+.crown{font-size:1.45vw!important;color:#ffe7a0!important}
+.brand-title{font-size:2.0vw!important;font-weight:900!important;letter-spacing:.08em!important}
+.no-smoking{
+  justify-self:end!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:.45vw!important;
+  color:#fff!important;
+  font-weight:900!important;
+  font-size:.86vw!important;
+}
+.no-smoking-icon{font-size:1.3vw!important}
+
+.main-layout{
+  position:relative!important;
+  z-index:2!important;
+  height:calc(100% - 7.2vh - 5.2vh)!important;
+  display:grid!important;
+  grid-template-columns:18% 1fr 18%!important;
+  gap:.9vw!important;
+  padding-top:.8vw!important;
+}
+.left-panel{
+  border-right:.12vw solid var(--line)!important;
+  padding:.2vw .7vw 0 .1vw!important;
+  overflow:hidden!important;
+}
+.left-panel h1{
+  margin:0 0 .8vw!important;
+  color:#ffe8a4!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:2.35vw!important;
+  line-height:1!important;
+  letter-spacing:.02em!important;
+}
+.service-grid{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:.42vw!important;
+}
+.service-btn{
+  height:4.65vw!important;
+  min-height:44px!important;
+  background:rgba(13,15,20,.72)!important;
+  color:#fff!important;
+  border:.12vw solid var(--line)!important;
+  border-radius:.38vw!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:.16vw!important;
+  font-weight:900!important;
+  font-size:.68vw!important;
+  line-height:1.08!important;
+  text-align:center!important;
+  box-shadow:inset 0 0 .8vw rgba(255,205,90,.05)!important;
+}
+.service-btn .ico{
+  color:#ffe695!important;
+  font-size:1.15vw!important;
+  line-height:1!important;
+}
+.chat-section{
+  border:.13vw solid var(--line)!important;
+  border-radius:.75vw!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-rows:auto auto auto 1fr!important;
+  background:rgba(5,7,12,.35)!important;
+}
+.chat-title{
+  padding:.55vw 1vw .25vw!important;
+  color:#ffe8a4!important;
+  font-size:1.55vw!important;
+  font-weight:1000!important;
+  line-height:1.05!important;
+}
+.chat-title span{font-family:Georgia,"Times New Roman",serif!important}
+.lang-tabs{
+  height:3.0vw!important;
+  min-height:34px!important;
+  display:grid!important;
+  grid-template-columns:repeat(5,1fr)!important;
+  align-items:end!important;
+  border-top:.10vw solid rgba(230,195,102,.58)!important;
+  border-bottom:.10vw solid rgba(230,195,102,.9)!important;
+}
+.lang-tabs button{
+  height:100%!important;
+  border:0!important;
+  border-right:.08vw solid rgba(230,195,102,.45)!important;
+  background:transparent!important;
+  color:#fff!important;
+  font-size:.95vw!important;
+  font-weight:900!important;
+}
+.lang-tabs button.active{
+  color:#ffe681!important;
+  text-decoration:underline!important;
+  text-decoration-thickness:.18vw!important;
+  text-underline-offset:.45vw!important;
+}
+.input-row{
+  display:grid!important;
+  grid-template-columns:1fr 15%!important;
+  gap:.45vw!important;
+  padding:.55vw .75vw!important;
+  border-bottom:.08vw solid rgba(230,195,102,.65)!important;
+}
+.input-row input{
+  height:3.0vw!important;
+  min-height:36px!important;
+  border:.14vw solid #fff0a9!important;
+  border-radius:.42vw!important;
+  background:rgba(12,14,20,.92)!important;
+  color:#fff!important;
+  font-size:.95vw!important;
+  font-weight:800!important;
+  padding:0 .8vw!important;
+}
+.input-row button{
+  height:3.0vw!important;
+  min-height:36px!important;
+  border:.12vw solid #ffdf8a!important;
+  border-radius:.55vw!important;
+  background:linear-gradient(180deg,#ffecaa,#d79c2d)!important;
+  color:#2b1800!important;
+  font-size:1vw!important;
+  font-weight:1000!important;
+}
+.chat-box{
+  position:relative!important;
+  padding:1vw!important;
+  overflow:hidden!important;
+}
+.message{
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:.7vw!important;
+  margin:.45vw 0 1.1vw!important;
+}
+.message.guest{
+  justify-content:flex-end!important;
+}
+.avatar{
+  width:3.3vw!important;
+  min-width:3.3vw!important;
+  height:3.3vw!important;
+  border:.10vw solid var(--line)!important;
+  border-radius:50%!important;
+  color:#ffe69b!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:1.15vw!important;
+  font-weight:900!important;
+  background:#121315!important;
+}
+.avatar small{font-size:.46vw!important;color:#fff!important;line-height:1!important}
+.bubble{
+  max-width:88%!important;
+  border:.08vw solid rgba(255,255,255,.18)!important;
+  border-radius:.5vw!important;
+  background:rgba(23,26,34,.62)!important;
+  color:#fff!important;
+  padding:.65vw .85vw!important;
+  font-size:1.05vw!important;
+  font-weight:800!important;
+  line-height:1.55!important;
+  box-shadow:0 .2vw .8vw rgba(0,0,0,.24)!important;
+}
+.guest .bubble{
+  background:linear-gradient(180deg,#ffe9a4,#d49c31)!important;
+  color:#1b1300!important;
+  border-color:#ffe69a!important;
+}
+.guest-icon{
+  width:2.4vw!important;
+  height:2.4vw!important;
+  border:.25vw solid var(--gold2)!important;
+  border-radius:50%!important;
+  color:transparent!important;
+  margin-top:.2vw!important;
+}
+.right-panel{
+  display:grid!important;
+  grid-template-rows:12.5% 1fr 15%!important;
+  gap:.65vw!important;
+}
+.clock-card,.robot-card,.quick-actions button{
+  border:.13vw solid var(--line)!important;
+  border-radius:.7vw!important;
+  background:rgba(12,15,22,.55)!important;
+  color:#fff!important;
+}
+.clock-card{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.clock-time{
+  font-size:3.0vw!important;
+  line-height:1!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  color:#ffe8a4!important;
+  font-weight:900!important;
+}
+.clock-date{
+  margin-top:.25vw!important;
+  font-size:.82vw!important;
+  font-weight:900!important;
+}
+.robot-card{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+  overflow:hidden!important;
+  background:radial-gradient(circle at 50% 48%,rgba(225,180,75,.15),rgba(0,0,0,.18) 58%,rgba(0,0,0,.04) 100%)!important;
+}
+.robot-card:before,.robot-panel-title,.robot-panel-badges,.robot-badges,.robot-card-badges,.badge-row,.robot-tags,.robot-tag,.pill-row,.robot-pill{
+  display:none!important;
+}
+.robot-svg,.robot-card img{
+  display:block!important;
+  height:96%!important;
+  max-height:96%!important;
+  width:auto!important;
+  max-width:98%!important;
+  object-fit:contain!important;
+  margin:auto!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 10px rgba(218,176,80,.28))!important;
+}
+.quick-actions{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:.48vw!important;
+}
+.quick-actions button{
+  font-size:.72vw!important;
+  font-weight:900!important;
+  line-height:1.15!important;
+}
+.footer-note{
+  position:absolute!important;
+  left:1.3vw!important;
+  right:1.3vw!important;
+  bottom:.7vw!important;
+  height:4.5vh!important;
+  min-height:38px!important;
+  border-top:.12vw solid rgba(230,195,102,.74)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:.8vw!important;
+  color:#fff6d6!important;
+  font-size:1.25vw!important;
+  font-weight:900!important;
+  letter-spacing:.15em!important;
+}
+.info-icon{
+  border:.12vw solid var(--line)!important;
+  border-radius:50%!important;
+  width:2.2vw!important;
+  height:2.2vw!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  color:#ffe7a0!important;
+}
+.keyboard-guide{
+  position:absolute!important;
+  left:1.3vw!important;
+  right:1.3vw!important;
+  bottom:.4vw!important;
+  height:2.1vw!important;
+  display:grid!important;
+  grid-template-columns:repeat(5,1fr)!important;
+  gap:.45vw!important;
+  z-index:4!important;
+}
+.keyboard-guide span{
+  border:.08vw solid var(--line)!important;
+  border-radius:.35vw!important;
+  background:#070707!important;
+  color:#fff!important;
+  font-size:.62vw!important;
+  font-weight:900!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.keyboard-guide span b{color:#27bfff!important;font-size:.85vw!important;margin:0 .18vw!important}
+body.keyboard-open .left-panel{visibility:hidden!important}
+body.keyboard-open .footer-note{display:none!important}
+body.keyboard-open .keyboard-guide{display:none!important}
+@media (max-width:900px){
+  .brand-title{font-size:18px!important}
+  .left-panel h1{font-size:22px!important}
+  .service-btn{font-size:10px!important}
+}
+
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+
+
+<style id="v310-ai-keyboard-translation-fix">
+/* V310：Android / Fully Kiosk 鍵盤開啟時使用 visualViewport 高度，避免輸入框與提示列重疊 */
+:root{ --king-vvh:100dvh; --king-keyboard:0px; }
+.screen{ height:var(--king-vvh,100dvh)!important; max-height:var(--king-vvh,100dvh)!important; }
+.chat-section,.main-layout{ min-height:0!important; }
+.chat-box{ min-height:0!important; overflow-y:auto!important; -webkit-overflow-scrolling:touch!important; scroll-behavior:smooth!important; }
+body.keyboard-open .screen{ height:var(--king-vvh)!important; max-height:var(--king-vvh)!important; padding:.72vw!important; }
+body.keyboard-open .topbar{ height:5.2vh!important; min-height:42px!important; }
+body.keyboard-open .brand-title{ font-size:1.45vw!important; }
+body.keyboard-open .back-btn{ height:3.7vh!important; min-height:30px!important; font-size:.82vw!important; }
+body.keyboard-open .no-smoking{ font-size:.65vw!important; }
+body.keyboard-open .main-layout{
+  height:calc(var(--king-vvh) - 5.2vh - 1.6vw)!important;
+  grid-template-columns:0 1fr 0!important;
+  gap:0!important;
+  padding-top:.45vw!important;
+}
+body.keyboard-open .left-panel,
+body.keyboard-open .right-panel{
+  display:none!important;
+  visibility:hidden!important;
+  width:0!important;
+  min-width:0!important;
+  overflow:hidden!important;
+}
+body.keyboard-open .chat-section{
+  grid-column:2!important;
+  grid-template-rows:auto auto auto minmax(0,1fr)!important;
+  height:100%!important;
+  min-height:0!important;
+}
+body.keyboard-open .chat-title{
+  padding:.35vw .75vw .2vw!important;
+  font-size:1.25vw!important;
+}
+body.keyboard-open .lang-tabs{ height:2.35vw!important; min-height:28px!important; }
+body.keyboard-open .lang-tabs button{ font-size:.76vw!important; }
+body.keyboard-open .input-row{
+  padding:.38vw .55vw!important;
+  gap:.35vw!important;
+  grid-template-columns:1fr 12%!important;
+  z-index:20!important;
+  background:rgba(5,7,12,.96)!important;
+}
+body.keyboard-open .input-row input,
+body.keyboard-open .input-row button{
+  height:2.55vw!important;
+  min-height:32px!important;
+  font-size:.82vw!important;
+}
+body.keyboard-open .chat-box{
+  padding:.65vw!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+}
+body.keyboard-open .message{ margin:.25vw 0 .55vw!important; }
+body.keyboard-open .bubble{ font-size:.88vw!important; line-height:1.42!important; padding:.42vw .58vw!important; }
+body.keyboard-open .avatar{ width:2.5vw!important; min-width:2.5vw!important; height:2.5vw!important; font-size:.9vw!important; }
+body.keyboard-open .guest-icon{ width:1.85vw!important; height:1.85vw!important; }
+body.keyboard-open .footer-note,
+body.keyboard-open .keyboard-guide{ display:none!important; visibility:hidden!important; height:0!important; }
+</style>
+
+</head>
+<body>
+  <main class="screen" aria-label="KING HOTEL AI Concierge">
+    <header class="topbar">
+      <button class="back-btn" id="aiBackBtn" type="button" data-ai-back="1">← 返回上一頁</button>
+      <div class="brand" aria-label="KING HOTEL">
+        <div class="crown" aria-hidden="true">♛</div>
+        <div class="brand-title">KING HOTEL</div>
+      </div>
+      <div class="no-smoking" aria-label="No Smoking">
+        <span class="no-smoking-icon">🚭</span>
+        <span>NO SMOKING</span>
+      </div>
+    </header>
+
+    <section class="main-layout">
+      <aside class="left-panel">
+        <h1>AI 管家</h1>
+        <div class="service-grid" id="serviceGrid"></div>
+      </aside>
+
+      <section class="chat-section">
+        <div class="chat-title">24H 多語言服務 <span>/ 24H Multilingual Service</span></div>
+        <nav class="lang-tabs" id="langTabs" aria-label="Language selector">
+          <button data-lang="zh-CN" type="button">简体中文</button>
+          <button data-lang="zh-TW" class="active" type="button">繁體中文</button>
+          <button data-lang="ja" type="button">日本語</button>
+          <button data-lang="en" type="button">English</button>
+          <button data-lang="ko" type="button">한국어</button>
+        </nav>
+
+        <form class="input-row" id="chatForm">
+          <input id="userInput" autocomplete="off" placeholder="請輸入您的問題 / Please enter your question" />
+          <button type="submit">➤ 發送</button>
+        </form>
+
+        <div class="chat-box" id="chatBox" aria-live="polite">
+          <div class="message bot">
+            <div class="avatar">♛<small>KING</small></div>
+            <div class="bubble">您好，我是 KING HOTEL AI 管家。請點選左側服務項目，或直接輸入您的問題。</div>
+          </div>
+          <div class="message guest">
+            <div class="bubble">請問退房時間是幾點？</div>
+            <div class="guest-icon">●</div>
+          </div>
+          <div class="message bot">
+            <div class="avatar">♛<small>KING</small></div>
+            <div class="bubble">KING HOTEL 的退房時間為上午 10:00。退房前請確認個人物品，如需協助可聯絡工作人員。</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-panel">
+        <div class="clock-card">
+          <div class="clock-time" id="clockTime">00:00</div>
+          <div class="clock-date" id="clockDate">2026 / 06 / 27 SAT</div>
+        </div>
+        <div class="robot-card robot-card-v180" aria-label="KING HOTEL AI concierge panel">
+          
+          <img class="robot-svg" src="assets/ai-concierge/king-ai-robot-transparent.png?v=211" alt="KING HOTEL AI 金色管家圖示" />
+          <div class="robot-panel-badges" aria-hidden="true">
+            <span>24H</span>
+            <span>5 LANG</span>
+            <span>KING OS</span>
+          </div>
+        </div>
+        <div class="quick-actions">
+          <button data-action="cast" type="button">▭<span>投屏教學</span></button>
+          <button data-action="hotel_info" type="button">▦<span>旅館資訊</span></button>
+          <button data-action="staff" type="button">♢<span>通知工作人員</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer-note">
+      <div class="keyboard-guide keyboard-guide-v189" aria-label="Keyboard language switch guide">
+        <span>繁中：點輸入欄 → 🌐 / 長按空白鍵</span>
+        <span>简中：点输入栏 → 🌐 / 长按空格</span>
+        <span>日本語：入力欄 → 🌐 / スペース長押し</span>
+        <span>English: input → 🌐 / hold Space</span>
+        <span>한국어：입력칸 → 🌐 / 스페이스 길게</span>
+      </div>
+
+    </footer>
+  </main>
+
+  <script src="assets/ai-concierge/ai-concierge.js?v=312"></script>
+
+
+<script id="v198-ai-clock-robot-restore">
+(function(){
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d=new Date();
+    var time=pad(d.getHours())+':'+pad(d.getMinutes());
+    var date=d.getFullYear()+' / '+pad(d.getMonth()+1)+' / '+pad(d.getDate())+' '+['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()];
+    var ct=document.getElementById('clockTime');
+    var cd=document.getElementById('clockDate');
+    if(ct) ct.textContent=time;
+    if(cd) cd.textContent=date;
+  }
+  function robot(){
+    var card=document.querySelector('.robot-card');
+    if(!card) return;
+    card.querySelectorAll('.v195-main-robot,.v195-small-time').forEach(function(el){el.remove();});
+    var img=card.querySelector('.robot-svg');
+    if(!img){
+      img=document.createElement('img');
+      img.className='robot-svg';
+      img.alt='KING HOTEL AI 金色管家圖示';
+      var title=card.querySelector('.robot-panel-title');
+      if(title) title.insertAdjacentElement('afterend',img); else card.prepend(img);
+    }
+    img.src='assets/ai-concierge/king-ai-robot-transparent.png?v=211';
+    img.style.display='block';
+  }
+  document.addEventListener('DOMContentLoaded',function(){tick();robot();setInterval(tick,1000);});
+  tick(); robot();
+})();
+</script>
+
+
+<script id="v207-ai-back-language-router">
+(function(){
+  const MAP = {
+    "zh-CN": {key:"cn", html:"zh-Hans", page:"cn.html", label:"← 返回上一页"},
+    "zh-TW": {key:"zh", html:"zh-Hant", page:"zh.html", label:"← 返回上一頁"},
+    "ja":    {key:"ja", html:"ja",      page:"ja.html", label:"← 前のページへ"},
+    "en":    {key:"en", html:"en",      page:"en.html", label:"← Back"},
+    "ko":    {key:"ko", html:"ko",      page:"ko.html", label:"← 이전 페이지"}
+  };
+  function normalize(v){
+    v = String(v || "").trim();
+    if(v === "cn" || v === "zh" && location.search.includes("lang=cn") || v === "zh-CN" || v === "zh-Hans") return "zh-CN";
+    if(v === "zh" || v === "tw" || v === "zh-TW" || v === "zh-Hant") return "zh-TW";
+    if(v === "ja" || v === "jp") return "ja";
+    if(v === "en") return "en";
+    if(v === "ko" || v === "kr") return "ko";
+    return "zh-TW";
+  }
+  function getLangFromUI(){
+    const active = document.querySelector("#langTabs button.active,[data-lang].active");
+    if(active && active.dataset && active.dataset.lang) return normalize(active.dataset.lang);
+    const qs = new URLSearchParams(location.search);
+    return normalize(qs.get("lang") || localStorage.getItem("king_lang") || localStorage.getItem("currentLanguage") || "zh");
+  }
+  function updateBack(langValue){
+    const lang = normalize(langValue || getLangFromUI());
+    const cfg = MAP[lang] || MAP["zh-TW"];
+    const btn = document.getElementById("aiBackBtn") || document.querySelector("[data-ai-back],.back-btn");
+    if(btn){
+      btn.textContent = cfg.label;
+      btn.setAttribute("data-back-target", cfg.page);
+      btn.onclick = function(e){
+        if(e){e.preventDefault();e.stopPropagation();}
+        location.href = cfg.page;
+        return false;
+      };
+    }
+    document.documentElement.lang = cfg.html;
+    try{
+      localStorage.setItem("king_lang", cfg.key);
+      localStorage.setItem("currentLanguage", cfg.key);
+    }catch(e){}
+  }
+  window.kingAiUpdateBackButton = updateBack;
+
+  // 初始依 query/localStorage 設定
+  updateBack();
+
+  // 點擊 AI 頁上方五國語言時，同步改「返回上一頁」文字與目標第二頁
+  document.addEventListener("click", function(e){
+    const b = e.target.closest("#langTabs button[data-lang],[data-lang]");
+    if(!b || !b.dataset || !b.dataset.lang) return;
+    setTimeout(function(){ updateBack(b.dataset.lang); }, 0);
+    setTimeout(function(){ updateBack(b.dataset.lang); }, 180);
+  }, true);
+
+  document.addEventListener("DOMContentLoaded", function(){ updateBack(); });
+  setTimeout(function(){ updateBack(); }, 300);
+})();
+</script>
+
+
+<script id="v209-ai-from-router">
+(function(){
+  const qs = new URLSearchParams(location.search);
+  const langMap = {zh:"zh.html", cn:"cn.html", ja:"ja.html", en:"en.html", ko:"ko.html"};
+  function normalize(v){
+    v = String(v || "").toLowerCase();
+    if(v === "zh-cn" || v === "zh_hans" || v === "zh-hans" || v === "cn") return "cn";
+    if(v === "zh-tw" || v === "zh_hant" || v === "zh-hant" || v === "zh") return "zh";
+    if(v.startsWith("ja") || v === "jp") return "ja";
+    if(v.startsWith("en")) return "en";
+    if(v.startsWith("ko") || v === "kr") return "ko";
+    return "zh";
+  }
+  function labelFor(lang){
+    return {
+      zh:"← 返回上一頁",
+      cn:"← 返回上一页",
+      ja:"← 前のページへ",
+      en:"← Back",
+      ko:"← 이전 페이지"
+    }[lang] || "← 返回上一頁";
+  }
+  function pageFor(lang){
+    const from = qs.get("from") || localStorage.getItem("king_ai_from");
+    if(from && /^(zh|cn|ja|en|ko)\.html$/.test(from)) return from;
+    return langMap[lang] || "zh.html";
+  }
+  function apply(){
+    const lang = normalize(qs.get("lang") || localStorage.getItem("king_lang") || localStorage.getItem("currentLanguage") || "zh");
+    try{
+      localStorage.setItem("king_lang", lang);
+      localStorage.setItem("currentLanguage", lang);
+      localStorage.setItem("king_ai_from", pageFor(lang));
+    }catch(e){}
+    const btn = document.getElementById("aiBackBtn") || document.querySelector("[data-ai-back],.back-btn");
+    if(btn){
+      btn.textContent = labelFor(lang);
+      btn.onclick = function(e){
+        if(e){ e.preventDefault(); e.stopPropagation(); }
+        location.href = pageFor(lang);
+        return false;
+      };
+      btn.setAttribute("data-back-target", pageFor(lang));
+    }
+  }
+  apply();
+  document.addEventListener("DOMContentLoaded", apply);
+  document.addEventListener("click", function(e){
+    const b = e.target.closest("#langTabs button[data-lang],[data-lang]");
+    if(!b || !b.dataset || !b.dataset.lang) return;
+    const lang = normalize(b.dataset.lang);
+    try{
+      localStorage.setItem("king_lang", lang);
+      localStorage.setItem("currentLanguage", lang);
+      localStorage.setItem("king_ai_from", langMap[lang] || "zh.html");
+    }catch(err){}
+    setTimeout(apply, 80);
+  }, true);
+  setTimeout(apply, 300);
+})();
+</script>
+
+<script src="assets/king-game-phone.js"></script>
+</body>
+</html>

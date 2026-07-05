@@ -1,0 +1,20 @@
+KING OS V310 東京指南熱區修正報告
+
+修正重點：
+1. 修正 tokyo-attractions.html 熱區不能點擊的主因：<a> 標籤重複 class 屬性，導致 card-col/card-row 定位 class 被瀏覽器忽略。
+2. 已將東京觀光／東京美食／東京交通／東京購物所有熱區 class 合併為單一 class 屬性。
+3. 加入 V310 強制觸控 CSS，確保 Fully Kiosk / Chrome / Android 平板都能點擊。
+4. 保留 25 個卡片熱區與語言列／返回熱區。
+5. 東京觀光連結 YouTube 搜尋；東京美食、交通、購物連結 Google 搜尋，依目前語言切換關鍵字。
+6. 快取版本更新 V310。
+
+檢查檔案：
+- tokyo-attractions.html
+- tokyo-food.html
+- tokyo-transport.html
+- tokyo-shopping.html
+
+測試方式：
+1. 上傳 Cloudflare Pages 後清除 Fully Kiosk / Chrome 快取。
+2. 開啟 tokyo-attractions.html?debugHot=1 可看到淡金色熱區框。
+3. 點擊任一景點卡片，應開啟 openlink.html 並導向 YouTube 搜尋。
