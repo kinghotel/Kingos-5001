@@ -1,0 +1,15 @@
+KING OS V5002 修正報告
+
+修正內容：
+1. 重建 index.html，移除卡在「國王飯店」啟動畫面的損壞首頁程式。
+2. 改成穩定版官方首頁：直接載入 assets/home-landscape-v262.webp 母版。
+3. 加入五國語言熱區：日本語、English、한국어、繁體中文、简体中文。
+4. 加入旅館資訊、WiFi、Admin 後台入口熱區。
+5. 改寫 service-worker.js 為 no-cache 版本，避免舊快取卡住黑畫面。
+6. 新增 _headers 禁止快取，GitHub Pages 更新後可立即看到新版本。
+
+部署方式：
+把本 ZIP 解壓縮後，將全部檔案上傳到 GitHub Kingos-5001 根目錄，Commit 後等待 GitHub Pages 自動部署。
+
+首頁：https://kinghotel.github.io/Kingos-5001/
+後台：https://kinghotel.github.io/Kingos-5001/admin.html
