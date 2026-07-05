@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>KING HOTEL WORLD NEWS</title>
+<meta name="theme-color" content="#000000">
+<style>
+:root{--gold:#e6af3f;--gold-soft:#f0d68c;--gold-hi:#fff0b5;--gold-deep:#9a6415;--line:rgba(230,175,63,.88);--thin:rgba(230,175,63,.58);--bg:#040302;--card:rgba(9,8,6,.76)}
+html,body{margin:0;width:100%;height:100%;background:#040302;color:var(--gold-hi);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans SC","Noto Sans JP","Noto Sans KR",Arial,sans-serif;overflow:hidden;touch-action:manipulation;-webkit-user-select:none;user-select:none}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{background:radial-gradient(circle at 50% 0%,rgba(230,175,63,.14),transparent 24%),radial-gradient(circle at 78% 8%,rgba(230,175,63,.11),transparent 30%),linear-gradient(180deg,#070503 0%,#020201 100%)}
+.news-shell{position:fixed;inset:0;padding:1.35vh 1.8vw 2.05vh;display:grid;grid-template-rows:13.4vh 7.2vh 1fr;gap:1.05vh}.news-header{display:grid;grid-template-columns:14.4vw 1fr 14.4vw;align-items:center;gap:1.3vw}.brand{text-align:center;line-height:1;min-width:0}.brand h1{margin:0;display:flex;align-items:center;justify-content:center;gap:.7vw;font-size:clamp(46px,5.25vw,88px);letter-spacing:.10em;font-weight:1000;color:#e7b13e;text-shadow:0 2px 0 #6b3d08,0 4px 0 #2d1803,0 0 12px rgba(255,218,104,.34),0 0 2px #fff0a8;white-space:nowrap}.brand-crown{font-size:clamp(54px,6.0vw,96px);line-height:.78;color:#e7b13e;text-shadow:0 2px 0 #6b3d08,0 4px 0 #2d1803,0 0 14px rgba(255,218,104,.34);letter-spacing:0}.brand p{margin:.80vh 0 0;font-size:clamp(19px,1.70vw,30px);letter-spacing:.10em;color:var(--gold-soft);font-weight:900;text-shadow:0 0 8px rgba(230,175,63,.32)}
+.nav-btn{height:8.35vh;min-height:64px;display:flex;align-items:center;justify-content:center;border:1.6px solid var(--thin);border-radius:19px;background:linear-gradient(180deg,rgba(230,175,63,.14),rgba(0,0,0,.48));color:var(--gold-hi);text-decoration:none;font-weight:950;font-size:clamp(22px,1.85vw,34px);box-shadow:inset 0 0 15px rgba(230,175,63,.07),0 0 10px rgba(230,175,63,.09)}
+.lang-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1.35px solid var(--thin);border-radius:16px;padding:.45vh .55vw;background:rgba(0,0,0,.50);box-shadow:inset 0 0 14px rgba(230,175,63,.05)}.lang-tab{position:relative;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(230,175,63,.38);color:var(--gold-soft);text-decoration:none;font-weight:950;font-size:clamp(19px,1.78vw,32px);letter-spacing:.045em;text-shadow:0 0 8px rgba(230,175,63,.20)}.lang-tab:last-child{border-right:0}.lang-tab.active{color:var(--gold-hi);text-shadow:0 0 13px rgba(255,232,156,.56)}.lang-tab.active:after{content:"";position:absolute;left:22%;right:22%;bottom:.42vh;height:2px;border-radius:999px;background:linear-gradient(90deg,transparent,var(--gold-hi),transparent);box-shadow:0 0 10px rgba(255,230,130,.55)}
+.news-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(4,1fr);gap:1.05vh .88vw}.news-card{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1.45px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(230,175,63,.10),rgba(0,0,0,.70));box-shadow:inset 0 0 16px rgba(230,175,63,.06),0 0 8px rgba(230,175,63,.10);color:var(--gold-hi);text-decoration:none;min-width:0;padding:.70vh .45vw;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}.news-card .flag{display:block;min-width:7.2em;padding:.30vh .68vw;margin-bottom:.55vh;border:1px solid rgba(255,224,126,.74);border-radius:999px;color:#ffe69a;background:rgba(0,0,0,.28);font-size:clamp(13px,1.05vw,18px);line-height:1.05;font-weight:1000;letter-spacing:.08em;text-shadow:0 1px 0 #5d3609,0 0 8px rgba(255,220,120,.24)}.news-card b{display:block;font-size:clamp(20px,1.78vw,34px);letter-spacing:.02em;line-height:1.12;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:keep-all;text-shadow:0 0 7px rgba(255,226,130,.20)}.news-card small{display:block;margin-top:.70vh;font-size:clamp(12px,1.05vw,18px);color:#f0ce72;font-weight:850;line-height:1.16;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}.news-card:focus,.news-card:hover,.nav-btn:focus,.lang-tab:focus{outline:1px solid rgba(255,238,156,.34);outline-offset:2px;background:linear-gradient(180deg,rgba(230,175,63,.17),rgba(0,0,0,.56))}.news-card:active,.nav-btn:active,.lang-tab:active{transform:scale(.985);box-shadow:0 0 18px rgba(255,224,126,.22),inset 0 0 20px rgba(230,175,63,.10)}
+@media(max-width:900px){.news-shell{padding:1.4vh 1.6vw;grid-template-rows:11vh 6.1vh 1fr;gap:.95vh}.news-header{grid-template-columns:15.5vw 1fr 15.5vw}.news-grid{gap:.75vh .65vw}.news-card{border-radius:13px}.lang-row{border-radius:12px}.brand h1{margin:0;display:flex;align-items:center;justify-content:center;gap:.7vw;font-size:clamp(46px,5.25vw,88px);letter-spacing:.10em;font-weight:1000;color:#e7b13e;text-shadow:0 2px 0 #6b3d08,0 4px 0 #2d1803,0 0 12px rgba(255,218,104,.34),0 0 2px #fff0a8;white-space:nowrap}}
+
+/* V305 news readability */
+.news-header{justify-items:stretch}.brand{align-self:center;transform:translateY(.15vh)}
+.news-card{justify-content:center;align-items:center}.news-card b,.news-card small,.news-card .flag{text-align:center}
+@media(max-width:900px){.brand h1{font-size:clamp(40px,5.15vw,78px)}.brand p{font-size:clamp(16px,1.55vw,25px)}.news-card b{font-size:clamp(16px,1.55vw,27px)}.news-card small{font-size:clamp(10px,.95vw,15px)}}
+</style>
+</head>
+<body data-lang="cn" data-page="news-world-v305">
+<main class="news-shell">
+  <header class="news-header">
+    <a class="nav-btn" href="javascript:history.back()" data-card="back">← 返回</a>
+    <div class="brand"><h1><span class="brand-crown">♛</span><span>世界新闻</span></h1><p>Select Your Country News / 请选择新闻地区</p></div>
+    <a class="nav-btn" href="cn.html" data-card="home">首页</a>
+  </header>
+  <nav class="lang-row" aria-label="Language selector"><a class="lang-tab active" data-lang="cn" href="news-cn.html">简体中文</a><a class="lang-tab " data-lang="zh" href="news-zh.html">繁體中文</a><a class="lang-tab " data-lang="ja" href="news-ja.html">日本語</a><a class="lang-tab " data-lang="en" href="news-en.html">English</a><a class="lang-tab " data-lang="ko" href="news-ko.html">한국어</a></nav>
+  <section class="news-grid" aria-label="20 Country News Cards">
+      <a class="news-card" data-card="news-jp" href="https://www3.nhk.or.jp/news/"><span class="flag">JAPAN</span><b>日本新闻</b><small>NHK News</small></a>
+<a class="news-card" data-card="news-tw" href="https://tw.news.yahoo.com/"><span class="flag">TAIWAN</span><b>台湾新闻</b><small>Yahoo! Taiwan</small></a>
+<a class="news-card" data-card="news-us" href="https://www.cnn.com/"><span class="flag">USA</span><b>美国新闻</b><small>CNN</small></a>
+<a class="news-card" data-card="news-cn" href="https://news.baidu.com/"><span class="flag">CHINA</span><b>中国新闻</b><small>Baidu News</small></a>
+<a class="news-card" data-card="news-kr" href="https://news.naver.com/"><span class="flag">KOREA</span><b>韓国新闻</b><small>Naver News</small></a>
+<a class="news-card" data-card="news-uk" href="https://www.bbc.com/news"><span class="flag">UK</span><b>英国新闻</b><small>BBC News</small></a>
+<a class="news-card" data-card="news-reuters" href="https://www.reuters.com/"><span class="flag">REUTERS</span><b>路透社</b><small>Reuters</small></a>
+<a class="news-card" data-card="news-cnn" href="https://www.cnn.com/"><span class="flag">CNN</span><b>CNN</b><small>CNN</small></a>
+<a class="news-card" data-card="news-fr" href="https://www.france24.com/en/"><span class="flag">FRANCE</span><b>法国新闻</b><small>France 24</small></a>
+<a class="news-card" data-card="news-de" href="https://www.dw.com/en/top-stories/s-9097"><span class="flag">GERMANY</span><b>德国新闻</b><small>DW News</small></a>
+<a class="news-card" data-card="news-sg" href="https://www.channelnewsasia.com/"><span class="flag">SINGAPORE</span><b>新加坡新闻</b><small>CNA</small></a>
+<a class="news-card" data-card="news-th" href="https://www.thairath.co.th/news"><span class="flag">THAILAND</span><b>泰国新闻</b><small>Thairath News</small></a>
+<a class="news-card" data-card="news-my" href="https://www.thestar.com.my/news"><span class="flag">MALAYSIA</span><b>马来西亚新闻</b><small>The Star</small></a>
+<a class="news-card" data-card="news-vn" href="https://vnexpress.net/"><span class="flag">VIETNAM</span><b>越南新闻</b><small>VnExpress</small></a>
+<a class="news-card" data-card="news-id" href="https://www.kompas.com/"><span class="flag">INDONESIA</span><b>印尼新闻</b><small>Kompas</small></a>
+<a class="news-card" data-card="news-au" href="https://www.abc.net.au/news"><span class="flag">AUSTRALIA</span><b>澳大利亚新闻</b><small>ABC News</small></a>
+<a class="news-card" data-card="news-ca" href="https://www.cbc.ca/news"><span class="flag">CANADA</span><b>加拿大新闻</b><small>CBC News</small></a>
+<a class="news-card" data-card="news-in" href="https://timesofindia.indiatimes.com/"><span class="flag">INDIA</span><b>印度新闻</b><small>Times of India</small></a>
+<a class="news-card" data-card="news-it" href="https://www.ansa.it/english/"><span class="flag">ITALY</span><b>意大利新闻</b><small>ANSA</small></a>
+<a class="news-card" data-card="news-es" href="https://english.elpais.com/"><span class="flag">SPAIN</span><b>西班牙新闻</b><small>El País</small></a>
+  </section>
+</main>
+<script>
+(function(){
+  const lang = document.body.dataset.lang || "cn";
+  try{ localStorage.setItem("king_lang", lang); localStorage.setItem("currentLanguage", lang); localStorage.setItem("king_current_lang", lang); }catch(e){}
+  document.addEventListener("click", function(e){
+    const tab = e.target.closest(".lang-tab[data-lang]");
+    if(tab){ try{ localStorage.setItem("king_lang", tab.dataset.lang); localStorage.setItem("currentLanguage", tab.dataset.lang); localStorage.setItem("king_current_lang", tab.dataset.lang); }catch(err){} return; }
+  }, true);
+})();
+</script>
+</body>
+</html>

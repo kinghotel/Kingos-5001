@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KING HOTEL English</title>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/secondpage-v290.css?v=290">
+</head>
+<body data-lang="en" data-page="secondpage-image-v290">
+<main class="stage">
+  <section class="screen" aria-label="KING HOTEL English">
+    <img class="bg" src="assets/secondpage-en-v290.webp?v=290" alt="KING HOTEL English V290">
+    <section class="layer" aria-hidden="true">
+      <div class="liveInfoHud">
+        <div class="liveInfoItem"><span class="liveLabel" data-live-label="room">ROOM</span><span id="kingLiveRoom" class="liveValue">305</span></div>
+        <div class="liveInfoItem"><span class="liveLabel" data-live-label="time">TIME</span><span id="kingLiveTime" class="liveValue">--:--</span></div>
+      </div>
+    </section>
+    <nav class="hotlayer" aria-label="KING HOTEL card-field hotspots V290">
+      <a class="hot robotHot" href="ai.html?lang=en&amp;back=en.html" data-card="robot-ai"><span class="sr">AI Concierge</span></a>
+      <div class="mainHot"><a class="hot" href="entertainment-en.html" data-card="main-0"><span class="sr">ENTERTAINMENT</span></a><a class="hot" href="cloudpc.html?lang=en&back=en.html" data-card="main-1"><span class="sr">CLOUD PC</span></a><a class="hot" href="gaming.html?lang=en&back=en.html" data-card="main-2"><span class="sr">CLOUD GAMING</span></a><a class="hot" href="cast.html?lang=en&back=en.html" data-card="main-3"><span class="sr">SCREEN MIRRORING</span></a><a class="hot" href="logout.html?lang=en&back=en.html" data-card="main-4"><span class="sr">PRIVACY PROTECTION</span></a><a class="hot" href="news-en.html" data-card="main-5"><span class="sr">WORLD NEWS</span></a><a class="hot" href="cleaning.html?lang=en&back=en.html" data-card="main-6"><span class="sr">ROOM CLEANING</span></a><a class="hot" href="check.html?lang=en&back=en.html" data-card="main-7"><span class="sr">CHECK-IN / OUT</span></a><a class="hot" href="booking.html?lang=en&back=en.html" data-card="main-8"><span class="sr">ROOM RESERVATION</span></a><a class="hot" href="guide-en.html" data-card="main-9"><span class="sr">TOKYO GUIDE</span></a><a class="hot" href="service.html?lang=en&back=en.html" data-card="main-10"><span class="sr">VALUE-ADDED SERVICES</span></a><a class="hot" href="transfer.html?lang=en&back=en.html" data-card="main-11"><span class="sr">AIRPORT TRANSFER</span></a></div>
+      <div class="langHot"><a class="hot" href="ja.html" data-lang-go="ja" data-card="language-ja"><span class="sr">日本語</span></a><a class="hot" href="ko.html" data-lang-go="ko" data-card="language-ko"><span class="sr">한국어</span></a><a class="hot" href="cn.html" data-lang-go="cn" data-card="language-cn"><span class="sr">简体中文</span></a><a class="hot" href="en.html" data-lang-go="en" data-card="language-en"><span class="sr">English</span></a><a class="hot" href="zh.html" data-lang-go="zh" data-card="language-zh"><span class="sr">繁體中文</span></a></div>
+      <div class="newsHot"><a class="hot" href="https://news.yahoo.co.jp/" data-card="news-0"><span class="sr">Japan News</span></a><a class="hot" href="https://news.naver.com/" data-card="news-1"><span class="sr">Korea News</span></a><a class="hot" href="https://news.baidu.com/" data-card="news-2"><span class="sr">China News</span></a><a class="hot" href="https://news.yahoo.com/" data-card="news-3"><span class="sr">US News</span></a><a class="hot" href="https://tw.news.yahoo.com/" data-card="news-4"><span class="sr">Taiwan News</span></a></div>
+      <div class="bottomHot"><a class="hot" href="check.html" data-card="bottom-0"><span class="sr">CHECK-IN TIME</span></a><a class="hot" href="check.html" data-card="bottom-1"><span class="sr">CHECK-OUT TIME</span></a><a class="hot" href="info.html?lang=en&back=en.html" data-card="bottom-2"><span class="sr">HOTEL INFO</span></a><a class="hot" href="staff.html?lang=en&back=en.html" data-card="bottom-3"><span class="sr">CONTACT US</span></a><a class="hot" href="admin.html" data-card="bottom-4"><span class="sr">HOME</span></a></div>
+    </nav>
+  </section>
+</main>
+<script>
+(function(){
+  var lang="en";
+  var pageMap={zh:"zh.html",cn:"cn.html",ja:"ja.html",en:"en.html",ko:"ko.html"};
+  function remember(code){try{localStorage.setItem("king_lang",code);localStorage.setItem("currentLanguage",code);localStorage.setItem("king_current_lang",code);localStorage.setItem("king_last_second_page",pageMap[code]||"zh.html");sessionStorage.setItem("king_lang",code);}catch(e){}}
+  remember(lang);
+  document.querySelectorAll("[data-lang-go]").forEach(function(a){a.addEventListener("click",function(){remember(a.getAttribute("data-lang-go"));},{passive:true});});
+  document.querySelectorAll("[data-card]").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("king_last_card",a.getAttribute("data-card")||"");localStorage.setItem("king_last_page",location.pathname.split("/").pop()||"");}catch(e){}},{passive:true});});
+  function setupLiveInfo(){
+    var q=new URLSearchParams(location.search);
+    var room=q.get("room")||q.get("roomNo")||q.get("room_no");
+    try{if(room){localStorage.setItem("king_room",room);sessionStorage.setItem("king_room",room);}room=room||localStorage.getItem("king_room")||sessionStorage.getItem("king_room");}catch(e){}
+    if(!room) room="305";
+    var roomEl=document.getElementById("kingLiveRoom");
+    if(roomEl) roomEl.textContent=room;
+    function updateLiveTime(){
+      var timeEl=document.getElementById("kingLiveTime");
+      if(!timeEl) return;
+      try{timeEl.textContent=new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Asia/Tokyo"}).format(new Date());}
+      catch(e){var d=new Date(), hh=("0"+d.getHours()).slice(-2), mm=("0"+d.getMinutes()).slice(-2);timeEl.textContent=hh+":"+mm;}
+    }
+    updateLiveTime();
+    setInterval(updateLiveTime,15000);
+  }
+  setupLiveInfo();
+  if(new URLSearchParams(location.search).get("debugHot")==="1") document.body.classList.add("debug-hot");
+})();
+</script>
+</body>
+</html>

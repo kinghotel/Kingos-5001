@@ -1,0 +1,4 @@
+KING OS V5000 Alpha-1
+Build: 2026-07-05
+Base: KING-OS-V4206-V4096-HEADER-CLEAN-CARDS
+Focus: PMS dashboard, fast entry safety, local snapshot protection.

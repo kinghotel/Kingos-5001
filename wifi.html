@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>KING HOTEL - WiFi 網路</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#050505;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans JP",Arial,sans-serif}
+*{box-sizing:border-box}a{color:inherit;text-decoration:none}
+.wrap{width:100vw;height:100vh;padding:3vh 3vw;background:radial-gradient(circle at 70% 12%,rgba(230,160,35,.18),transparent 32%),linear-gradient(135deg,#050505,#111 55%,#050505)}
+.head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(214,157,45,.55);padding-bottom:2vh}
+.logo{font-size:3vw;font-weight:900;letter-spacing:.06em;background:linear-gradient(#fff6bc,#ffd56b 28%,#c88718 70%,#fff0a8);-webkit-background-clip:text;color:transparent}
+.back{font-size:1.45vw;color:#ffd36b;border:1px solid rgba(214,157,45,.7);border-radius:999px;padding:.8vh 1.5vw}
+.hero{display:flex;align-items:center;gap:1.2vw;margin:2.6vh 0 2vh}.big{font-size:4.5vw}h1{margin:0;color:#ffd36b;font-size:2.8vw}.hero p{margin:.6vh 0 0;font-size:1.25vw;color:#eee}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1vw}
+.card{height:17.2vh;display:flex;align-items:center;gap:1vw;padding:1.2vh 1.3vw;border:1px solid rgba(214,157,45,.68);border-radius:1vw;background:linear-gradient(180deg,rgba(255,211,107,.08),rgba(0,0,0,.65));box-shadow:0 0 18px rgba(214,157,45,.16) inset;position:relative}
+.ci{font-size:3.1vw;width:4.8vw;text-align:center}.card h2{margin:0;color:#ffd36b;font-size:1.65vw}.card p{margin:.7vh 0 0;color:#eee;font-size:1vw;line-height:1.35}.card b{position:absolute;right:1.1vw;font-size:2.5vw;color:#ffc94f}
+
+/* V120 real-device hotspot calibration: hide default focus frames and keep touch areas aligned */
+.hotspot,.hotspot:hover,.hotspot:focus,.hotspot.focus-ring{
+  outline:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:rgba(255,205,60,0)!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+.hotspot:active{
+  outline:none!important;
+  border:0!important;
+  box-shadow:inset 0 0 0 1px rgba(255,220,90,.22)!important;
+  background:rgba(255,205,60,.018)!important;
+}
+.back,.back:focus,.back.focus-ring,.lang-btn,.lang-btn:focus,.lang-btn.focus-ring{
+  outline:none!important;
+  box-shadow:none!important;
+  background:rgba(255,205,60,0)!important;
+}
+.card,.subitem,.category{border-radius:8px!important;}
+
+
+
+/* V121 transparent Back hotspot + card-grid calibration */
+.stage .hotspot.back,
+.stage .hotspot.back:hover,
+.stage .hotspot.back:focus,
+.stage .hotspot.back.focus-ring,
+.stage .hotspot.back:active{
+  outline:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+.stage .grid-hotspot-layer{position:absolute;z-index:35;display:grid;pointer-events:none;box-sizing:border-box;}
+.stage .grid-hotspot-layer .hotspot{
+  position:relative!important;
+  left:auto!important;top:auto!important;width:100%!important;height:100%!important;
+  display:block;pointer-events:auto;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;
+  border-radius:8px!important;-webkit-tap-highlight-color:transparent!important;
+}
+.stage .grid-hotspot-layer .hotspot:hover,
+.stage .grid-hotspot-layer .hotspot:focus,
+.stage .grid-hotspot-layer .hotspot.focus-ring{
+  border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;
+}
+.stage .grid-hotspot-layer .hotspot:active{
+  border:0!important;outline:0!important;box-shadow:none!important;background:rgba(255,205,60,.012)!important;
+}
+.stage .guide-card-grid{left:1.55%;top:25.75%;width:95.60%;height:71.25%;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);column-gap:1.10%;row-gap:2.74%;}
+.stage .tokyo-card-grid{left:1.70%;top:23.55%;width:96.15%;height:70.35%;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);column-gap:2.18%;row-gap:3.41%;}
+.stage .tokyo-card-grid.attractions-grid{left:1.45%;top:22.35%;width:97.30%;height:74.30%;column-gap:1.75%;row-gap:3.63%;}
+.stage .tokyo-card-grid.daytrip-grid{left:1.57%;top:16.40%;width:96.55%;height:70.25%;column-gap:2.02%;row-gap:3.91%;}
+.stage .tokyo-card-grid.planner-grid{left:1.70%;top:23.50%;width:96.15%;height:70.30%;column-gap:2.18%;row-gap:3.49%;}
+.stage .daytrip-extra-grid{position:absolute;left:1.20%;top:88.30%;width:97.50%;height:7.50%;display:grid;grid-template-columns:26.5fr 39.2fr 16.5fr;column-gap:18%;z-index:35;pointer-events:none;}
+.stage .daytrip-extra-grid .hotspot{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:100%!important;pointer-events:auto;background:transparent!important;border:0!important;box-shadow:none!important;}
+
+</style>
+<style id="v76_patch">
+.fullscreen::after{content:none!important;display:none!important;}
+.top-mask,.top-mask-v69,.top-mask-v70{left:35.2%!important;width:33.05%!important;height:8.6%!important;}
+.fn-hotspot,.lang-hotspot{transform:translate(1.1%,-1.4%)!important;}
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head><body><div class="wrap"><div class="head"><div class="logo">♛ KING HOTEL</div><a class="back" href="javascript:history.back()">返回 BACK</a></div><div class="hero"><div class="big">📶</div><div><h1>WiFi 網路</h1><p>SSID / Password</p></div></div><div class="grid"><a class="card" href="wifi.html"><div class="ci">📶</div><div><h2>SSID</h2><p>Kinghotel</p></div><b>›</b></a>
+<a class="card" href="wifi.html"><div class="ci">🔐</div><div><h2>Password</h2><p>87654321</p></div><b>›</b></a>
+<a class="card" href="wifi.html"><div class="ci">🌐</div><div><h2>高速網路</h2><p>High Speed Wi-Fi</p></div><b>›</b></a>
+<a class="card" href="cloudpc.html"><div class="ci">💻</div><div><h2>雲端電腦</h2><p>Cloud PC</p></div><b>›</b></a>
+<a class="card" href="cast.html"><div class="ci">📱</div><div><h2>手機投屏</h2><p>Cast</p></div><b>›</b></a>
+<a class="card" href="ai.html"><div class="ci">💬</div><div><h2>AI協助</h2><p>AI管家</p></div><b>›</b></a></div></div>
+
+<script id="king-open-fallback">
+window.kingOpen=window.kingOpen||function(url){
+ if(!url)return false;
+ if(url==='back'){history.length>1?history.back():location.href='main.html';return false;}
+ try{ if(window.fully&&typeof window.fully.loadUrl==='function'&&/^https?:/i.test(url)) window.fully.loadUrl(url); else location.href=url; }catch(e){location.href=url;}
+ return false;
+};
+</script>
+<script src="king-memory-safe-v124.js" defer></script>
+<script src="assets/king-game-phone.js"></script>
+</body></html>

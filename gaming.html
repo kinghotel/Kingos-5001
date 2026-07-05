@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"><title>KING HOTEL Game Center</title><style>
+html,body{margin:0!important;padding:0!important;width:100%!important;height:100%!important;overflow:hidden!important;background:#000!important;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans SC","Noto Sans JP","Noto Sans KR","Segoe UI",Arial,sans-serif!important;touch-action:manipulation}
+*{box-sizing:border-box}
+.stage{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;background:#000;overflow:hidden}
+.bg,.stage-img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.hot{display:block;text-decoration:none;color:transparent;background:rgba(0,0,0,.001);border:0;-webkit-tap-highlight-color:rgba(255,218,90,.22);touch-action:manipulation}
+.hot:active,.hot:focus{outline:.20vw solid rgba(255,226,130,.60);background:rgba(255,215,80,.16)}
+.debug-hot .hot{outline:1px solid rgba(255,215,0,.55)!important;background:rgba(255,215,0,.12)!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+.game-hot{
+  position:absolute;inset:0;z-index:5;
+  display:grid;
+  grid-template-rows:12fr 15fr 16fr 14fr 14fr 16fr 13fr;
+  grid-template-columns:repeat(12,1fr);
+  gap:.56vw;
+  padding:1.0vw 1.2vw 1.0vw 1.2vw;
+}
+.game-back{grid-column:1/3;grid-row:1;border-radius:.9vw}
+.top-actions{grid-column:1/13;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);gap:.72vw}
+.member{grid-column:1/13;grid-row:3;display:grid;grid-template-columns:repeat(4,1fr);gap:.62vw}
+.free{grid-column:1/13;grid-row:4;display:grid;grid-template-columns:repeat(6,1fr);gap:.52vw}
+.cat{grid-column:1/13;grid-row:5;display:grid;grid-template-columns:repeat(7,1fr);gap:.50vw}
+.bottom{grid-column:1/13;grid-row:6/8;display:grid;grid-template-columns:repeat(4,1fr);gap:.62vw}
+.top-actions .hot,.member .hot,.free .hot,.cat .hot,.bottom .hot{border-radius:.70vw}
+</style><meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-gamepad.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head>
+<body data-lang="zh" data-page="gaming-cardfield-v237">
+<main class="stage">
+  <img class="bg" src="assets/game-center.webp" alt="Game Center">
+  <nav class="game-hot" aria-label="Game center card-field hotspots">
+    <a class="hot game-back" href="javascript:history.back()" data-card="back"><span class="sr">Back</span></a>
+    <div class="top-actions">      <a class="hot" href="browser.html" data-card="chrome"><span class="sr">chrome</span></a>
+      <a class="hot" href="cast.html" data-card="airplay"><span class="sr">airplay</span></a>
+      <a class="hot" href="cast.html" data-card="android-cast"><span class="sr">android-cast</span></a></div>
+    <div class="member">      <a class="hot" href="openlink.html?url=https%3A%2F%2Fstore.steampowered.com%2F" data-card="steam"><span class="sr">steam</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fstore.epicgames.com%2F" data-card="epic"><span class="sr">epic</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.xbox.com%2Fplay" data-card="xbox"><span class="sr">xbox</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fplay.geforcenow.com%2F" data-card="geforce"><span class="sr">geforce</span></a></div>
+    <div class="free">      <a class="hot" href="openlink.html?url=https%3A%2F%2Fpoki.com%2F" data-card="poki"><span class="sr">poki</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2F" data-card="crazygames"><span class="sr">crazygames</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.y8.com%2F" data-card="y8"><span class="sr">y8</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.gamepix.com%2F" data-card="gamepix"><span class="sr">gamepix</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazymonkeygames.com%2F" data-card="monkey"><span class="sr">monkey</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.coolmathgames.com%2F" data-card="coolmath"><span class="sr">coolmath</span></a></div>
+    <div class="cat">      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Fracing" data-card="racing"><span class="sr">racing</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Fshooting" data-card="fps"><span class="sr">fps</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Fsports" data-card="sports"><span class="sr">sports</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Fpuzzle" data-card="puzzle"><span class="sr">puzzle</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Frpg" data-card="rpg"><span class="sr">rpg</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2Ft%2Fmultiplayer" data-card="multiplayer"><span class="sr">multiplayer</span></a>
+      <a class="hot" href="openlink.html?url=https%3A%2F%2Fwww.crazygames.com%2F" data-card="more"><span class="sr">more</span></a></div>
+    <div class="bottom">      <a class="hot" href="entertainment.html" data-card="latest-news"><span class="sr">latest-news</span></a>
+      <a class="hot" href="guide.html" data-card="tokyo-guide"><span class="sr">tokyo-guide</span></a>
+      <a class="hot" href="game-help.html" data-card="game-help"><span class="sr">game-help</span></a>
+      <a class="hot" href="logout.html" data-card="privacy"><span class="sr">privacy</span></a></div>
+  </nav>
+</main>
+<script>
+(function(){
+  const q = new URLSearchParams(location.search);
+  const bodyLang = document.body.getAttribute("data-lang") || q.get("lang") || localStorage.getItem("king_lang") || "zh";
+  const langHome = {zh:"zh.html",cn:"cn.html",ja:"ja.html",en:"en.html",ko:"ko.html"};
+  const guideFile = {zh:"guide-zh.html",cn:"guide-cn.html",ja:"guide-ja.html",en:"guide-en.html",ko:"guide-ko.html"};
+  function rememberLanguage(code){
+    try{
+      localStorage.setItem("king_lang", code);
+      localStorage.setItem("currentLanguage", code);
+      localStorage.setItem("king_current_lang", code);
+      localStorage.setItem("king_last_second_page", langHome[code] || "zh.html");
+      sessionStorage.setItem("king_lang", code);
+    }catch(e){}
+  }
+  rememberLanguage(bodyLang);
+  document.querySelectorAll("[data-remember-lang]").forEach(function(a){
+    a.addEventListener("click", function(){ rememberLanguage(a.getAttribute("data-remember-lang")); }, {passive:true});
+  });
+  document.querySelectorAll("[data-card]").forEach(function(a){
+    a.addEventListener("click", function(){
+      try{
+        localStorage.setItem("king_last_card", a.getAttribute("data-card") || "");
+        localStorage.setItem("king_last_page", location.pathname.split("/").pop() || "");
+      }catch(e){}
+    }, {passive:true});
+  });
+  if(q.get("debugHot")==="1") document.body.classList.add("debug-hot");
+})();
+</script>
+<script src="assets/king-game-phone.js"></script>
+<script src="assets/king-gamepad.js"></script>
+<script src="assets/king-hot-activate-v247.js"></script>
+</body></html>

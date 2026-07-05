@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"><meta http-equiv="Pragma" content="no-cache">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>CLOUD GAMING HELP</title>
+<style>
+:root{--gold:#f0c95d;--gold2:#fff1a8;--line:rgba(255,221,110,.88);--bg:#050505}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#050505;color:var(--gold2);font-family:Arial,'Noto Sans TC','Noto Sans JP','Noto Sans KR',sans-serif;overflow:hidden;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+body{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 72% 15%,rgba(220,160,45,.15),transparent 34%),linear-gradient(135deg,#030303,#090909 55%,#020202)}
+.wrap{width:min(100vw,177.7777vh);height:min(100vh,56.25vw);padding:2.2% 4.2%;position:relative;display:flex;flex-direction:column;gap:14px}
+.top{height:10.5%;display:grid;grid-template-columns:190px 1fr 190px;align-items:center;gap:18px;flex:0 0 auto}
+.back{width:170px;height:62px;border:2px solid var(--line);border-radius:18px;color:var(--gold2);text-decoration:none;font-size:25px;font-weight:950;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.50);box-shadow:0 0 20px rgba(240,201,93,.16)}
+.title{font-size:44px;font-weight:950;letter-spacing:.12em;text-align:center;color:#fff7c5;text-shadow:0 0 18px rgba(240,201,93,.45);white-space:nowrap}
+.grid{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:18px}
+.card{min-height:0;border:2px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(255,210,95,.10),rgba(0,0,0,.56));box-shadow:0 0 24px rgba(220,170,60,.18),inset 0 0 20px rgba(240,201,93,.06);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 24px;text-decoration:none;color:var(--gold2);overflow:hidden}
+.icon{font-size:42px;line-height:1;margin-bottom:8px} 
+h2{font-size:32px;margin:0 0 10px;letter-spacing:.07em;color:#fff7c5;line-height:1.05}
+p{margin:0;font-size:20px;line-height:1.32;color:#f3e4a5;font-weight:850}
+.small{font-size:17px;color:#d8c47e;margin-top:7px;font-weight:800;line-height:1.32}
+.footer{height:7%;min-height:44px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,221,110,.70);border-radius:16px;background:rgba(0,0,0,.42);font-weight:900;font-size:18px;letter-spacing:.04em;color:#f5dda0;z-index:2}
+@media (max-aspect-ratio:16/9){.wrap{width:100vw;height:56.25vw}}@media (min-aspect-ratio:16/9){.wrap{width:177.7777vh;height:100vh}}
+
+/* V120 real-device hotspot calibration: hide default focus frames and keep touch areas aligned */
+.hotspot,.hotspot:hover,.hotspot:focus,.hotspot.focus-ring{
+  outline:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:rgba(255,205,60,0)!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+.hotspot:active{
+  outline:none!important;
+  border:0!important;
+  box-shadow:inset 0 0 0 1px rgba(255,220,90,.22)!important;
+  background:rgba(255,205,60,.018)!important;
+}
+.back,.back:focus,.back.focus-ring,.lang-btn,.lang-btn:focus,.lang-btn.focus-ring{
+  outline:none!important;
+  box-shadow:none!important;
+  background:rgba(255,205,60,0)!important;
+}
+.card,.subitem,.category{border-radius:8px!important;}
+
+
+
+/* V121 transparent Back hotspot + card-grid calibration */
+.stage .hotspot.back,
+.stage .hotspot.back:hover,
+.stage .hotspot.back:focus,
+.stage .hotspot.back.focus-ring,
+.stage .hotspot.back:active{
+  outline:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+.stage .grid-hotspot-layer{position:absolute;z-index:35;display:grid;pointer-events:none;box-sizing:border-box;}
+.stage .grid-hotspot-layer .hotspot{
+  position:relative!important;
+  left:auto!important;top:auto!important;width:100%!important;height:100%!important;
+  display:block;pointer-events:auto;border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;
+  border-radius:8px!important;-webkit-tap-highlight-color:transparent!important;
+}
+.stage .grid-hotspot-layer .hotspot:hover,
+.stage .grid-hotspot-layer .hotspot:focus,
+.stage .grid-hotspot-layer .hotspot.focus-ring{
+  border:0!important;outline:0!important;box-shadow:none!important;background:transparent!important;
+}
+.stage .grid-hotspot-layer .hotspot:active{
+  border:0!important;outline:0!important;box-shadow:none!important;background:rgba(255,205,60,.012)!important;
+}
+.stage .guide-card-grid{left:1.55%;top:25.75%;width:95.60%;height:71.25%;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);column-gap:1.10%;row-gap:2.74%;}
+.stage .tokyo-card-grid{left:1.70%;top:23.55%;width:96.15%;height:70.35%;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);column-gap:2.18%;row-gap:3.41%;}
+.stage .tokyo-card-grid.attractions-grid{left:1.45%;top:22.35%;width:97.30%;height:74.30%;column-gap:1.75%;row-gap:3.63%;}
+.stage .tokyo-card-grid.daytrip-grid{left:1.57%;top:16.40%;width:96.55%;height:70.25%;column-gap:2.02%;row-gap:3.91%;}
+.stage .tokyo-card-grid.planner-grid{left:1.70%;top:23.50%;width:96.15%;height:70.30%;column-gap:2.18%;row-gap:3.49%;}
+.stage .daytrip-extra-grid{position:absolute;left:1.20%;top:88.30%;width:97.50%;height:7.50%;display:grid;grid-template-columns:26.5fr 39.2fr 16.5fr;column-gap:18%;z-index:35;pointer-events:none;}
+.stage .daytrip-extra-grid .hotspot{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:100%!important;pointer-events:auto;background:transparent!important;border:0!important;box-shadow:none!important;}
+
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="assets/king-game-phone.css">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="back hotspot" href="gaming.html">← BACK</a><div class="title">CLOUD GAMING HELP</div><div></div></div>
+  <div class="grid">
+    <div class="card hotspot"><div class="icon">🔑</div><h2>LOGIN</h2><p>Steam / Xbox Cloud / GeForce NOW<br>Use your own account</p><div class="small">使用自己的帳號登入 / ご自身のアカウントでログイン</div></div>
+    <div class="card hotspot"><div class="icon">☁️</div><h2>NO DOWNLOAD</h2><p>Play instantly<br>Cloud streaming</p><div class="small">免下載即可遊玩 / ダウンロード不要</div></div>
+    <div class="card hotspot"><div class="icon">🕹️</div><h2>CONTROLLER SUPPORT</h2><p>USB Controller / Bluetooth Controller<br>Keyboard & Mouse</p><div class="small">支援手把操作 / コントローラー対応</div></div>
+    <a class="card hotspot" href="logout.html"><div class="icon">🔒</div><h2>LOGOUT & PRIVACY</h2><p>Logout all accounts after use<br>Steam / Xbox / GeForce NOW / Chrome</p><div class="small">離開前請登出帳號 / 利用後ログアウト</div></a>
+  </div>
+  <div class="footer">🎮 A = SELECT / OPEN　　B = BACK　　← → ↑ ↓ = NAVIGATE</div>
+</div>
+<script src="king-memory-safe-v124.js" defer></script>
+<script src="assets/king-game-phone.js"></script>
+</body></html>

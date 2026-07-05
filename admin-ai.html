@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>KING OS | Admin AI Operations Center Professional V384</title>
+<style>
+:root{--bg:#080d18;--panel:#111a2b;--panel2:#182136;--line:#31405c;--gold:#f7d85d;--cyan:#35f4ff;--text:#eef4ff;--muted:#95a4bd;--green:#18d7a3;--red:#ff3048;--blue:#0b8fff;--sidebar:112px}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif}button,select,input{font:inherit}.app{height:100dvh;width:100vw;display:grid;grid-template-columns:var(--sidebar) 1fr;background:linear-gradient(180deg,#111929,#07101d)}.sidebar{border-right:1px solid #26334d;background:#09111f;padding:10px 8px;display:flex;flex-direction:column;gap:7px}.brand{border:1px solid #57647e;border-radius:14px;padding:10px 5px;text-align:center;font-weight:900;line-height:1.1;letter-spacing:4px;font-size:14px}.brand small{display:block;letter-spacing:0;font-size:10px;color:#d9e4ff;margin-top:4px}.nav{display:flex;flex-direction:column;gap:7px;margin-top:5px}.nav button,.sideBtn{height:34px;border:0;border-radius:14px;background:transparent;color:#e8f0ff;font-weight:800;text-align:left;padding:0 8px;cursor:pointer}.nav button.active,.nav button:hover,.sideBtn:hover{background:#f4dfad;color:#1b2434}.sideBottom{margin-top:auto;display:flex;flex-direction:column;gap:8px}.sideBottom .sideBtn{text-align:center;border:1px solid #5d7ac8;background:#0d2a60;color:white}.main{height:100dvh;overflow:hidden;padding:10px 12px;display:grid;grid-template-rows:auto auto 1fr;gap:10px}.top{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center}.title{font-size:24px;font-weight:950;letter-spacing:.5px}.sub{color:#9fb1d1;font-size:12px;font-weight:800}.clock{border:1px solid #5270ab;border-radius:15px;background:#0e2a56;padding:7px 12px;font-size:12px;font-weight:950}.btn{height:34px;border:1px solid #526481;border-radius:13px;background:#14213a;color:white;font-weight:900;padding:0 13px;cursor:pointer;white-space:nowrap}.btn.gold{background:var(--gold);color:#1c2330}.btn.cyan{background:#023a52;border-color:#12eaff}.btn.green{background:#0f8f68;border-color:#24e4af}.btn.red{background:#9f1830;border-color:#ff5f76}.toolbar{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr)) auto auto;gap:8px;align-items:center}.select{height:34px;border:1px solid #526481;border-radius:13px;background:#111a2b;color:#f7e5a0;font-weight:900;padding:0 10px}.grid{min-height:0;display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}.card{border:1px solid #334560;background:linear-gradient(180deg,rgba(24,33,54,.95),rgba(10,17,31,.95));border-radius:16px;padding:12px;min-height:0;overflow:hidden}.card h2{margin:0 0 8px;font-size:16px;color:#f6df7a;display:flex;align-items:center;justify-content:space-between}.metric{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.m{border:1px solid #3b4e70;border-radius:14px;background:#0b1324;padding:10px;text-align:center}.m span{display:block;color:#9fb1d1;font-size:11px;font-weight:900}.m b{display:block;font-size:24px;color:#f7e5a0}.m small{color:#18d7a3;font-weight:900}.flow{display:grid;gap:7px}.step{border:1px solid #3b4e70;border-radius:12px;background:#0b1324;padding:8px 10px;font-weight:900;display:flex;justify-content:space-between}.step em{font-style:normal;color:#35f4ff}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.logList,.reportBox{height:calc(100% - 30px);overflow:auto;border:1px solid #2f405d;border-radius:12px;background:#081120;padding:8px;font-size:12px;line-height:1.55;white-space:pre-wrap}.logItem{border-bottom:1px solid #293950;padding:7px 2px}.logItem b{color:#f7e5a0}.tag{display:inline-flex;border:1px solid #546680;border-radius:999px;padding:2px 8px;font-size:11px;font-weight:900;color:#cfe5ff}.status{display:grid;grid-template-columns:1fr 1fr;gap:8px}.status div{border:1px solid #334560;border-radius:12px;padding:8px;background:#0b1324}.status b{color:#18d7a3}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#101827;border:1px solid #5e6d88;border-radius:12px;color:#fff;padding:10px 18px;font-weight:900;display:none;z-index:50}.toast.show{display:block}.modal{position:fixed;inset:48px 80px;background:#0c1424;border:1px solid #60708d;border-radius:18px;box-shadow:0 20px 80px #000b;z-index:40;display:none;grid-template-rows:auto 1fr auto;overflow:hidden}.modal.show{display:grid}.modalHead,.modalFoot{padding:12px 16px;border-bottom:1px solid #334560;display:flex;justify-content:space-between;align-items:center}.modalFoot{border-top:1px solid #334560;border-bottom:0;gap:10px;justify-content:flex-end}.modalBody{padding:16px;overflow:auto}.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}.diff{border:1px solid #445879;border-radius:14px;background:#111a2b;padding:12px}.diff h3{margin:0 0 8px;color:#f7d85d}.diff p{margin:6px 0;color:#dfe9ff}.opList{display:grid;gap:7px}.op{border:1px solid #3f526f;border-radius:12px;padding:8px;background:#0b1324;display:flex;justify-content:space-between;font-weight:900}.op i{font-style:normal;color:#35f4ff}@media(max-width:980px){.grid{grid-template-columns:1fr;grid-template-rows:auto}.toolbar{grid-template-columns:1fr 1fr}.modal{inset:20px}}
+
+/* V383 AI Operations dashboard upgrade */
+.navSep{height:1px;background:linear-gradient(90deg,transparent,#31405c,transparent);margin:3px 5px}.nav button.active{box-shadow:0 0 0 1px rgba(247,216,93,.35),0 0 16px rgba(247,216,93,.18)}
+.metric.pro{grid-template-columns:repeat(4,1fr)}.timeTabs{display:flex;gap:8px;margin:6px 0 10px}.timeTabs button{height:28px;border:1px solid #43536f;border-radius:999px;background:#0b1324;color:#cfe5ff;font-weight:900;padding:0 12px}.timeTabs button.active{background:#f7d85d;color:#101827}.scoreBig{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:center}.scoreCircle{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#18d7a3 0 96%,#26344c 96% 100%);box-shadow:0 0 22px rgba(24,215,163,.18)}.scoreCircle b{width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:#0b1324;font-size:30px;color:#f7d85d}.reason{font-size:12px;line-height:1.65;color:#dfe9ff}.bars{display:grid;gap:8px}.barRow{display:grid;grid-template-columns:72px 1fr 42px;gap:8px;align-items:center;font-size:12px;font-weight:900}.bar{height:10px;border-radius:999px;background:#1e2a42;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#0b8fff,#35f4ff);border-radius:999px}.suggestion{border:1px solid #334560;border-radius:12px;background:#0b1324;padding:8px;margin-bottom:7px}.suggestion b{color:#f7d85d}.suggestion span{display:block;color:#9fb1d1;font-size:11px;margin-top:3px}.miniBtn{height:25px;border:1px solid #526481;border-radius:9px;background:#14213a;color:white;font-size:11px;font-weight:900;margin-top:6px;margin-right:4px;padding:0 8px}
+
+/* V383 Admin sidebar unified with 房況月曆規格 */
+:root{--sidebar:104px}
+.app{grid-template-columns:var(--sidebar) 1fr!important}
+.sidebar{width:104px!important;min-width:104px!important;padding:8px 7px!important;gap:5px!important}
+.sidebar .brand,.brand{border-radius:14px!important;padding:8px 5px!important;font-size:13px!important;letter-spacing:3px!important;min-height:64px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important}
+.sidebar .brand small,.brand small{font-size:9px!important;margin-top:4px!important;letter-spacing:0!important}
+.sidebar .nav,.nav{gap:5px!important;margin-top:5px!important}
+.sidebar .nav button,.nav button{height:30px!important;min-height:30px!important;border-radius:12px!important;font-size:13px!important;font-weight:850!important;line-height:1!important;padding:0 7px!important;display:flex!important;align-items:center!important;white-space:nowrap!important}
+.sidebar .navSep,.navSep{height:1px!important;margin:3px 5px!important;background:linear-gradient(90deg,transparent,#31405c,transparent)!important}
+.sidebar .sideBottom,.sideBottom{gap:6px!important}
+.sidebar .sideBottom .sideBtn,.sideBottom .sideBtn{height:30px!important;border-radius:12px!important;font-size:13px!important;padding:0 7px!important}
+
+
+/* V383 Enterprise unified Admin Console sidebar */
+:root{--sidebar:104px}
+.app{grid-template-columns:var(--sidebar) 1fr!important}
+.sidebar{width:104px!important;min-width:104px!important;border-right:1px solid #26334d!important;background:#09111f!important;padding:8px 7px!important;display:flex!important;flex-direction:column!important;gap:5px!important}
+.sidebar .brand,.brand{border:1px solid #57647e!important;border-radius:14px!important;padding:8px 5px!important;text-align:center!important;font-weight:900!important;line-height:1.1!important;letter-spacing:3px!important;font-size:13px!important;min-height:64px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;color:#eef4ff!important}
+.sidebar .brand small,.brand small{display:block!important;letter-spacing:0!important;font-size:9px!important;color:#d9e4ff!important;margin-top:4px!important}
+.sidebar .nav,.nav{display:flex!important;flex-direction:column!important;gap:5px!important;margin-top:5px!important}
+.sidebar .nav button,.nav button,.sidebar .sideBtn,.sideBtn{height:30px!important;min-height:30px!important;border:0!important;border-radius:12px!important;background:transparent!important;color:#e8f0ff!important;font-size:13px!important;font-weight:850!important;text-align:left!important;padding:0 7px!important;cursor:pointer!important;display:flex!important;align-items:center!important;white-space:nowrap!important}
+.sidebar .nav button.active,.sidebar .nav button:hover,.nav button.active,.nav button:hover,.sidebar .sideBtn:hover,.sideBtn:hover{background:#f4dfad!important;color:#1b2434!important;box-shadow:0 0 0 1px rgba(247,216,93,.35),0 0 16px rgba(247,216,93,.18)!important}
+.sidebar .navSep,.navSep{height:1px!important;margin:3px 5px!important;background:linear-gradient(90deg,transparent,#31405c,transparent)!important}
+.sidebar .sideBottom,.sideBottom{margin-top:auto!important;display:flex!important;flex-direction:column!important;gap:6px!important}
+.sidebar .sideBottom .sideBtn,.sideBottom .sideBtn{justify-content:center!important;text-align:center!important;border:1px solid #5d7ac8!important;background:#0d2a60!important;color:#fff!important;height:30px!important;border-radius:12px!important;font-size:13px!important;padding:0 7px!important}
+
+
+/* V384 AI Center tabs + unified admin labels */
+.navLabel{font-size:9px;color:#7f91b1;font-weight:950;letter-spacing:.08em;margin:2px 6px -1px;}
+.aiTabs{display:flex;gap:8px;align-items:center;margin-top:-3px;}
+.aiTabs button{height:30px;border:1px solid #526481;border-radius:999px;background:#0b1324;color:#dfe9ff;font-weight:950;padding:0 14px;}
+.aiTabs button.active{background:#f7d85d;color:#111827;border-color:#f7d85d;}
+.card[data-tab]{display:none;}
+body.ai-tab-opt .card[data-tab="opt"],body.ai-tab-revenue .card[data-tab="revenue"],body.ai-tab-history .card[data-tab="history"]{display:block;}
+body.ai-tab-opt .grid,body.ai-tab-revenue .grid,body.ai-tab-history .grid{grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:1fr 1fr;}
+
+
+/* V388 universal responsive admin layout: phone / tablet / laptop / desktop */
+:root{
+  --admin-safe-top: calc(env(safe-area-inset-top, 0px));
+  --admin-safe-bottom: calc(env(safe-area-inset-bottom, 0px));
+}
+html,body{min-width:0!important;}
+.app{min-width:0!important;}
+.main{min-width:0!important;}
+.topbar,.sourcebar,.queue{min-width:0!important;}
+.search{min-width:0!important;}
+.calendarWrap{min-width:0!important;}
+.gridScroll{height:calc(var(--row) * 16)!important;max-height:calc(100dvh - 172px)!important;min-height:220px!important;overflow:auto!important;}
+.grid,.dates{will-change:auto!important;}
+.drawer{max-height:calc(100dvh - 62px)!important;}
+.quick3{min-height:0!important;}
+
+/* Desktop and large touch monitors */
+@media (min-width:1441px){
+  :root{--sidebar:112px;--room:76px;--day:clamp(64px, calc((100vw - var(--sidebar) - 46px - var(--room)) / 16), 96px);--row:clamp(28px, calc((100dvh - 178px) / 16), 36px);}
+  .main{padding:7px 10px 9px!important;gap:5px!important;}
+  .gridScroll{max-height:calc(100dvh - 170px)!important;}
+}
+
+/* Normal laptop: 13-15 inch, avoids calendar overflow */
+@media (min-width:1101px) and (max-width:1440px){
+  :root{--sidebar:102px;--room:66px;--day:clamp(50px, calc((100vw - var(--sidebar) - 34px - var(--room)) / 16), 74px);--row:clamp(23px, calc((100dvh - 166px) / 16), 31px);}
+  .sidebar{padding:8px 7px!important;gap:5px!important;}
+  .brand{font-size:13px!important;padding:8px 4px!important;letter-spacing:3px!important;}
+  .nav{gap:4px!important;}
+  .nav button,.sideBtn{height:30px!important;font-size:13px!important;border-radius:12px!important;padding:0 6px!important;}
+  .main{padding:5px 7px 7px!important;gap:4px!important;}
+  .topbar{grid-template-columns:auto auto minmax(210px,1fr) 48px 54px 44px auto!important;gap:5px!important;min-height:29px!important;}
+  .title{font-size:20px!important;}
+  .pill{height:28px!important;min-width:82px!important;padding:0 9px!important;font-size:12px!important;}
+  .search{height:28px!important;font-size:12px!important;padding:0 10px!important;}
+  .topbar .btn,.clock{height:28px!important;font-size:11px!important;min-width:44px!important;padding:0 8px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:70px 70px 70px 70px minmax(320px,1fr)!important;gap:5px!important;}
+  .source{height:27px!important;min-width:70px!important;width:70px!important;font-size:11px!important;}
+  .opsStats{gap:4px!important;}
+  .statBox{height:25px!important;font-size:10px!important;}
+  .statBox b{font-size:14px!important;}
+  .queue{grid-template-columns:48px 132px 140px 1fr auto!important;gap:5px!important;}
+  .pendingCard{height:31px!important;font-size:10px!important;padding:3px 7px!important;}
+  .waiting{font-size:12px!important;}.waiting b{font-size:18px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:29px!important;min-width:74px!important;font-size:12px!important;padding:0 8px!important;}
+  .roomHead,.dateCell{height:32px!important;}
+  .roomHead{font-size:20px!important;}.dateCell{font-size:12px!important;}.dateCell .dow{font-size:9px!important;}
+  .roomCell{font-size:18px!important;}.order{font-size:10px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{top:52px!important;right:8px!important;width:360px!important;max-width:calc(100vw - var(--sidebar) - 14px)!important;}
+  .drawerHead{height:32px!important;font-size:14px!important;}
+  .drawerBody{padding:6px!important;gap:4px!important;}
+  .qcol{padding:6px!important;gap:4px!important;}
+  .qcol h3{font-size:12px!important;margin:0 0 3px!important;}
+  .field label{font-size:8px!important;}.field input,.field select{height:23px!important;font-size:11px!important;padding:0 5px!important;}
+  .drawerFoot{height:38px!important;padding:5px 6px!important;}.drawerFoot button{height:28px!important;font-size:11px!important;}
+}
+
+/* Small laptop / tablet landscape */
+@media (min-width:901px) and (max-width:1100px){
+  :root{--sidebar:94px;--room:60px;--day:clamp(44px, calc((100vw - var(--sidebar) - 24px - var(--room)) / 16), 60px);--row:clamp(21px, calc((100dvh - 158px) / 16), 28px);}
+  .sidebar{padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:12px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{padding:4px 5px 5px!important;gap:3px!important;}
+  .topbar{grid-template-columns:auto auto minmax(160px,1fr) 44px 48px 42px auto!important;gap:4px!important;}
+  .title{font-size:18px!important;}.pill{height:26px!important;min-width:72px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;font-size:11px!important;padding:0 9px!important;}
+  .clock{display:none!important;}.topbar .btn{height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px minmax(260px,1fr)!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,minmax(42px,1fr))!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:42px 118px 120px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:62px!important;font-size:11px!important;padding:0 6px!important;}
+  .roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;}
+  .holidayLegend{transform:scale(.86);transform-origin:left bottom;}
+  .drawer{top:48px!important;right:5px!important;width:330px!important;max-width:calc(100vw - var(--sidebar) - 10px)!important;}
+  .drawerHead{height:30px!important;font-size:13px!important;}.drawerBody{padding:5px!important;gap:3px!important;}
+  .quick3{gap:4px!important}.qcol{padding:5px!important;gap:3px!important}.qcol h3{font-size:11px!important;margin-bottom:2px!important;}
+  .field label{font-size:7.5px!important}.field input,.field select{height:21px!important;font-size:10px!important;padding:0 4px!important;}
+  .checks{font-size:9px!important}.aiLine{height:20px!important;font-size:9px!important;}
+  .drawerFoot{height:34px!important;padding:4px 5px!important}.drawerFoot button{height:26px!important;font-size:10px!important;}
+}
+
+/* Phone / narrow tablet: use full desktop admin canvas with horizontal pan; no hidden backend items */
+@media (max-width:900px){
+  html,body{overflow:auto!important;height:auto!important;min-height:100dvh!important;-webkit-overflow-scrolling:touch!important;}
+  body{background:#080d18!important;}
+  :root{--sidebar:96px;--room:62px;--day:54px;--row:26px;}
+  .app{width:1180px!important;min-width:1180px!important;height:760px!important;min-height:760px!important;grid-template-columns:var(--sidebar) 1fr!important;overflow:hidden!important;}
+  .sidebar{display:flex!important;padding:7px 5px!important;gap:4px!important;}
+  .brand{font-size:11px!important;padding:7px 3px!important;letter-spacing:2px!important;}
+  .nav{gap:4px!important}.nav button,.sideBtn{height:28px!important;font-size:12px!important;border-radius:10px!important;padding:0 5px!important;}
+  .main{height:760px!important;padding:4px 5px 5px!important;gap:3px!important;grid-template-rows:auto auto 1fr!important;}
+  .topbar{grid-template-columns:auto auto 240px 46px 54px 46px 110px!important;gap:4px!important;min-height:28px!important;}
+  .title{font-size:18px!important}.hotelTabs{gap:3px!important}.pill{height:26px!important;min-width:74px!important;padding:0 7px!important;font-size:11px!important;}
+  .search{height:26px!important;width:240px!important;font-size:11px!important;padding:0 9px!important;}
+  .topbar .btn,.clock{display:flex!important;height:26px!important;font-size:11px!important;min-width:42px!important;padding:0 6px!important;}
+  .sourcebar.kpiAfterOfficial{grid-template-columns:62px 62px 62px 62px 1fr!important;gap:4px!important;}
+  .source{height:25px!important;min-width:62px!important;width:62px!important;font-size:10px!important;}
+  .opsStats{grid-template-columns:repeat(6,1fr)!important;gap:3px!important;}
+  .statBox{height:23px!important;font-size:9px!important;padding:1px!important;}.statBox b{font-size:13px!important;}
+  .queue{grid-template-columns:44px 132px 150px 1fr auto!important;gap:4px!important;}
+  .pendingCard{height:28px!important;font-size:9px!important;padding:3px 6px!important;display:block!important;}.waiting{font-size:11px!important}.waiting b{font-size:16px!important;}
+  .monthNav{justify-content:flex-end!important;}.monthNav .btn,.queue .btn.addOrder,.queue .btn.aiAssign{height:27px!important;min-width:68px!important;font-size:11px!important;padding:0 6px!important;}
+  .calendarWrap{min-height:0!important;}.roomHead,.dateCell{height:30px!important;}.roomHead{font-size:18px!important}.dateCell{font-size:11px!important}.dateCell .dow{font-size:8px!important;}
+  .gridScroll{height:calc(var(--row) * 16)!important;max-height:none!important;min-height:0!important;overflow:auto!important;touch-action:pan-x pan-y!important;}
+  .grid{grid-template-columns:var(--room) repeat(var(--total-days),var(--day))!important;grid-auto-rows:var(--row)!important;width:calc(var(--room) + var(--total-days) * var(--day))!important;min-width:calc(var(--room) + var(--total-days) * var(--day))!important;}
+  .dates{grid-auto-columns:var(--day)!important;}.roomCell{font-size:17px!important}.order{font-size:9px!important;padding:0 4px!important;height:calc(var(--row) - 5px)!important;}
+  .drawer{position:fixed!important;top:42px!important;right:6px!important;left:auto!important;width:360px!important;max-width:calc(100vw - 12px)!important;max-height:calc(100dvh - 48px)!important;z-index:999!important;}
+  .drawer.show{grid-template-rows:30px minmax(0,1fr) 36px!important}.drawerHead{height:30px!important;font-size:13px!important}.drawerBody{padding:5px!important;gap:3px!important;overflow:auto!important}.quick3{grid-template-columns:1fr!important;gap:4px!important}.qcol{padding:5px!important}.field input,.field select{height:22px!important;font-size:10px!important}.field label{font-size:8px!important}.drawerFoot{height:36px!important;padding:4px 5px!important}.drawerFoot button{height:27px!important;font-size:10px!important;}
+}
+
+/* Very short laptop height: keep calendar aligned instead of pushing out of frame */
+@media (max-height:700px) and (min-width:901px){
+  :root{--row:clamp(20px, calc((100dvh - 150px) / 16), 27px);}
+  .main{gap:3px!important;padding-top:4px!important;padding-bottom:5px!important;}
+  .brand{padding-top:6px!important;padding-bottom:6px!important}.nav button,.sideBtn{height:27px!important;}
+  .topbar{min-height:27px!important}.pill,.search,.btn,.clock{height:26px!important;}
+  .source,.statBox{height:23px!important}.pendingCard{height:27px!important}.roomHead,.dateCell{height:29px!important;}
+  .drawer{top:36px!important;max-height:calc(100dvh - 42px)!important;}
+}
+
+</style>
+</head>
+<body class="ai-tab-opt">
+<div class="app">
+  <aside class="sidebar adminSidebarV383">
+    <div class="brand">KING<br>HOTEL<small>OS V384</small></div>
+    <nav class="nav">
+      <div class="navLabel">營運</div>
+      <button onclick="location.href='admin.html'">🏨 Dashboard</button>
+      <button onclick="location.href='booking-admin.html'">📅 今日訂單</button>
+      <button onclick="location.href='admin.html'">🛏 房況月曆</button>
+      <button onclick="location.href='staff.html'">👥 住宿</button>
+      <button onclick="location.href='admin-cleaning.html'">🧹 清掃</button>
+      <div class="navSep"></div>
+      <div class="navLabel">收益</div>
+      <button onclick="location.href='rate-admin.html'">🔗 OTA</button>
+      <button onclick="(window.showToast?showToast('價格中心準備中'):(window.toast?toast('價格中心準備中'):alert('價格中心準備中')))">💹 價格中心</button>
+      <button onclick="(window.showToast?showToast('收益中心準備中'):(window.toast?toast('收益中心準備中'):alert('收益中心準備中')))">💰 收益中心</button>
+      <div class="navSep"></div>
+      <div class="navLabel">AI</div>
+      <button class="active" onclick="location.href='admin-ai.html'">🤖 AI營運中心</button>
+      <button onclick="(window.showToast?showToast('報表中心準備中'):(window.toast?toast('報表中心準備中'):alert('報表中心準備中')))">📊 報表中心</button>
+      <div class="navSep"></div>
+      <div class="navLabel">系統</div>
+      <button onclick="(window.showToast?showToast('設定功能準備中'):(window.toast?toast('設定功能準備中'):alert('設定功能準備中')))">⚙️ 設定</button>
+    </nav>
+    <div class="sideBottom">
+      <button class="sideBtn" onclick="location.href='admin.html'">房況</button>
+      <button class="sideBtn" onclick="location.href='ai.html'">前台AI</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div><div class="title">KING HOTEL Admin Console｜AI營運中心</div><div class="sub">管理者專用 AI Operations Center；前台 AI Concierge 保留在 ai.html，兩者完全分離。</div></div>
+      <div></div><div class="clock" id="clock">--</div>
+    </div>
+    <div class="toolbar">
+      <select class="select" id="mode"><option>平衡模式</option><option>收益最大化</option><option>入住率最大化</option><option>減少清掃模式</option></select>
+      <select class="select" id="safe"><option>手動確認</option><option>模擬模式</option><option>建議模式</option><option>半自動確認</option><option disabled>全自動（預留）</option></select>
+      <select class="select" id="scope"><option>未來31天</option><option>未來16天</option><option>本週</option><option>本月</option></select>
+      <select class="select" id="hotel"><option>King Hotel</option><option>Amin Hotel</option><option>I do Hotel</option><option>三館總覽</option></select>
+      <button class="btn cyan" onclick="runAnalysis()">AI分析</button>
+      <button class="btn gold" onclick="openModal()">查看差異 / 確認</button>
+    </div>
+    <div class="aiTabs"><button class="active" onclick="setAiTab('opt',this)">① AI最佳化</button><button onclick="setAiTab('revenue',this)">② 收益分析</button><button onclick="setAiTab('history',this)">③ AI歷史紀錄</button></div>
+    <div class="timeTabs"><button class="active" onclick="showToast('已切換：今天')">今天</button><button onclick="showToast('已切換：7天')">7天</button><button onclick="showToast('已切換：31天')">31天</button><button onclick="showToast('已切換：90天')">90天</button></div>
+    <section class="grid">
+      <div class="card" data-tab="opt">
+        <h2>今日 AI 營運摘要 <span class="tag">Professional</span></h2>
+        <div class="scoreBig"><div class="scoreCircle"><b id="score">96</b></div><div class="reason">營運分數 Excellent。主要原因：入住率預估提升 +7%、空房減少 6 晚、清掃移動減少 4 次、OTA 結構穩定。所有最佳化仍需管理員確認後才會套用。</div></div>
+        <div class="metric pro" style="margin-top:10px">
+          <div class="m"><span>入住率</span><b>87→94%</b><small>+7%</small></div>
+          <div class="m"><span>ADR</span><b>¥18.6k</b><small>平均房價</small></div>
+          <div class="m"><span>RevPAR</span><b>¥16.2k</b><small>+13%</small></div>
+          <div class="m"><span>GOP預估</span><b>¥286k</b><small>今日</small></div>
+          <div class="m"><span>今日營收</span><b>¥312k</b><small>預估</small></div>
+          <div class="m"><span>本月營收</span><b>¥8.4M</b><small>預估</small></div>
+          <div class="m"><span>空房減少</span><b>6晚</b><small>可接續</small></div>
+          <div class="m"><span>待確認</span><b>2</b><small>需人工</small></div>
+        </div>
+        <div class="actions"><button class="btn cyan" onclick="simulate()">AI模擬</button><button class="btn green" onclick="openModal()">確認套用</button><button class="btn" onclick="makeReport()">產生報告</button><button class="btn red" onclick="rollback()">還原AI</button></div>
+      </div>
+      <div class="card" data-tab="opt">
+        <h2>AI 最佳化流程 <span class="tag">所有分數皆需確認</span></h2>
+        <div class="flow">
+          <div class="step">1. 分析訂單與空房 <em>完成</em></div>
+          <div class="step">2. 模擬月曆最佳化 <em>完成</em></div>
+          <div class="step">3. 計算 AI 評分 <em>96分</em></div>
+          <div class="step">4. 顯示最佳化內容 <em>待確認</em></div>
+          <div class="step">5. 管理員確認 <em>必須</em></div>
+          <div class="step">6. 套用並建立紀錄 <em>等待</em></div>
+        </div>
+      </div>
+      <div class="card" data-tab="opt">
+        <h2>AI 系統狀態 <span class="tag">21:00 自動分析</span></h2>
+        <div class="status">
+          <div>每日分析：<b>啟用</b></div><div>Email：<b>kellyhouse168@gmail.com</b></div>
+          <div>PDF報表：<b>預留</b></div><div>OTA同步：<b>預留</b></div>
+          <div>Beds24：<b>預留</b></div><div>最後更新：<b id="lastUpdate">13:00</b></div>
+        </div>
+      </div>
+      <div class="card" data-tab="revenue">
+        <h2>AI 報告</h2><div class="reportBox" id="reportBox">按「產生報告」或「AI分析」後，這裡會顯示最佳化摘要。\n\n內容包含：入住率、RevPAR、ADR、收益、空房、清掃、OTA 分析、建議價格與建議換房。</div>
+      </div>
+      <div class="card" data-tab="history">
+        <h2>AI 操作紀錄</h2><div class="logList" id="logList"></div>
+      </div>
+      <div class="card" data-tab="revenue">
+        <h2>AI 分析模組</h2>
+        <div class="bars">
+          <div class="barRow"><span>Airbnb</span><div class="bar"><i style="width:62%"></i></div><b>62%</b></div>
+          <div class="barRow"><span>Booking</span><div class="bar"><i style="width:24%"></i></div><b>24%</b></div>
+          <div class="barRow"><span>Agoda</span><div class="bar"><i style="width:9%"></i></div><b>9%</b></div>
+          <div class="barRow"><span>官網</span><div class="bar"><i style="width:5%"></i></div><b>5%</b></div>
+        </div>
+        <div style="margin-top:10px">
+          <div class="suggestion"><b>價格建議</b><span>7/12～7/14 假日需求偏高，建議標準雙人房 +8%。</span><button class="miniBtn" onclick="showToast('價格建議已加入待確認')">加入待確認</button><button class="miniBtn" onclick="showToast('已忽略')">忽略</button></div>
+          <div class="suggestion"><b>排房建議</b><span>205→206 可接續住宿，減少 1 晚空房與 1 次清掃。</span><button class="miniBtn" onclick="openModal()">查看原因</button></div>
+        </div>
+      </div>
+          <div class="card" data-tab="history"><h2>AI 還原紀錄</h2><div class="reportBox">每次確認套用前都會保存快照。按「還原AI」後可回復上一版配置，並寫入歷史紀錄。</div></div>
+      <div class="card" data-tab="revenue"><h2>收益中心摘要</h2><div class="reportBox">ADR / RevPAR / GOP 預留為正式收益中心資料來源。後續串接 OTA 與 Beds24 後，可改為真實營收統計。</div></div>
+    </section>
+  </main>
+</div>
+<div class="modal" id="modal">
+  <div class="modalHead"><b>AI最佳化差異與確認</b><button class="btn" onclick="closeModal()">關閉</button></div>
+  <div class="modalBody">
+    <div class="compare">
+      <div class="diff"><h3>最佳化前</h3><p>入住率：87%</p><p>空房：18晚</p><p>預估收益：¥1,280,000</p><p>清掃次數：22次</p><p>RevPAR：¥12,600</p></div>
+      <div class="diff"><h3>最佳化後</h3><p>入住率：94%</p><p>空房：12晚</p><p>預估收益：¥1,462,000</p><p>清掃次數：18次</p><p>RevPAR：¥14,300</p></div>
+    </div>
+    <h3 style="color:#f7d85d">建議操作</h3>
+    <div class="opList">
+      <div class="op"><span>205 → 206</span><i>接續住宿，減少1晚空房</i></div>
+      <div class="op"><span>302 → 301</span><i>同樓層合併，減少清掃移動</i></div>
+      <div class="op"><span>7/12 房價 +8%</span><i>歐美假期需求</i></div>
+      <div class="op"><span>Booking 3晚訂單優先保留</span><i>避免拆房</i></div>
+    </div>
+  </div>
+  <div class="modalFoot"><button class="btn" onclick="closeModal()">取消</button><button class="btn green" onclick="applyOptimization()">管理員確認套用</button></div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+function pad(n){return String(n).padStart(2,'0')}
+function tick(){const d=new Date();document.getElementById('clock').textContent=`${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;document.getElementById('lastUpdate').textContent=`${pad(d.getHours())}:${pad(d.getMinutes())}`}
+setInterval(tick,1000);tick();
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+function showToast(t){toast(t)}
+function logs(){try{return JSON.parse(localStorage.getItem('king_ai_ops_logs')||'[]')}catch(e){return[]}}
+function saveLogs(a){localStorage.setItem('king_ai_ops_logs',JSON.stringify(a.slice(0,40)));renderLogs()}
+function addLog(type,detail){const d=new Date();const arr=logs();arr.unshift({time:`${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`,type,detail});saveLogs(arr)}
+function setAiTab(tab,btn){document.body.className='ai-tab-'+tab;document.querySelectorAll('.aiTabs button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active')}
+function renderLogs(){const box=document.getElementById('logList');const arr=logs();box.innerHTML=arr.length?arr.map(x=>`<div class="logItem"><b>${x.time}</b>｜${x.type}<br>${x.detail}</div>`).join(''):'尚無 AI 操作紀錄。所有最佳化套用後都會記錄在這裡。'}
+function makeReport(){const txt=`AI每日營運報告\n\nAI評分：96分（需管理員確認）\n營運模式：${document.getElementById('mode').value}\nAI安全模式：${document.getElementById('safe').value}\n範圍：${document.getElementById('scope').value}\n\n最佳化前：入住率 87%，收益 ¥1,280,000，空房18晚\n最佳化後：入住率 94%，收益 ¥1,462,000，空房12晚\n\n建議：\n・205 → 206：接續住宿\n・302 → 301：減少清掃移動\n・7/12 房價 +8%\n\nEmail報表：kellyhouse168@gmail.com（實際寄送需後端郵件服務）`;document.getElementById('reportBox').textContent=txt;addLog('產生AI報告','已產生最佳化前後比較報告，尚未套用。');toast('已產生AI報告')}
+function runAnalysis(){makeReport();toast('AI分析完成，等待管理員確認')}
+function simulate(){addLog('AI模擬','完成月曆最佳化模擬；未修改任何訂單資料。');toast('AI模擬完成，未修改資料')}
+function openModal(){document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function applyOptimization(){addLog('AI最佳化套用','Admin確認套用：205→206、302→301、7/12房價+8%；收益預估+¥182,000，入住率87→94%。');closeModal();toast('已確認套用並建立AI紀錄')}
+function rollback(){addLog('還原AI','已執行還原上一次AI最佳化（前端示範紀錄）。');toast('已建立還原紀錄')}
+renderLogs();
+// 21:00 前端提醒：真正自動排程需後端或保持頁面開啟
+setInterval(()=>{const d=new Date(); if(d.getHours()===21 && d.getMinutes()===0 && !sessionStorage.getItem('ai21_'+d.toDateString())){sessionStorage.setItem('ai21_'+d.toDateString(),'1');runAnalysis();}},30000);
+</script>
+</body>
+</html>
