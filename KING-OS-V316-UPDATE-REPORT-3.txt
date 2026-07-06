@@ -1,0 +1,56 @@
+KING OS V316 Professional PMS 修改報告
+
+本次由 V315 升級為 V316，主要修改：
+
+1. 後台版本標示
+- admin.html 標題升級：KING HOTEL V316 Professional PMS
+- 側邊欄升級：BACKOFFICE OS V316
+- 後台說明改為：31天每日價格・假期比價・OTA 同步
+
+2. 每日價格管理
+- 保留每月基準價。
+- 新增 1個月 / 31天每日價格表。
+- 支援快速填入每日價格。
+- 支援將每月基準價套入每日價格。
+- 支援清空目前月份每日價，回到每月基準價。
+- 今日日期自動高亮。
+- 每日價格會存入 localStorage：king_daily_prices_v314，訂房前台可直接讀取。
+
+3. 多國假期顏色
+- 日本：紅色
+- 中國：粉紅
+- 韓國：淡橘
+- 台灣：黃色
+- 香港：紫色
+- 菲律賓：水藍
+- 美國、加拿大、英國、澳洲、法國、德國、義大利、西班牙：藍綠系
+- 同一天多國假期會加白色內框。
+- 月份下方會顯示本月假期備註與售價調整依據。
+
+4. 附近五家旅館比價
+- 新增附近旅館名稱欄位。
+- 預設帶入押上 / 錦糸町附近常見參考旅館名稱。
+- 輸入五家價格後，自動計算平均、最低、最高。
+- AI 建議價格會依入住率、平日/週末/假期、策略自動修正。
+
+5. OTA / Channel Manager 同步
+- 原本 Airbnb / Agoda / Booking.com / Google Hotels。
+- V316 新增 Expedia。
+- V316 新增 Trip.com。
+- 模擬同步紀錄會列出所有啟用平台。
+- 正式上線時仍需部署 Cloudflare Worker 並設定 Beds24 或 Channel Manager API 金鑰。
+
+6. 相容性
+- 保留原 backoffice-v185 路徑，避免舊頁面引用失效。
+- 保留 monthly price key：king_monthly_prices_v312。
+- 保留 daily price key：king_daily_prices_v314。
+- booking.html / booking-customer-v300.js 可讀取後台每日價格。
+
+主要修改檔案：
+- admin.html
+- assets/backoffice-v185/backoffice.js
+
+登入方式：
+- admin.html
+- 帳號：admin
+- 密碼：87654321

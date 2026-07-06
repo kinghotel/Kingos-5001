@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KING HOTEL Home</title>
+<style>
+html,body{
+  margin:0!important;
+  padding:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+  background:#000!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans SC","Noto Sans JP","Noto Sans KR","Segoe UI",Arial,sans-serif!important;
+  touch-action:manipulation;
+}
+*{box-sizing:border-box}
+.stage{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  background:#000!important;
+  overflow:hidden;
+}
+.stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:#000;
+  z-index:0;
+}
+.bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  display:block;
+  pointer-events:none;
+  user-select:none;
+  z-index:1;
+  -webkit-user-drag:none;
+}
+.sr{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+}
+.hot{
+  position:absolute;
+  display:block;
+  text-decoration:none;
+  color:transparent;
+  background:rgba(0,0,0,.001);
+  border:1px solid rgba(255,218,105,.00);
+  border-radius:.78vw;
+  -webkit-tap-highlight-color:rgba(255,218,90,.16);
+  touch-action:manipulation;
+}
+.hot:active,.hot:focus{
+  outline:1px solid rgba(255,225,135,.20);
+  background:rgba(255,215,80,.035);
+}
+.debug-hot .hot{
+  outline:1px solid rgba(255,215,0,.28)!important;
+  background:rgba(255,215,0,.045)!important;
+}
+.home-cardfield{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+}
+.home-cardfield .hot{pointer-events:auto;}
+/* V267：時間置左；溫度接在時間後方，兩者固定 15px 間距；只顯示數字與溫度 */
+.home-live{
+  position:absolute;
+  z-index:8;
+  pointer-events:none;
+  color:#f7ca5a;
+  font-weight:900;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+  font-size:clamp(22px,2.65vw,48px);
+  line-height:1;
+  white-space:nowrap;
+  text-shadow:
+    0 0 .45vw rgba(255,196,70,.90),
+    0 0 .18vw rgba(255,245,200,.80),
+    0 .10vw .28vw rgba(0,0,0,.95);
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.home-live .live-label{display:none!important;}
+.home-live .live-value{color:#f7ca5a;}
+.home-live-combo{top:4.70%;left:2.15%;display:flex;align-items:center;gap:15px;white-space:nowrap;}
+.home-live-time,.home-live-weather{position:static;}
+/* 首頁語言按鈕：依照 V262 新首頁母圖卡片位置校正 */
+.lang-ja{left:27.95%;top:46.15%;width:19.70%;height:12.45%;}
+.lang-en{left:48.15%;top:46.15%;width:19.70%;height:12.45%;}
+.lang-ko{left:21.35%;top:60.00%;width:17.72%;height:13.10%;}
+.lang-zh{left:39.65%;top:60.00%;width:18.18%;height:13.10%;}
+.lang-cn{left:58.35%;top:60.00%;width:17.92%;height:13.10%;}
+/* 右側機器人熱區：點擊進入 AI 客服；不壓到語言卡片與底部資訊列 */
+.home-ai-robot{left:73.00%;top:10.50%;width:25.45%;height:62.30%;border-radius:1.10vw;}
+/* 底部五個資訊欄位 */
+.home-checkin{left:2.55%;top:75.60%;width:18.10%;height:21.70%;}
+.home-checkout{left:20.65%;top:75.60%;width:18.05%;height:21.70%;}
+.home-info{left:38.70%;top:75.60%;width:23.25%;height:21.70%;}
+.home-wifi{left:61.95%;top:75.60%;width:18.05%;height:21.70%;}
+.home-account{left:80.00%;top:75.60%;width:18.30%;height:21.70%;}
+@media (max-aspect-ratio:16/9){
+  .home-live{font-size:clamp(20px,2.38vw,44px)}
+  .home-live-combo{left:2.00%;top:4.45%;gap:15px;}
+}
+</style>
+<meta name="theme-color" content="#000000">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/king-hotfix-v247.css">
+<link rel="stylesheet" href="assets/king-common-fixes-v249.css">
+
+<style id="V5003_MERGE_SAFE_FALLBACK">
+.v5003-fallback{display:none;position:fixed;inset:0;background:#050505;color:#f7ca5a;z-index:5;align-items:center;justify-content:center;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",Arial,sans-serif}
+.v5003-fallback.on{display:flex}.v5003-fallback h1{font-size:min(8vw,68px);letter-spacing:.1em;margin:0 0 26px}.v5003-fallback .grid{display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));gap:12px;max-width:520px;margin:auto}.v5003-fallback a{display:block;color:#111;text-decoration:none;background:linear-gradient(180deg,#ffe58a,#d4a936);border-radius:14px;padding:14px 18px;font-weight:900}.v5003-admin-link{position:fixed;right:14px;bottom:14px;z-index:6;color:#f7ca5a;text-decoration:none;border:1px solid rgba(247,202,90,.35);background:rgba(0,0,0,.45);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800}
+</style>
+</head>
+<body data-page="home-v267-live-time-weather-inline15-card-hotzones">
+<main class="stage">
+  <img class="bg" src="assets/home-landscape-v262.webp?v=267" alt="KING HOTEL Home">
+
+  <section class="home-live home-live-combo" aria-hidden="true">
+    <span id="homeClock" class="home-live-time live-value">--:--</span>
+    <span id="homeWeather" class="home-live-weather live-value">--°C</span>
+  </section>
+
+  <nav class="home-cardfield" aria-label="KING HOTEL home card-field hotspots">
+    <a class="hot lang-ja" href="ja.html" data-remember-lang="ja" data-card="home-language-ja"><span class="sr">日本語</span></a>
+    <a class="hot lang-en" href="en.html" data-remember-lang="en" data-card="home-language-en"><span class="sr">English</span></a>
+    <a class="hot lang-ko" href="ko.html" data-remember-lang="ko" data-card="home-language-ko"><span class="sr">한국어</span></a>
+    <a class="hot lang-zh" href="zh.html" data-remember-lang="zh" data-card="home-language-zh"><span class="sr">繁體中文</span></a>
+    <a class="hot lang-cn" href="cn.html" data-remember-lang="cn" data-card="home-language-cn"><span class="sr">简体中文</span></a>
+
+    <a class="hot home-ai-robot" href="ai.html?lang=zh&back=index.html" data-card="home-ai-robot"><span class="sr">AI Concierge Robot</span></a>
+
+    <a class="hot home-checkin" href="check.html" data-card="home-checkin"><span class="sr">Check-in Time</span></a>
+    <a class="hot home-checkout" href="check.html" data-card="home-checkout"><span class="sr">Check-out Time</span></a>
+    <a class="hot home-info" href="info.html" data-card="home-hotel-information"><span class="sr">Hotel Information</span></a>
+    <a class="hot home-wifi" href="wifi.html" data-card="home-10g-wifi"><span class="sr">10G High-speed Internet</span></a>
+    <a class="hot home-account" href="wifi.html" data-card="home-user-password"><span class="sr">User ID and Password</span></a>
+  </nav>
+</main>
+<div id="v5003Fallback" class="v5003-fallback" aria-label="KING HOTEL fallback menu">
+  <div>
+    <h1>KING HOTEL</h1>
+    <div class="grid">
+      <a href="zh.html">繁體中文</a><a href="ja.html">日本語</a>
+      <a href="en.html">English</a><a href="ko.html">한국어</a>
+      <a href="cn.html">简体中文</a>
+    </div>
+  </div>
+</div>
+<a class="v5003-admin-link" href="admin.html">ADMIN</a>
+<script>
+(function(){
+  const secondPage = {zh:"zh.html", cn:"cn.html", ja:"ja.html", en:"en.html", ko:"ko.html"};
+  const aiPage = {zh:"ai.html?lang=zh&back=zh.html", cn:"ai.html?lang=cn&back=cn.html", ja:"ai.html?lang=ja&back=ja.html", en:"ai.html?lang=en&back=en.html", ko:"ai.html?lang=ko&back=ko.html"};
+  function rememberLanguage(code){
+    try{
+      localStorage.setItem("king_lang", code);
+      localStorage.setItem("currentLanguage", code);
+      localStorage.setItem("king_current_lang", code);
+      localStorage.setItem("king_last_second_page", secondPage[code] || "zh.html");
+      sessionStorage.setItem("king_lang", code);
+    }catch(e){}
+  }
+  document.querySelectorAll("[data-remember-lang]").forEach(function(a){
+    a.addEventListener("click", function(){ rememberLanguage(a.getAttribute("data-remember-lang")); }, {passive:true});
+  });
+  document.querySelectorAll("[data-card]").forEach(function(a){
+    a.addEventListener("click", function(){
+      try{
+        localStorage.setItem("king_last_home_card", a.getAttribute("data-card") || "");
+        localStorage.setItem("king_last_page", "index.html");
+      }catch(e){}
+    }, {passive:true});
+  });
+  const robot = document.querySelector(".home-ai-robot");
+  if(robot){
+    robot.addEventListener("click", function(){
+      let lang="zh";
+      try{ lang = localStorage.getItem("king_lang") || localStorage.getItem("currentLanguage") || "zh"; }catch(e){}
+      robot.href = aiPage[lang] || aiPage.zh;
+    }, {capture:true});
+  }
+
+  function updateClock(){
+    const el=document.getElementById("homeClock");
+    if(!el) return;
+    el.textContent=new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Asia/Tokyo"}).format(new Date());
+  }
+  updateClock();
+  setInterval(updateClock,15000);
+
+  const weatherEl=document.getElementById("homeWeather");
+  function setWeather(value){
+    if(!weatherEl || value==null || Number.isNaN(value)) return;
+    const temp=Math.round(Number(value));
+    weatherEl.textContent=temp+"°C";
+    try{
+      localStorage.setItem("king_tokyo_temp_c", String(temp));
+      localStorage.setItem("king_tokyo_temp_time", String(Date.now()));
+    }catch(e){}
+  }
+  function loadSavedWeather(){
+    try{
+      const temp=localStorage.getItem("king_tokyo_temp_c");
+      const t=Number(localStorage.getItem("king_tokyo_temp_time") || 0);
+      if(temp && Date.now()-t<6*60*60*1000) setWeather(temp);
+    }catch(e){}
+  }
+  async function updateWeather(){
+    loadSavedWeather();
+    try{
+      const url="https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&current=temperature_2m&timezone=Asia%2FTokyo";
+      const res=await fetch(url,{cache:"no-store"});
+      if(!res.ok) throw new Error("weather fetch failed");
+      const data=await res.json();
+      setWeather(data && data.current && data.current.temperature_2m);
+    }catch(e){}
+  }
+  updateWeather();
+  setInterval(updateWeather,15*60*1000);
+
+  const homeBg = document.querySelector(".bg");
+  if(homeBg){
+    homeBg.addEventListener("error", function(){
+      document.body.classList.add("home-bg-missing");
+      const warn=document.createElement("div");
+      warn.textContent="KING HOTEL";
+      warn.style.cssText="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;color:#f7ca5a;font:900 8vw Arial;letter-spacing:.08em;z-index:2";
+      document.body.appendChild(warn);
+    }, {once:true});
+  }
+  window.addEventListener("pageshow", function(){
+    document.documentElement.style.background="#000";
+    document.body.style.background="#000";
+  });
+
+  const q = new URLSearchParams(location.search);
+  if(q.get("debugHot")==="1") document.body.classList.add("debug-hot");
+})();
+</script>
+<script src="assets/king-hot-activate-v247.js"></script>
+
+<script id="V5003_MERGE_SAFE_SCRIPT">
+(function(){
+  const fallback=document.getElementById('v5003Fallback');
+  const bg=document.querySelector('.bg');
+  function showFallback(){ if(fallback) fallback.classList.add('on'); }
+  if(bg){
+    if(bg.complete && bg.naturalWidth===0) showFallback();
+    bg.addEventListener('error', showFallback, {once:true});
+  }
+  window.addEventListener('error', function(e){
+    const msg=String((e && e.message)||'');
+    if(/assets\/|home-landscape|Cannot read|undefined/.test(msg)) showFallback();
+  });
+})();
+</script>
+</body>
+</html>

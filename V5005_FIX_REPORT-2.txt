@@ -1,0 +1,14 @@
+KING OS V5005 OFFICIAL HOME + ADMIN SEPARATE
+
+修改內容：
+1. 恢復官方黑金 KING HOTEL 首頁為 index.html。
+2. 員工 PMS 後台固定使用 /admin.html 直接網址進入。
+3. 首頁不再顯示「後台」按鈕；只保留不可見的右下角員工入口，主要給員工直接輸入網址使用。
+4. 保留 V4206 後台房況月曆與 PMS 功能。
+5. 保留 V5004 已修正的五國語言頁 CSS/圖片路徑。
+
+正式網址：
+首頁：https://kinghotel.github.io/Kingos-5001/
+員工後台：https://kinghotel.github.io/Kingos-5001/admin.html
+
+上傳方式：解壓縮後全選所有檔案上傳 GitHub，不要直接上傳 ZIP。

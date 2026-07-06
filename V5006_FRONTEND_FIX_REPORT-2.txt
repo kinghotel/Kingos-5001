@@ -1,0 +1,15 @@
+KING OS V5006 FRONTEND FIX
+
+修正內容：
+1. 修正 en / zh / cn / ja / ko 語言頁在 Chrome / Fully Kiosk 顯示只剩左上角、右側黑畫面的問題。
+2. 前台語言頁改為 16:9 設計滿版覆蓋 viewport，圖片與熱區同一比例縮放。
+3. 保留官方黑金首頁 index.html。
+4. 保留員工後台 admin.html，後台網址固定 /admin.html。
+5. 加入 .nojekyll，避免 GitHub Pages 對底線檔案或靜態資源處理異常。
+
+上傳方式：
+- GitHub 網頁：解壓縮後，進入資料夾，選取裡面所有檔案與資料夾，上傳到 Kingos-5001 根目錄，Commit。
+- Working Copy：匯入整個解壓縮後資料夾時，必須選 Replace Existing Files，不要選 Keep Both。
+
+首頁： https://kinghotel.github.io/Kingos-5001/
+員工後台： https://kinghotel.github.io/Kingos-5001/admin.html

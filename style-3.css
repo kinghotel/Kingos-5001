@@ -1,0 +1,3 @@
+/* KING OS V211 fallback style: main layouts are inline in each page. */
+html,body{margin:0;padding:0;}
+*{box-sizing:border-box;}
